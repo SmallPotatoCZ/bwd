@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+<meta content='width=device-width, initial-scale=1.0' name='viewport'>
+<link href='/favicon.png' rel='shortcut icon'>
+<meta content='' name='app:pageurl'>
+
+
+
+
+
+
+
+<link rel="canonical" href="">
+<meta name="og:url" content="">
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <title>EsilyZhang 的备忘单</title>
+    
+    <link rel="stylesheet" href="/sass/home.min.de7c29548feadde2ec038bd703cb5297c0c0d6ae56e095e1f9e1d89f08855611.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+
+<link rel="stylesheet" href="/sass/cheatsheet.min.92c261b5fd7acaddae327d66bfda43a084b8ddeab776ba4513b296909f993594.css">
+
+</head>
+
+<body>
+    <header role="heading">
+        <nav class='top-nav' data-js-no-preview role='navigation'>
+    <div class='container'>
+        
+        <div class='left'>
+            <a class='back-button icons' href='/'>keyboard_backspace</a>
+        </div>
+        
+
+        <a class='brand' href='/'>
+            EsilyZhang 的备忘单
+        </a>
+    </div>
+</nav>
+    </header>
+    <main role="main">
+        
+<div class='site-header' role='banner'>
+    <h1>
+        Vim 常用命令 - 备忘录2
+    </h1>
+</div>
+<div class="md_content">
+    <div id="sheet_box">
+    <div id="sheet_column" hidden>2</div>
+    
+
+<h2 id="文件-i-o">文件 I/O</h2>
+
+<h3 id="打开文件">打开文件</h3>
+
+<table>
+<thead>
+<tr>
+<th>目标</th>
+<th>命令</th>
+<th>备注</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>打开新的文件</td>
+<td><code>:e &lt;file&gt;</code></td>
+<td>支持通配符，如：<code>**/&lt;file&gt;</code></td>
+</tr>
+
+<tr>
+<td>垂直方向新建窗口并打开新建的文件</td>
+<td><code>:new</code></td>
+<td></td>
+</tr>
+
+<tr>
+<td>水平方向新建窗口并打开新建的文件</td>
+<td><code>:vnem</code></td>
+<td></td>
+</tr>
+
+<tr>
+<td>在当前窗口打开新的文件</td>
+<td><code>:enew</code></td>
+<td></td>
+</tr>
+
+<tr>
+<td>在新的标签窗口打开新的文件</td>
+<td><code>:tabnew</code></td>
+<td></td>
+</tr>
+
+<tr>
+<td>读文件内容</td>
+<td><code>:r[ead] &lt;file&gt;</code></td>
+<td>在锚点处添加<code>&lt;file&gt;</code>的内容</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="保存文件">保存文件</h3>
+
+<table>
+<thead>
+<tr>
+<th>目标</th>
+<th>命令</th>
+<th>备注</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>保存当前文件</td>
+<td><code>:w</code></td>
+<td></td>
+</tr>
+
+<tr>
+<td>保存所有文件</td>
+<td><code>:wa</code></td>
+<td></td>
+</tr>
+
+<tr>
+<td>当前文件另存为</td>
+<td><code>:saves &lt;file-name&gt;</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="暂存文件操作">暂存文件操作</h2>
+
+<table>
+<thead>
+<tr>
+<th>目标</th>
+<th>命令</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>暂存文件列表</td>
+<td><code>:ls</code></td>
+</tr>
+
+<tr>
+<td>关闭当前缓存</td>
+<td><code>:bd[elete]</code></td>
+</tr>
+
+<tr>
+<td>跳转下一个标签页</td>
+<td><code>:bn[ext]</code></td>
+</tr>
+
+<tr>
+<td>跳转上一个标签页</td>
+<td><code>:bp[revious]</code></td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="视图">视图</h2>
+
+<h3 id="窗口">窗口</h3>
+
+<table>
+<thead>
+<tr>
+<th>目标</th>
+<th>命令</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>垂直方向切分窗口</td>
+<td><code>:split</code></td>
+</tr>
+
+<tr>
+<td>水平方向切分窗口</td>
+<td><code>:vsplit</code></td>
+</tr>
+
+<tr>
+<td>窗口间移动锚点</td>
+<td><code>^w + &lt;direction key&gt;</code></td>
+</tr>
+
+<tr>
+<td>关闭当前窗口</td>
+<td><code>^w + d</code></td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="标签页">标签页</h3>
+
+<table>
+<thead>
+<tr>
+<th>目标</th>
+<th>命令</th>
+<th>备注</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>创建新的空标签页</td>
+<td><code>:tabn[ew]</code></td>
+<td></td>
+</tr>
+
+<tr>
+<td>在新的标签页打开文件</td>
+<td><code>:tabe[dit] &lt;file or path&gt;</code></td>
+<td></td>
+</tr>
+
+<tr>
+<td>切换标签页</td>
+<td><code>:tabm[ove] &lt;numeric value&gt;</code></td>
+<td>如：<code>:tabm-1</code>, <code>:tabm+3</code>（相对），<code>:tabm 2</code>（绝对）</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="文本编辑">文本编辑</h2>
+
+<table>
+<thead>
+<tr>
+<th>目标</th>
+<th>命令</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>编辑模式</td>
+<td><code>i</code></td>
+</tr>
+
+<tr>
+<td>在下一行新建一行并开始编辑</td>
+<td><code>o</code></td>
+</tr>
+
+<tr>
+<td>跳转到行的开始并开始编辑</td>
+<td><code>I</code></td>
+</tr>
+
+<tr>
+<td>跳转到行的结尾并开始编辑</td>
+<td><code>A</code></td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="缩进-制表符和空格">缩进，制表符和空格</h3>
+
+<table>
+<thead>
+<tr>
+<th>目标</th>
+<th>命令</th>
+<th>备注</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>开启空格格式的制表符</td>
+<td><code>:set expandtab</code></td>
+<td></td>
+</tr>
+
+<tr>
+<td>设置制表符空格的数量</td>
+<td><code>:set tabstop=&lt;x&gt;</code></td>
+<td>一个制表符由<code>x</code>个空格组成。 <code>softtabstop</code>开启它不会生效</td>
+</tr>
+
+<tr>
+<td>设置退格键删除的空格数量</td>
+<td><code>:set softtabstop=&lt;x&gt;</code></td>
+<td>一个退格键由<code>x</code>个空格组成。</td>
+</tr>
+
+<tr>
+<td>设置制表符空格的数量</td>
+<td><code>:set shiftwidth=&lt;x&gt;</code></td>
+<td>每一级缩进的<code>x</code>个空格。只有<code>expandtab</code>开启，才会生效。</td>
+</tr>
+
+<tr>
+<td>开启真正的制表符</td>
+<td><code>:set noexpantab</code></td>
+<td>返回默认的制表符格式</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="删除行">删除行</h3>
+
+<table>
+<thead>
+<tr>
+<th>目标</th>
+<th>命令</th>
+<th>备注</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>删除行</td>
+<td><code>dd</code></td>
+<td></td>
+</tr>
+
+<tr>
+<td>清除锚点到行尾的内容</td>
+<td><code>D</code></td>
+<td></td>
+</tr>
+
+<tr>
+<td>清除整行内容</td>
+<td><code>0D</code></td>
+<td><code>0</code> 移动锚点到行开始</td>
+</tr>
+
+<tr>
+<td>清除整行并以插入模式结束</td>
+<td><code>S</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="文本选择">文本选择</h2>
+
+<table>
+<thead>
+<tr>
+<th>目标</th>
+<th>命令</th>
+<th>备注</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>字选择</td>
+<td><code>v</code></td>
+<td></td>
+</tr>
+
+<tr>
+<td>块选择</td>
+<td><code>^</code></td>
+<td>字选择模式下，<code>^ + &lt;direction key&gt;</code></td>
+</tr>
+
+<tr>
+<td>行选择</td>
+<td><code>V</code></td>
+<td></td>
+</tr>
+
+<tr>
+<td>选中下个锚点的字</td>
+<td><code>viw</code></td>
+<td></td>
+</tr>
+
+<tr>
+<td>选择括号内的内容</td>
+<td><code>vi[parenthesis]</code></td>
+<td>如：<code>vi(</code>、<code>vi[</code>和<code>vi{</code></td>
+</tr>
+
+<tr>
+<td>选择括号内的内容</td>
+<td><code>vi[parenthesis]</code></td>
+<td>如：<code>vi(</code>、<code>vi[</code>和<code>vi{</code></td>
+</tr>
+
+<tr>
+<td>选择括号内的内容（花括号）</td>
+<td><code>vib</code></td>
+<td>如上：<code>vi{</code></td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="文本导航">文本导航</h2>
+
+<table>
+<thead>
+<tr>
+<th>目的</th>
+<th>命令</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>移动到行开始</td>
+<td><code>0</code></td>
+</tr>
+
+<tr>
+<td>移动到行尾</td>
+<td><code>$</code></td>
+</tr>
+
+<tr>
+<td>移动到行中的第一个非空字符</td>
+<td><code>_</code></td>
+</tr>
+
+<tr>
+<td>移动到行中的最后一个非空字符</td>
+<td><code>g_</code></td>
+</tr>
+
+<tr>
+<td>移动到第一行</td>
+<td><code>gg</code></td>
+</tr>
+
+<tr>
+<td>移动到最后一行</td>
+<td><code>G</code></td>
+</tr>
+
+<tr>
+<td>回退上一个位置</td>
+<td><code>''</code></td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="文本的显示模式">文本的显示模式</h2>
+
+<table>
+<thead>
+<tr>
+<th>目标</th>
+<th>命令</th>
+<th>备注</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>单词换行</td>
+<td><code>:set wrap</code></td>
+<td></td>
+</tr>
+
+<tr>
+<td>显示换行符</td>
+<td><code>:set linebreak</code></td>
+<td></td>
+</tr>
+
+<tr>
+<td>高亮当前行</td>
+<td><code>:set cursorline</code></td>
+<td></td>
+</tr>
+
+<tr>
+<td>显示垂直行</td>
+<td><code>:set colorcolumn=&lt;x&gt;</code></td>
+<td><code>x</code> 是列号码</td>
+</tr>
+
+<tr>
+<td>显示所有的空白</td>
+<td><code>:set list</code></td>
+<td></td>
+</tr>
+
+<tr>
+<td>自动换行</td>
+<td><code>:set textwidth=&lt;x&gt;</code></td>
+<td>文本在您键入时自动换行，以使每行最多长 <code>&lt;x&gt;</code> 个字符</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="文件浏览">文件浏览</h2>
+
+<h3 id="打开浏览器窗口">打开浏览器窗口</h3>
+
+<table>
+<thead>
+<tr>
+<th>目的</th>
+<th>命令</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>在当前窗口打开文件浏览器</td>
+<td><code>Ex[plore]</code></td>
+</tr>
+
+<tr>
+<td>在垂直方向新建的窗口打开文件浏览器</td>
+<td><code>Sex[plore]</code></td>
+</tr>
+
+<tr>
+<td>在水平方向新建的窗口打开文件浏览器</td>
+<td><code>Vex[plore]</code></td>
+</tr>
+
+<tr>
+<td>在新的标签页打开文件浏览窗口</td>
+<td><code>Tex[plore]</code></td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="浏览器操作">浏览器操作</h3>
+
+<table>
+<thead>
+<tr>
+<th>目标</th>
+<th>命令</th>
+<th>备注</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>改变显示模式</td>
+<td><code>i</code></td>
+<td>在正常、列表和树模式间切换</td>
+</tr>
+
+<tr>
+<td>创建新的文件夹</td>
+<td><code>d</code></td>
+<td></td>
+</tr>
+
+<tr>
+<td>创建新的文件</td>
+<td><code>%</code></td>
+<td></td>
+</tr>
+
+<tr>
+<td>删除文件或文件夹</td>
+<td><code>D</code></td>
+<td></td>
+</tr>
+
+<tr>
+<td>重命名文件或文件夹</td>
+<td><code>R</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="其它">其它</h2>
+
+<table>
+<thead>
+<tr>
+<th>目标</th>
+<th>命令</th>
+<th>备注</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>其它命令</td>
+<td><code>:! &lt;command&gt; %</code></td>
+<td>如：<code>:! wc %</code> 在当前文件运行<code>wc</code>命令和显示结果</td>
+</tr>
+
+<tr>
+<td>重新运行上次的命令</td>
+<td><code>!!</code></td>
+<td></td>
+</tr>
+
+<tr>
+<td>运行额外的命令并保存当前文件的输出</td>
+<td><code>:r[ead] ! &lt;command&gt; %</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="参考链接">参考链接</h2>
+
+<ol>
+<li><a href="https://www.internalpointers.com/post/humble-vim-cheat-sheet">The humble Vim cheat sheet</a></li>
+</ol>
+
+
+    <script>
+        let colNum = document.querySelector("#sheet_column").innerText;
+        const sheetBox = document.body.querySelector("#sheet_box");
+        let eleList = [];
+        Array.prototype.max = function () {
+            return Math.max.apply(null, this);
+        };
+        Array.prototype.minindex = function (col) {
+            let _index = 0,
+                min = this[0];
+            for (var i = 1; i < col; i++) {
+                if (min > this[i]) {
+                    min = this[i];
+                    _index = i;
+                }
+            }
+            return _index;
+        };
+
+
+        for (let key in sheetBox.children) {
+            eleList.push(sheetBox.children[key]);
+        }
+        let _section, _wrap, _x = 0,
+            _y = 0;
+        eleList.forEach(ele => {
+            if (ele.localName === "h2") {
+                _section = document.createElement("div");
+                _wrap = document.createElement("div");
+                _wrap.className = "h3_wrap";
+                _section.className = "h2_section";
+                _section.appendChild(ele);
+                sheetBox.appendChild(_section);
+                sheetBox.appendChild(_wrap);
+                _x = 0;
+                _y = 0;
+            }
+            if (ele.localName === "h3") {
+                _section = document.createElement("div");
+                _section.className = "h3_section";
+                if (!_wrap) {
+                    _wrap = document.createElement("div");
+                    _wrap.className = "h3_wrap";
+                }
+                if (colNum === "2") {
+                    _section.style.width = "49.4%";
+                } else {
+                    _section.style.width = "32.8%";
+                }
+                _section.appendChild(ele);
+                _wrap.appendChild(_section);
+            }
+            if (_section && ele.localName && ele.localName !== "script") {
+                _section.appendChild(ele);
+            }
+        });
+
+        function layout(col, _onlyChangeWidth) {
+            let _w = sheetBox.offsetWidth;
+            const _tars = sheetBox.querySelectorAll(".h3_wrap");
+            let _e_offset = _w * 1.012 / col;
+
+            _tars.forEach(t => {
+                let _hs = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+                let es = [];
+                let _h3_wrap_height = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+                for (let key in t.children) {
+                    if (t.children[key].localName) {
+                        es.push(t.children[key]);
+                    }
+                }
+                es.forEach((e, i) => {
+                    let _colOrder = _hs.minindex(col);
+                    e.style.left = _colOrder * _e_offset + 'px';
+                    e.style.top = _hs[_colOrder] + 'px';
+                    e.style.width = (_w - (col - 1) * _w * 0.012) / col + 'px';
+                    _hs[_colOrder] += e.offsetHeight + 8;
+                    _h3_wrap_height[_colOrder] += e.offsetHeight + 8;
+
+                })
+                t.style.height = _h3_wrap_height.max() + 'px';
+            })
+        }
+
+        colNum = Number(colNum) ? Number(colNum) : 3;
+        let _colCounter;
+        if (window.innerWidth > 768) {
+            _colCounter = colNum;
+        } else if (window.innerWidth > 480) {
+            _colCounter = colNum - 1 <= 0 ? colNum : colNum - 1;
+        } else {
+            _colCounter = colNum - 2 <= 0 ? colNum - 1 <= 0 ? colNum : colNum - 1 : colNum - 2;
+        }
+        layout(_colCounter);
+        window.onresize = function () {
+            let _cols;
+            if (window.innerWidth >= 768) {
+                _cols = colNum;
+            } else if (window.innerWidth > 480) {
+                _cols = colNum - 1 <= 0 ? colNum : colNum - 1;
+            } else {
+                _cols = colNum - 2 <= 0 ? colNum - 1 <= 0 ? colNum : colNum - 1 : colNum - 2;
+            }
+            layout(_cols);
+        }
+    </script>
+</div>
+</div>
+
+    </main>
+
+    <footer>
+        
+        
+        
+    </footer>
+
+</body>
+
+</html>

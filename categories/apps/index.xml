@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>apps on EsilyZhang 的备忘单</title>
+    <link>https://bwd.zhangchao.online/categories/apps/</link>
+    <description>Recent content in apps on EsilyZhang 的备忘单</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Tue, 23 Jul 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://bwd.zhangchao.online/categories/apps/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>VirtualBox</title>
+      <link>https://bwd.zhangchao.online/apps/virtualbox/</link>
+      <pubDate>Tue, 23 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://bwd.zhangchao.online/apps/virtualbox/</guid>
+      <description>vboxmanage 命令行的使用 查考虚拟机列表 vboxmanage list vms 启动虚拟机 vboxmanage startvm $vmname # 无界面模式 vboxmanage startvm $vmname --type headless 删除虚拟机 vboxmanage unregistervm --delete $vmname 虚拟机控制 # 关机 vboxmanage controlvm $vmname poweroff # 保存虚拟机状态 vboxmanage controlvm $vmname savestate 共享目录 # 新增共享目录（虚拟机未启动） vboxmanage sharedfolder add $vmname --name $sharename --hostpath $hostpath # 新增临时分配共享目录 vboxmanage sharedfolder add $vmname --name $sharename --hostpath $hostpath --transient ## 删除共享目录 vboxmanage sharedfolder remove $vmname --name $sharename [--transient] 安装 Ubuntu 18.04 以下步骤依次进行</description>
+    </item>
+    
+    <item>
+      <title>Vim 常用命令</title>
+      <link>https://bwd.zhangchao.online/apps/vim/</link>
+      <pubDate>Wed, 17 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://bwd.zhangchao.online/apps/vim/</guid>
+      <description>文件 I/O 打开文件    目标 命令 备注     打开新的文件 :e &amp;lt;file&amp;gt; 支持通配符，如：**/&amp;lt;file&amp;gt;   垂直方向新建窗口并打开新建的文件 :new    水平方向新建窗口并打开新建的文件 :vnem    在当前窗口打开新的文件 :enew    在新的标签窗口打开新的文件 :tabnew    读文件内容 :r[ead] &amp;lt;file&amp;gt; 在锚点处添加&amp;lt;file&amp;gt;的内容    保存文件    目标 命令 备注     保存当前文件 :w    保存所有文件 :wa    当前文件另存为 :saves &amp;lt;file-name&amp;gt;     暂存文件操作    目标 命令     暂存文件列表 :ls   关闭当前缓存 :bd[elete]   跳转下一个标签页 :bn[ext]   跳转上一个标签页 :bp[revious]    视图 窗口    目标 命令     垂直方向切分窗口 :split   水平方向切分窗口 :vsplit   窗口间移动锚点 ^w + &amp;lt;direction key&amp;gt;   关闭当前窗口 ^w + d    标签页    目标 命令 备注     创建新的空标签页 :tabn[ew]    在新的标签页打开文件 :tabe[dit] &amp;lt;file or path&amp;gt;    切换标签页 :tabm[ove] &amp;lt;numeric value&amp;gt; 如：:tabm-1, :tabm+3（相对），:tabm 2（绝对）    文本编辑    目标 命令     编辑模式 i   在下一行新建一行并开始编辑 o   跳转到行的开始并开始编辑 I   跳转到行的结尾并开始编辑 A    缩进，制表符和空格    目标 命令 备注     开启空格格式的制表符 :set expandtab    设置制表符空格的数量 :set tabstop=&amp;lt;x&amp;gt; 一个制表符由x个空格组成。 softtabstop开启它不会生效   设置退格键删除的空格数量 :set softtabstop=&amp;lt;x&amp;gt; 一个退格键由x个空格组成。   设置制表符空格的数量 :set shiftwidth=&amp;lt;x&amp;gt; 每一级缩进的x个空格。只有expandtab开启，才会生效。   开启真正的制表符 :set noexpantab 返回默认的制表符格式    删除行    目标 命令 备注     删除行 dd    清除锚点到行尾的内容 D    清除整行内容 0D 0 移动锚点到行开始   清除整行并以插入模式结束 S     文本选择    目标 命令 备注     字选择 v    块选择 ^ 字选择模式下，^ + &amp;lt;direction key&amp;gt;   行选择 V    选中下个锚点的字 viw    选择括号内的内容 vi[parenthesis] 如：vi(、vi[和vi{   选择括号内的内容 vi[parenthesis] 如：vi(、vi[和vi{   选择括号内的内容（花括号） vib 如上：vi{    文本导航    目的 命令     移动到行开始 0   移动到行尾 $   移动到行中的第一个非空字符 _   移动到行中的最后一个非空字符 g_   移动到第一行 gg   移动到最后一行 G   回退上一个位置 &#39;&#39;    文本的显示模式    目标 命令 备注     单词换行 :set wrap    显示换行符 :set linebreak    高亮当前行 :set cursorline    显示垂直行 :set colorcolumn=&amp;lt;x&amp;gt; x 是列号码   显示所有的空白 :set list    自动换行 :set textwidth=&amp;lt;x&amp;gt; 文本在您键入时自动换行，以使每行最多长 &amp;lt;x&amp;gt; 个字符    文件浏览 打开浏览器窗口    目的 命令     在当前窗口打开文件浏览器 Ex[plore]   在垂直方向新建的窗口打开文件浏览器 Sex[plore]   在水平方向新建的窗口打开文件浏览器 Vex[plore]   在新的标签页打开文件浏览窗口 Tex[plore]    浏览器操作    目标 命令 备注     改变显示模式 i 在正常、列表和树模式间切换   创建新的文件夹 d    创建新的文件 %    删除文件或文件夹 D    重命名文件或文件夹 R     其它    目标 命令 备注     其它命令 :!</description>
+    </item>
+    
+    <item>
+      <title>Visual Studio Code</title>
+      <link>https://bwd.zhangchao.online/apps/vscode/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://bwd.zhangchao.online/apps/vscode/</guid>
+      <description>Shortcuts Command palette    Key Description     ⇧⌘P Show all commands   ⇧⌘P Show all commands   ⌘P Show files    Sidebars    Key Description     ⌘B Toggle sidebar   ⇧⌘E Explorer   ⇧⌘F Search   ⇧⌘D Debug   ⇧⌘X Extensions   ⇧^G Git (SCM)    Search    Key Description     ⌘F Find   ⌥⌘F Replace   ⇧⌘F Find in files   ⇧⌘H Replace in files    Panel    Key Description     ⌘J Toggle panel   ⇧⌘M Problems   ⇧⌘U Output   ⇧⌘Y Debug console   ^` Terminal    View    Key Description     ⌘k z Zen mode   ⌘k u Close unmodified   ⌘k w Close all    Debug    Key Description     F5 Start   ⇧F5 Stop   ⇧⌘F5 Restart   ^F5 Start without debugging   F9 Toggle breakpoint   F10 Step over   F11 Step into   ⇧F11 Step out   ⇧⌘D Debug sidebar   ⇧⌘Y Debug panel    References  Keyboard shortcuts (MacOS) (code.</description>
+    </item>
+    
+  </channel>
+</rss>

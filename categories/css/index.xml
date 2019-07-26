@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>css on EsilyZhang 的备忘单</title>
+    <link>https://bwd.zhangchao.online/categories/css/</link>
+    <description>Recent content in css on EsilyZhang 的备忘单</description>
+    <generator>Hugo -- gohugo.io</generator>
+    
+	<atom:link href="https://bwd.zhangchao.online/categories/css/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>CSS</title>
+      <link>https://bwd.zhangchao.online/posts/css/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://bwd.zhangchao.online/posts/css/</guid>
+      <description> 元素分类 Normal flow 从左向右，从上向下。脱离文档流的方式：float、position、flex和grid。
+Nonreplace element 它的文本内容可以在元素自身里。如：p。
+Rplaced element 简单来说，它们的内容不受当前文档的样式的影响。CSS 可以影响可替换元素的位置，但不会影响到可替换元素自身的内容。
+展现效果不是由 CSS 来控制的。这些元素是一种外部对象，它们外观的渲染，是独立于 CSS 的。
+Root element HTML类型是html。RSS类型是rss。
+Block box 在文档流中，元素会在其前面和后面生成新行。任何元素都可以通过display:block转换成块元素。
+Inline Box 元素不会在其之前或者之后有换行。任何元素都可以通过display:inline转换成行元素。
+Inline-block box 元素内部像块元素，外部行为像行内元素。就像div放置在一行文本中。
+改变元素类型 通过 CSS display 改变元素的展示。
+ 注意：改变元素的display并不会改变元素继承的自身属性。例如，将p标签设置为inline，但是 p并不会让它变成行内元素。一个行内元素可以降级为块元素，反之则不可以。一个span可以嵌套在p里，反之不可以。
+ Block </description>
+    </item>
+    
+    <item>
+      <title>Sass</title>
+      <link>https://bwd.zhangchao.online/css/sass/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://bwd.zhangchao.online/css/sass/</guid>
+      <description>Basics {: .-three-column}
+Variables $red: #833;body { color: $red; } Nesting .markdown-body { p { color: blue; } &amp;amp;:hover { color: red; } } Comments /* Block comments */ // Line comments Mixins @mixinheading-font { font-family: sans-serif; font-weight: bold; }h1 { @includeheading-font; } with parameters @mixinfont-size($n) { font-size: $n * 1.2em; }body { @includefont-size(2); } with default values @mixinpad($n: 10px) { padding: $n; }body { @includepad(15px); } with a default variable // Set a default value $default-padding: 10px;@mixinpad($n: $default-padding) { padding: $n; }body { @includepad(15px); } Extend .</description>
+    </item>
+    
+  </channel>
+</rss>

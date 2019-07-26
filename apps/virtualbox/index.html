@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+<meta content='width=device-width, initial-scale=1.0' name='viewport'>
+<link href='/favicon.png' rel='shortcut icon'>
+<meta content='' name='app:pageurl'>
+
+
+
+
+
+
+
+<link rel="canonical" href="">
+<meta name="og:url" content="">
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <title>EsilyZhang 的备忘单</title>
+    
+    <link rel="stylesheet" href="/sass/home.min.de7c29548feadde2ec038bd703cb5297c0c0d6ae56e095e1f9e1d89f08855611.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+
+<link rel="stylesheet" href="/sass/cheatsheet.min.92c261b5fd7acaddae327d66bfda43a084b8ddeab776ba4513b296909f993594.css">
+
+</head>
+
+<body>
+    <header role="heading">
+        <nav class='top-nav' data-js-no-preview role='navigation'>
+    <div class='container'>
+        
+        <div class='left'>
+            <a class='back-button icons' href='/'>keyboard_backspace</a>
+        </div>
+        
+
+        <a class='brand' href='/'>
+            EsilyZhang 的备忘单
+        </a>
+    </div>
+</nav>
+    </header>
+    <main role="main">
+        
+<div class='site-header' role='banner'>
+    <h1>
+        VirtualBox - 备忘录2
+    </h1>
+</div>
+<div class="md_content">
+    <div id="sheet_box">
+    <div id="sheet_column" hidden>2</div>
+    
+
+<h2 id="vboxmanage-命令行的使用">vboxmanage 命令行的使用</h2>
+
+<h3 id="查考虚拟机列表">查考虚拟机列表</h3>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">vboxmanage list vms</code></pre></div>
+<h3 id="启动虚拟机">启动虚拟机</h3>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">vboxmanage startvm <span style="color:#963">$vmname</span>
+<span style="color:#888"># 无界面模式</span>
+vboxmanage startvm <span style="color:#963">$vmname</span> --type headless</code></pre></div>
+<h3 id="删除虚拟机">删除虚拟机</h3>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">vboxmanage unregistervm --delete <span style="color:#963">$vmname</span></code></pre></div>
+<h3 id="虚拟机控制">虚拟机控制</h3>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#888"># 关机</span>
+vboxmanage controlvm <span style="color:#963">$vmname</span> poweroff
+<span style="color:#888"># 保存虚拟机状态</span>
+vboxmanage controlvm <span style="color:#963">$vmname</span> savestate</code></pre></div>
+<h3 id="共享目录">共享目录</h3>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#888"># 新增共享目录（虚拟机未启动）</span>
+vboxmanage sharedfolder add <span style="color:#963">$vmname</span> --name <span style="color:#963">$sharename</span> --hostpath <span style="color:#963">$hostpath</span>
+
+<span style="color:#888"># 新增临时分配共享目录</span>
+vboxmanage sharedfolder add <span style="color:#963">$vmname</span> --name <span style="color:#963">$sharename</span> --hostpath <span style="color:#963">$hostpath</span> --transient
+
+<span style="color:#888">## 删除共享目录</span>
+vboxmanage sharedfolder remove <span style="color:#963">$vmname</span> --name <span style="color:#963">$sharename</span> <span style="color:#333">[</span>--transient<span style="color:#333">]</span></code></pre></div>
+<h2 id="安装-ubuntu-18-04">安装 Ubuntu 18.04</h2>
+
+<p>以下步骤依次进行</p>
+
+<h3 id="新建虚拟机">新建虚拟机</h3>
+
+<h4 id="新建">新建</h4>
+
+<p><img src="/apps/new01.png" alt="新建" />
+<img src="/apps/new02.png" alt="新建2" /></p>
+
+<h4 id="虚拟机设置-选择镜像">虚拟机设置 - 选择镜像</h4>
+
+<p><img src="/apps/new03.png" alt="存储" /></p>
+
+<h4 id="虚拟机设置-桥接网卡">虚拟机设置 - 桥接网卡</h4>
+
+<p><img src="/apps/new04.png" alt="网络" /></p>
+
+<h4 id="虚拟机设置-共享文件夹">虚拟机设置 - 共享文件夹</h4>
+
+<p><img src="/apps/new05.png" alt="共享文件夹" /></p>
+
+<h3 id="点击客户端的安装增强工具">点击客户端的安装增强工具</h3>
+
+<h4 id="安装增强工具">安装增强工具</h4>
+
+<p><img src="/apps/adancedtool.png" alt="增强工具" /></p>
+
+<h4 id="mount-cd-image">mount CD Image</h4>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">sudo mount /dev/cdrom /mnt
+<span style="color:#007020">cd</span> /mnt</code></pre></div>
+<h4 id="安装依赖">安装依赖</h4>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">sudo apt-get install -y dkms build-essential linux-headers-generic linux-headers-<span style="color:#080;font-weight:bold">$(</span>uname -r<span style="color:#080;font-weight:bold">)</span></code></pre></div>
+<h4 id="开始安装">开始安装</h4>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#888"># root 用户</span>
+sudo su
+<span style="color:#888"># 运行</span>
+./VboxLinuxAdditions.run</code></pre></div>
+<h4 id="重启">重启</h4>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">reboot</code></pre></div>
+<h3 id="配置包更新地址">配置包更新地址</h3>
+
+<p>建议先安装增强工具是为了方便下面脚本内容的导入虚拟机和配置 ssh 登录。</p>
+
+<p>执行脚本脚本：</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#579">#! /bin/sh
+</span><span style="color:#579"></span>touch /etc/apt/sources.list.d/aliyun.list
+cat <span style="background-color:#fff0f0">&lt;&lt; EOF &gt; /etc/apt/sources.list.d/aliyun.list
+</span><span style="background-color:#fff0f0">deb http://mirrors.aliyun.com/ubuntu/ bionic main restricted universe multiverse
+</span><span style="background-color:#fff0f0">deb-src http://mirrors.aliyun.com/ubuntu/ bionic main restricted universe multiverse
+</span><span style="background-color:#fff0f0">
+</span><span style="background-color:#fff0f0">deb http://mirrors.aliyun.com/ubuntu/ bionic-security main restricted universe multiverse
+</span><span style="background-color:#fff0f0">deb-src http://mirrors.aliyun.com/ubuntu/ bionic-security main restricted universe multiverse
+</span><span style="background-color:#fff0f0">
+</span><span style="background-color:#fff0f0">deb http://mirrors.aliyun.com/ubuntu/ bionic-updates main restricted universe multiverse
+</span><span style="background-color:#fff0f0">deb-src http://mirrors.aliyun.com/ubuntu/ bionic-updates main restricted universe multiverse
+</span><span style="background-color:#fff0f0">
+</span><span style="background-color:#fff0f0">deb http://mirrors.aliyun.com/ubuntu/ bionic-proposed main restricted universe multiverse
+</span><span style="background-color:#fff0f0">deb-src http://mirrors.aliyun.com/ubuntu/ bionic-proposed main restricted universe multiverse
+</span><span style="background-color:#fff0f0">
+</span><span style="background-color:#fff0f0">deb http://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted universe multiverse
+</span><span style="background-color:#fff0f0">deb-src http://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted universe multiverse
+</span><span style="background-color:#fff0f0">EOF</span>
+
+apt-get update</code></pre></div>
+<h3 id="ssh">ssh</h3>
+
+<h4 id="宿主机生成密钥对">宿主机生成密钥对</h4>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">ssh-keygen</code></pre></div>
+<h4 id="服务器上安装公钥">服务器上安装公钥</h4>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#007020">cd</span> .ssh
+cat id_rsa.pub &gt;&gt; authorized_keys
+// 更改权限
+chmod <span style="color:#60e;font-weight:bold">600</span> authorized_keys
+chmod <span style="color:#60e;font-weight:bold">700</span> ~/.ssh</code></pre></div>
+<h4 id="打开密钥登录功能">打开密钥登录功能</h4>
+
+<p>编辑 /etc/ssh/sshd_config 文件：</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">RSAAuthentication yes
+PubkeyAuthentication yes
+PermitRootLogin yes</code></pre></div>
+<h3 id="关闭防火墙">关闭防火墙</h3>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">sudo ufw disable</code></pre></div>
+<h3 id="参考链接">参考链接</h3>
+
+<ol>
+<li><a href="https://virtualzero.net/blog/how-to-install-virtualbox-guest-additions-in-ubuntu-server-18.04-lts">安装增强工具</a></li>
+<li><a href="https://www.runoob.com/w3cnote/set-ssh-login-key.html">设置 ssh 通过密钥登录</a></li>
+</ol>
+
+
+    <script>
+        let colNum = document.querySelector("#sheet_column").innerText;
+        const sheetBox = document.body.querySelector("#sheet_box");
+        let eleList = [];
+        Array.prototype.max = function () {
+            return Math.max.apply(null, this);
+        };
+        Array.prototype.minindex = function (col) {
+            let _index = 0,
+                min = this[0];
+            for (var i = 1; i < col; i++) {
+                if (min > this[i]) {
+                    min = this[i];
+                    _index = i;
+                }
+            }
+            return _index;
+        };
+
+
+        for (let key in sheetBox.children) {
+            eleList.push(sheetBox.children[key]);
+        }
+        let _section, _wrap, _x = 0,
+            _y = 0;
+        eleList.forEach(ele => {
+            if (ele.localName === "h2") {
+                _section = document.createElement("div");
+                _wrap = document.createElement("div");
+                _wrap.className = "h3_wrap";
+                _section.className = "h2_section";
+                _section.appendChild(ele);
+                sheetBox.appendChild(_section);
+                sheetBox.appendChild(_wrap);
+                _x = 0;
+                _y = 0;
+            }
+            if (ele.localName === "h3") {
+                _section = document.createElement("div");
+                _section.className = "h3_section";
+                if (!_wrap) {
+                    _wrap = document.createElement("div");
+                    _wrap.className = "h3_wrap";
+                }
+                if (colNum === "2") {
+                    _section.style.width = "49.4%";
+                } else {
+                    _section.style.width = "32.8%";
+                }
+                _section.appendChild(ele);
+                _wrap.appendChild(_section);
+            }
+            if (_section && ele.localName && ele.localName !== "script") {
+                _section.appendChild(ele);
+            }
+        });
+
+        function layout(col, _onlyChangeWidth) {
+            let _w = sheetBox.offsetWidth;
+            const _tars = sheetBox.querySelectorAll(".h3_wrap");
+            let _e_offset = _w * 1.012 / col;
+
+            _tars.forEach(t => {
+                let _hs = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+                let es = [];
+                let _h3_wrap_height = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+                for (let key in t.children) {
+                    if (t.children[key].localName) {
+                        es.push(t.children[key]);
+                    }
+                }
+                es.forEach((e, i) => {
+                    let _colOrder = _hs.minindex(col);
+                    e.style.left = _colOrder * _e_offset + 'px';
+                    e.style.top = _hs[_colOrder] + 'px';
+                    e.style.width = (_w - (col - 1) * _w * 0.012) / col + 'px';
+                    _hs[_colOrder] += e.offsetHeight + 8;
+                    _h3_wrap_height[_colOrder] += e.offsetHeight + 8;
+
+                })
+                t.style.height = _h3_wrap_height.max() + 'px';
+            })
+        }
+
+        colNum = Number(colNum) ? Number(colNum) : 3;
+        let _colCounter;
+        if (window.innerWidth > 768) {
+            _colCounter = colNum;
+        } else if (window.innerWidth > 480) {
+            _colCounter = colNum - 1 <= 0 ? colNum : colNum - 1;
+        } else {
+            _colCounter = colNum - 2 <= 0 ? colNum - 1 <= 0 ? colNum : colNum - 1 : colNum - 2;
+        }
+        layout(_colCounter);
+        window.onresize = function () {
+            let _cols;
+            if (window.innerWidth >= 768) {
+                _cols = colNum;
+            } else if (window.innerWidth > 480) {
+                _cols = colNum - 1 <= 0 ? colNum : colNum - 1;
+            } else {
+                _cols = colNum - 2 <= 0 ? colNum - 1 <= 0 ? colNum : colNum - 1 : colNum - 2;
+            }
+            layout(_cols);
+        }
+    </script>
+</div>
+</div>
+
+    </main>
+
+    <footer>
+        
+        
+        
+    </footer>
+
+</body>
+
+</html>

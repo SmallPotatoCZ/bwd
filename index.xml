@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>EsilyZhang 的备忘单</title>
+    <link>https://bwd.zhangchao.online/</link>
+    <description>Recent content on EsilyZhang 的备忘单</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Tue, 23 Jul 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://bwd.zhangchao.online/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>adb (Android Debug Bridge)</title>
+      <link>https://bwd.zhangchao.online/cli/adb/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://bwd.zhangchao.online/cli/adb/</guid>
+      <description>Device Basics    Command Description     adb devices Lists connected devices   adb devices -l Lists connected devices and kind   &amp;mdash; &amp;mdash;   adb root Restarts adbd with root permissions   adb start-server Starts the adb server   adb kill-server Kills the adb server   adb remount Remounts file system with read/write access   adb reboot Reboots the device   adb reboot bootloader Reboots the device into fastboot   adb disable-verity Reboots the device into fastboot    wait-for-device can be specified after adb to ensure that the command will run once the device is connected.</description>
+    </item>
+    
+    <item>
+      <title>Nodejs 基础</title>
+      <link>https://bwd.zhangchao.online/javascript/nodejs/</link>
+      <pubDate>Tue, 23 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://bwd.zhangchao.online/javascript/nodejs/</guid>
+      <description> 安装 Ubuntu curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash - sudo apt-get install -y nodejs 配置淘宝镜像 npm config set registry https://r.npm.taobao.org/ 参考链接  snap cnpm  </description>
+    </item>
+    
+    <item>
+      <title>VirtualBox</title>
+      <link>https://bwd.zhangchao.online/apps/virtualbox/</link>
+      <pubDate>Tue, 23 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://bwd.zhangchao.online/apps/virtualbox/</guid>
+      <description>vboxmanage 命令行的使用 查考虚拟机列表 vboxmanage list vms 启动虚拟机 vboxmanage startvm $vmname # 无界面模式 vboxmanage startvm $vmname --type headless 删除虚拟机 vboxmanage unregistervm --delete $vmname 虚拟机控制 # 关机 vboxmanage controlvm $vmname poweroff # 保存虚拟机状态 vboxmanage controlvm $vmname savestate 共享目录 # 新增共享目录（虚拟机未启动） vboxmanage sharedfolder add $vmname --name $sharename --hostpath $hostpath # 新增临时分配共享目录 vboxmanage sharedfolder add $vmname --name $sharename --hostpath $hostpath --transient ## 删除共享目录 vboxmanage sharedfolder remove $vmname --name $sharename [--transient] 安装 Ubuntu 18.04 以下步骤依次进行</description>
+    </item>
+    
+    <item>
+      <title>Vue</title>
+      <link>https://bwd.zhangchao.online/vue/vue/</link>
+      <pubDate>Mon, 22 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://bwd.zhangchao.online/vue/vue/</guid>
+      <description>Vue 实例 语法 var vm = new VUe({ // 选项 });  数据和方法 var data = {a: 1}; var vm = new Vue({ data: data }); // 获取这个实例上的属性  vm.a == data.a; // true;  // 设置属性会影响原始的数据 vm.a = 2; data.a = 2; // 反之也是 data.a = 3; vm.a = 3;   只有在实例创建时data中存在的属性才是响应的。 Vue 实例中暴露的属性和方都会携带$前缀
+ 生命钩子 模板语法 插值 文本 &amp;lt;span&amp;gt;Message: {{msg}}&amp;lt;span&amp;gt; // v-noce 执行一次性的插值，当数据改变时，插值处的值并不会改变 原始 html {{}} 会将数据解释为普通文本，为了输出 HTML，使用v-html。</description>
+    </item>
+    
+    <item>
+      <title>Bash 命令行</title>
+      <link>https://bwd.zhangchao.online/cli/bash/</link>
+      <pubDate>Sun, 21 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://bwd.zhangchao.online/cli/bash/</guid>
+      <description>if 语法 if test-command; then consequesnt-commands; [elif more-test-commands; then more-consequesnt;] [else alternate-consequesnt;] fi for 语法 # words 不指定，只执行一次 for name [in words ...]; do commands; done for (( expr1; expr2 )); do commands; done # 等价于 (( expr1 )) while (( expr2 ));do commands done words file1.txt file2.txt file3.txt # 或者 Apple Sony &amp;#34;Hewlett Packard&amp;#34; 通配符 * 表示的是文件夹中的文件名字
+for thisfile in *; do echo &amp;#34;found $thisfile&amp;#34;; done 例子 1 - 10 for i in `seq 1 10` do echo &amp;#34;$i&amp;#34;; done # 大括号实现 for i in {1.</description>
+    </item>
+    
+    <item>
+      <title>React</title>
+      <link>https://bwd.zhangchao.online/react/react/</link>
+      <pubDate>Thu, 18 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://bwd.zhangchao.online/react/react/</guid>
+      <description>JSX 与元素渲染 const name = &amp;#34;Josh Perez&amp;#34;; const element = &amp;lt;h1 tabIndex=&amp;#34;0&amp;#34;&amp;gt;Hello,{name}&amp;lt;/h1&amp;gt;; ReactDOM.render(element, document.querySelector(&amp;#34;#jsx&amp;#34;)); 组件和 Props 组件的构建 // 简单方式 function Welcome(props){ return &amp;lt;h1&amp;gt;Hello,{props.name}&amp;lt;/h1&amp;gt; } // ES6 类构建的组件 class Welcome extends Comment { render() { return ( &amp;lt;h1&amp;gt;Hello, {this.props.name}&amp;lt;/h1&amp;gt; ) } } 渲染组件 function Welcome (props){ return &amp;lt;h1&amp;gt;Hello, {props.name}&amp;lt;/h1&amp;gt; } const element = &amp;lt;Welcome name=&amp;#34;渲染组件&amp;#34; /&amp;gt; 组合组件 function Welcome(props){ return &amp;lt;h1&amp;gt;Hello,{props.name}&amp;lt;/h1&amp;gt; } function App(){ return ( &amp;lt;div&amp;gt; &amp;lt;Welcome name=&amp;#34;name1&amp;#34; /&amp;gt; &amp;lt;Welcome name=&amp;#34;name2&amp;#34; /&amp;gt; &amp;lt;Welcome name=&amp;#34;name3&amp;#34; /&amp;gt; &amp;lt;/div&amp;gt; ) } 提取组件 // Avator function Avatar(props) { return ( &amp;lt;img className=&amp;#34;Avatar&amp;#34; src={props.</description>
+    </item>
+    
+    <item>
+      <title>Vim 常用命令</title>
+      <link>https://bwd.zhangchao.online/apps/vim/</link>
+      <pubDate>Wed, 17 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://bwd.zhangchao.online/apps/vim/</guid>
+      <description>文件 I/O 打开文件    目标 命令 备注     打开新的文件 :e &amp;lt;file&amp;gt; 支持通配符，如：**/&amp;lt;file&amp;gt;   垂直方向新建窗口并打开新建的文件 :new    水平方向新建窗口并打开新建的文件 :vnem    在当前窗口打开新的文件 :enew    在新的标签窗口打开新的文件 :tabnew    读文件内容 :r[ead] &amp;lt;file&amp;gt; 在锚点处添加&amp;lt;file&amp;gt;的内容    保存文件    目标 命令 备注     保存当前文件 :w    保存所有文件 :wa    当前文件另存为 :saves &amp;lt;file-name&amp;gt;     暂存文件操作    目标 命令     暂存文件列表 :ls   关闭当前缓存 :bd[elete]   跳转下一个标签页 :bn[ext]   跳转上一个标签页 :bp[revious]    视图 窗口    目标 命令     垂直方向切分窗口 :split   水平方向切分窗口 :vsplit   窗口间移动锚点 ^w + &amp;lt;direction key&amp;gt;   关闭当前窗口 ^w + d    标签页    目标 命令 备注     创建新的空标签页 :tabn[ew]    在新的标签页打开文件 :tabe[dit] &amp;lt;file or path&amp;gt;    切换标签页 :tabm[ove] &amp;lt;numeric value&amp;gt; 如：:tabm-1, :tabm+3（相对），:tabm 2（绝对）    文本编辑    目标 命令     编辑模式 i   在下一行新建一行并开始编辑 o   跳转到行的开始并开始编辑 I   跳转到行的结尾并开始编辑 A    缩进，制表符和空格    目标 命令 备注     开启空格格式的制表符 :set expandtab    设置制表符空格的数量 :set tabstop=&amp;lt;x&amp;gt; 一个制表符由x个空格组成。 softtabstop开启它不会生效   设置退格键删除的空格数量 :set softtabstop=&amp;lt;x&amp;gt; 一个退格键由x个空格组成。   设置制表符空格的数量 :set shiftwidth=&amp;lt;x&amp;gt; 每一级缩进的x个空格。只有expandtab开启，才会生效。   开启真正的制表符 :set noexpantab 返回默认的制表符格式    删除行    目标 命令 备注     删除行 dd    清除锚点到行尾的内容 D    清除整行内容 0D 0 移动锚点到行开始   清除整行并以插入模式结束 S     文本选择    目标 命令 备注     字选择 v    块选择 ^ 字选择模式下，^ + &amp;lt;direction key&amp;gt;   行选择 V    选中下个锚点的字 viw    选择括号内的内容 vi[parenthesis] 如：vi(、vi[和vi{   选择括号内的内容 vi[parenthesis] 如：vi(、vi[和vi{   选择括号内的内容（花括号） vib 如上：vi{    文本导航    目的 命令     移动到行开始 0   移动到行尾 $   移动到行中的第一个非空字符 _   移动到行中的最后一个非空字符 g_   移动到第一行 gg   移动到最后一行 G   回退上一个位置 &#39;&#39;    文本的显示模式    目标 命令 备注     单词换行 :set wrap    显示换行符 :set linebreak    高亮当前行 :set cursorline    显示垂直行 :set colorcolumn=&amp;lt;x&amp;gt; x 是列号码   显示所有的空白 :set list    自动换行 :set textwidth=&amp;lt;x&amp;gt; 文本在您键入时自动换行，以使每行最多长 &amp;lt;x&amp;gt; 个字符    文件浏览 打开浏览器窗口    目的 命令     在当前窗口打开文件浏览器 Ex[plore]   在垂直方向新建的窗口打开文件浏览器 Sex[plore]   在水平方向新建的窗口打开文件浏览器 Vex[plore]   在新的标签页打开文件浏览窗口 Tex[plore]    浏览器操作    目标 命令 备注     改变显示模式 i 在正常、列表和树模式间切换   创建新的文件夹 d    创建新的文件 %    删除文件或文件夹 D    重命名文件或文件夹 R     其它    目标 命令 备注     其它命令 :!</description>
+    </item>
+    
+    <item>
+      <title>JavaScript 基础知识</title>
+      <link>https://bwd.zhangchao.online/javascript/basic/</link>
+      <pubDate>Wed, 10 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://bwd.zhangchao.online/javascript/basic/</guid>
+      <description> 基本值和类型 值有类型，但变量无类型
+内置类型：
+ 字符串（string） 数字（number） 布尔值（boolean） null 和 undefined 对象（object） 符号（symbol）  typeof typeof &amp;#34;helloworld&amp;#34;; // string typeof 10; // number typeof true; // bollean typeof null; // object typeof a; // undefined typeof []; // object typeof Symbol(&amp;#34;a&amp;#34;); // symbol typeof function(){}; // function  内置子对象 Array </description>
+    </item>
+    
+    <item>
+      <title>CSS</title>
+      <link>https://bwd.zhangchao.online/posts/css/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://bwd.zhangchao.online/posts/css/</guid>
+      <description> 元素分类 Normal flow 从左向右，从上向下。脱离文档流的方式：float、position、flex和grid。
+Nonreplace element 它的文本内容可以在元素自身里。如：p。
+Rplaced element 简单来说，它们的内容不受当前文档的样式的影响。CSS 可以影响可替换元素的位置，但不会影响到可替换元素自身的内容。
+展现效果不是由 CSS 来控制的。这些元素是一种外部对象，它们外观的渲染，是独立于 CSS 的。
+Root element HTML类型是html。RSS类型是rss。
+Block box 在文档流中，元素会在其前面和后面生成新行。任何元素都可以通过display:block转换成块元素。
+Inline Box 元素不会在其之前或者之后有换行。任何元素都可以通过display:inline转换成行元素。
+Inline-block box 元素内部像块元素，外部行为像行内元素。就像div放置在一行文本中。
+改变元素类型 通过 CSS display 改变元素的展示。
+ 注意：改变元素的display并不会改变元素继承的自身属性。例如，将p标签设置为inline，但是 p并不会让它变成行内元素。一个行内元素可以降级为块元素，反之则不可以。一个span可以嵌套在p里，反之不可以。
+ Block </description>
+    </item>
+    
+    <item>
+      <title>ES2015&#43;</title>
+      <link>https://bwd.zhangchao.online/javascript/es6/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://bwd.zhangchao.online/javascript/es6/</guid>
+      <description>语法 块作用域声明 let var a = 2; { let a = 3; console.log(&amp;#34;块作用域&amp;#34;, a); } console.log(&amp;#34;函数作用域&amp;#34;, a);  const { const a = 2; console.log(a); // 2  a = 3; // TypeError } // 常量不是对这个值本身的限制，而是对赋值的哪个变量的限制 { const a = [1, 2, 3]; a.push(4); console.log(a); // [1, 2, 3, 4]  a = 42; // TypeError }  块作用域函数 { foo(); function foo(){} } foo(); // ReferenceError  spread/rest spread function foo(a, b, c){ console.</description>
+    </item>
+    
+    <item>
+      <title>JavaScript 面试题</title>
+      <link>https://bwd.zhangchao.online/interview-question/javascript/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://bwd.zhangchao.online/interview-question/javascript/</guid>
+      <description>JavaScript 修改以下 print 函数，使之输出 0 到 99，或者 99 到 0  只能修改 setTimeout 到 Math.floor(Math.random() * 1000 的代码 不能修改 Math.floor(Math.random() * 1000 不能使用全局变量  代码 function print(n){ setTimeout(() =&amp;gt; { console.log(n); }, Math.floor(Math.random() * 1000)); } for(var i = 0; i &amp;lt; 100; i++){ print(i); }  关键 将输出执行脱离异步定时器，变为立即执行。
+答案 function print(n){ setTimeout((() =&amp;gt; { console.log(n); return null; })(), Math.floor(Math.random() * 1000)); } for(var i = 0; i &amp;lt; 100; i++){ print(i); }  请写出如下代码的打印结果 代码 function Foo() { Foo.</description>
+    </item>
+    
+    <item>
+      <title>MongoDB 常用语句</title>
+      <link>https://bwd.zhangchao.online/database/mongodb/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://bwd.zhangchao.online/database/mongodb/</guid>
+      <description> 删除 数据 语法：db.collection.remove(&amp;lt;query&amp;gt;, &amp;lt;justone&amp;gt;)
+// 全部删除 db.collection.remove({}); // 特定数据 db.collection.remove({ {category: cate} }); </description>
+    </item>
+    
+    <item>
+      <title>Sass</title>
+      <link>https://bwd.zhangchao.online/css/sass/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://bwd.zhangchao.online/css/sass/</guid>
+      <description>Basics {: .-three-column}
+Variables $red: #833;body { color: $red; } Nesting .markdown-body { p { color: blue; } &amp;amp;:hover { color: red; } } Comments /* Block comments */ // Line comments Mixins @mixinheading-font { font-family: sans-serif; font-weight: bold; }h1 { @includeheading-font; } with parameters @mixinfont-size($n) { font-size: $n * 1.2em; }body { @includefont-size(2); } with default values @mixinpad($n: 10px) { padding: $n; }body { @includepad(15px); } with a default variable // Set a default value $default-padding: 10px;@mixinpad($n: $default-padding) { padding: $n; }body { @includepad(15px); } Extend .</description>
+    </item>
+    
+    <item>
+      <title>Visual Studio Code</title>
+      <link>https://bwd.zhangchao.online/apps/vscode/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://bwd.zhangchao.online/apps/vscode/</guid>
+      <description>Shortcuts Command palette    Key Description     ⇧⌘P Show all commands   ⇧⌘P Show all commands   ⌘P Show files    Sidebars    Key Description     ⌘B Toggle sidebar   ⇧⌘E Explorer   ⇧⌘F Search   ⇧⌘D Debug   ⇧⌘X Extensions   ⇧^G Git (SCM)    Search    Key Description     ⌘F Find   ⌥⌘F Replace   ⇧⌘F Find in files   ⇧⌘H Replace in files    Panel    Key Description     ⌘J Toggle panel   ⇧⌘M Problems   ⇧⌘U Output   ⇧⌘Y Debug console   ^` Terminal    View    Key Description     ⌘k z Zen mode   ⌘k u Close unmodified   ⌘k w Close all    Debug    Key Description     F5 Start   ⇧F5 Stop   ⇧⌘F5 Restart   ^F5 Start without debugging   F9 Toggle breakpoint   F10 Step over   F11 Step into   ⇧F11 Step out   ⇧⌘D Debug sidebar   ⇧⌘Y Debug panel    References  Keyboard shortcuts (MacOS) (code.</description>
+    </item>
+    
+    <item>
+      <title>Web 通用知识面试题</title>
+      <link>https://bwd.zhangchao.online/interview-question/web/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://bwd.zhangchao.online/interview-question/web/</guid>
+      <description> 安全 介绍下前端加密的常见场景和方法 协议 介绍下 HTTPS 中间人攻击 </description>
+    </item>
+    
+    <item>
+      <title>sql 常用语句</title>
+      <link>https://bwd.zhangchao.online/database/mysql/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://bwd.zhangchao.online/database/mysql/</guid>
+      <description>SQL 增加 表 // 添加表 create table $tablename ($colname1 $type, $colname2 $type); 插入数据 insert into $tablename ($colname1, $colname2) values (&amp;#34;$value1&amp;#34;, &amp;#34;$value2&amp;#34;); SQL 删除 表 drop table $tablename; SQL 查询 数据库 // 查看所有数据库 show databses; // 进入数据库 use $databasename; 简单查询 // 查看数据库中表的列表 show tables; // 查看指定表格的内容 select * from $tablename; // 只显示指定列的数据 select $name from $tablename; // 显示多列的数据 select $name1,$name2 from $tablename; // 限制显示数据 select * from $tablename limit $num; // 通过指定字符串过滤结果,% 是通配符（左右） select * from $tablename where $name like $string%; 进阶查询 // 根据给定字符串，过滤结果 select * from $tablename where $name like &amp;#34;%mike%&amp;#34;; // 严格模式 select * from $tablename where $name=&amp;#34;$string&amp;#34;; // 根据范围查询 select * from $tablename where $name between $start and $end; // 排序 select * from $tablename order by $name; // 降序 select * from $tablename order by $name DESC; // 组合 select * from $tablename order by $name DESC limit $num; // 根表1中的某个值和对应的表2中的某个值，查询结果 select * from $tablename1 join $tablename2 on $tablename1.</description>
+    </item>
+    
+    <item>
+      <title>前端 todo list</title>
+      <link>https://bwd.zhangchao.online/todo/frontend/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://bwd.zhangchao.online/todo/frontend/</guid>
+      <description> HTML event.preventDefault 和 event.stopPropagation() 的功能 事件函数回调中的 return false 的目的以及 addEventListner 回调中第二个参数的 false;  </description>
+    </item>
+    
+  </channel>
+</rss>

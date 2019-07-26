@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+<meta content='width=device-width, initial-scale=1.0' name='viewport'>
+<link href='/favicon.png' rel='shortcut icon'>
+<meta content='' name='app:pageurl'>
+
+
+
+
+
+
+
+<link rel="canonical" href="">
+<meta name="og:url" content="">
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <title>EsilyZhang 的备忘单</title>
+    
+    <link rel="stylesheet" href="/sass/home.min.de7c29548feadde2ec038bd703cb5297c0c0d6ae56e095e1f9e1d89f08855611.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+
+<link rel="stylesheet" href="/sass/cheatsheet.min.92c261b5fd7acaddae327d66bfda43a084b8ddeab776ba4513b296909f993594.css">
+
+</head>
+
+<body>
+    <header role="heading">
+        <nav class='top-nav' data-js-no-preview role='navigation'>
+    <div class='container'>
+        
+        <div class='left'>
+            <a class='back-button icons' href='/'>keyboard_backspace</a>
+        </div>
+        
+
+        <a class='brand' href='/'>
+            EsilyZhang 的备忘单
+        </a>
+    </div>
+</nav>
+    </header>
+    <main role="main">
+        
+<div class='site-header' role='banner'>
+    <h1>
+        React - 备忘录2
+    </h1>
+</div>
+<div class="md_content">
+    <div id="sheet_box">
+    <div id="sheet_column" hidden>2</div>
+    
+
+<h2 id="jsx-与元素渲染">JSX 与元素渲染</h2>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-react" data-lang="react"><span style="color:#080;font-weight:bold">const</span> name <span style="color:#333">=</span> <span style="background-color:#fff0f0">&#34;Josh Perez&#34;</span>;
+<span style="color:#080;font-weight:bold">const</span> element <span style="color:#333">=</span> &lt;<span style="color:#070">h1</span> <span style="color:#00c">tabIndex</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;0&#34;</span>&gt;Hello,{name}&lt;/<span style="color:#070">h1</span>&gt;;
+ReactDOM.render(element, <span style="color:#007020">document</span>.querySelector(<span style="background-color:#fff0f0">&#34;#jsx&#34;</span>));</code></pre></div>
+<h2 id="组件和-props">组件和 Props</h2>
+
+<h3 id="组件的构建">组件的构建</h3>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-react" data-lang="react"><span style="color:#888">// 简单方式
+</span><span style="color:#888"></span><span style="color:#080;font-weight:bold">function</span> Welcome(props){
+    <span style="color:#080;font-weight:bold">return</span> &lt;<span style="color:#070">h1</span>&gt;Hello,{props.name}&lt;/<span style="color:#070">h1</span>&gt;
+}
+<span style="color:#888">// ES6 类构建的组件
+</span><span style="color:#888"></span><span style="color:#080;font-weight:bold">class</span> Welcome <span style="color:#080;font-weight:bold">extends</span> Comment {
+    render() {
+        <span style="color:#080;font-weight:bold">return</span> (
+            &lt;<span style="color:#070">h1</span>&gt;Hello, {<span style="color:#080;font-weight:bold">this</span>.props.name}&lt;/<span style="color:#070">h1</span>&gt;
+        )
+    }
+}</code></pre></div>
+<h3 id="渲染组件">渲染组件</h3>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-react" data-lang="react"><span style="color:#080;font-weight:bold">function</span> Welcome (props){
+    <span style="color:#080;font-weight:bold">return</span> &lt;<span style="color:#070">h1</span>&gt;Hello, {props.name}&lt;/<span style="color:#070">h1</span>&gt;
+}
+<span style="color:#080;font-weight:bold">const</span> element <span style="color:#333">=</span> &lt;<span style="color:#070">Welcome</span> <span style="color:#00c">name</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;渲染组件&#34;</span> /&gt;</code></pre></div>
+<h3 id="组合组件">组合组件</h3>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-react" data-lang="react"><span style="color:#080;font-weight:bold">function</span> Welcome(props){
+    <span style="color:#080;font-weight:bold">return</span> &lt;<span style="color:#070">h1</span>&gt;Hello,{props.name}&lt;/<span style="color:#070">h1</span>&gt;
+}
+<span style="color:#080;font-weight:bold">function</span> App(){
+    <span style="color:#080;font-weight:bold">return</span> (
+        &lt;<span style="color:#070">div</span>&gt;
+            &lt;<span style="color:#070">Welcome</span> <span style="color:#00c">name</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;name1&#34;</span> /&gt;
+            &lt;<span style="color:#070">Welcome</span> <span style="color:#00c">name</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;name2&#34;</span> /&gt;
+            &lt;<span style="color:#070">Welcome</span> <span style="color:#00c">name</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;name3&#34;</span> /&gt;
+        &lt;/<span style="color:#070">div</span>&gt;
+    )
+}</code></pre></div>
+<h3 id="提取组件">提取组件</h3>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-react" data-lang="react"><span style="color:#888">// Avator
+</span><span style="color:#888"></span><span style="color:#080;font-weight:bold">function</span> Avatar(props) {
+    <span style="color:#080;font-weight:bold">return</span> (
+        &lt;<span style="color:#070">img</span> <span style="color:#00c">className</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;Avatar&#34;</span>
+            <span style="color:#00c">src</span><span style="color:#333">=</span><span style="background-color:#fff0f0">{props.user.avatarUrl}</span>
+            <span style="color:#00c">alt</span><span style="color:#333">=</span><span style="background-color:#fff0f0">{props.user.name}</span> /&gt;
+    )
+}
+<span style="color:#888">// UserInfo
+</span><span style="color:#888"></span><span style="color:#080;font-weight:bold">function</span> UserInfo(props) {
+    <span style="color:#080;font-weight:bold">return</span> (
+        &lt;<span style="color:#070">div</span>&gt;
+            &lt;<span style="color:#070">Avatar</span> <span style="color:#00c">user</span><span style="color:#333">=</span><span style="background-color:#fff0f0">{props.user}</span> /&gt;
+            &lt;<span style="color:#070">div</span> <span style="color:#00c">className</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;UserInfo-name&#34;</span>&gt;
+                {props.user.name}
+            &lt;/<span style="color:#070">div</span>&gt;
+        &lt;/<span style="color:#070">div</span>&gt;
+    )
+}
+
+<span style="color:#080;font-weight:bold">export</span> <span style="color:#080;font-weight:bold">function</span> Comment(props) {
+    <span style="color:#080;font-weight:bold">return</span> (
+        &lt;<span style="color:#070">div</span> <span style="color:#00c">className</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;Comment&#34;</span>&gt;
+            &lt;<span style="color:#070">UserInfo</span> <span style="color:#00c">user</span><span style="color:#333">=</span><span style="background-color:#fff0f0">{props.author}</span> /&gt;
+            &lt;<span style="color:#070">div</span> <span style="color:#00c">className</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;Comment-text&#34;</span>&gt;
+                {props.text}
+            &lt;/<span style="color:#070">div</span>&gt;
+            &lt;<span style="color:#070">div</span> <span style="color:#00c">className</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;Comment-date&#34;</span>&gt;
+                {props.date}
+            &lt;/<span style="color:#070">div</span>&gt;
+        &lt;/<span style="color:#070">div</span>&gt;
+    )
+}</code></pre></div>
+<h2 id="state-和生命周期">State 和生命周期</h2>
+
+<h3 id="生命周期">生命周期</h3>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-react" data-lang="react"><span style="color:#888">// State Clock 
+</span><span style="color:#888"></span><span style="color:#080;font-weight:bold">export</span> <span style="color:#080;font-weight:bold">class</span> Clock <span style="color:#080;font-weight:bold">extends</span> Component {
+    constructor(props) {
+        <span style="color:#080;font-weight:bold">super</span>(props);
+        <span style="color:#080;font-weight:bold">this</span>.state <span style="color:#333">=</span> { date<span style="color:#333">:</span> <span style="color:#080;font-weight:bold">new</span> <span style="color:#007020">Date</span>() };
+    }
+    componentDidMount() {
+        console.log(<span style="background-color:#fff0f0">&#34;渲染DOM&#34;</span>);
+        <span style="color:#080;font-weight:bold">this</span>.timerID <span style="color:#333">=</span> setInterval(() =&gt; <span style="color:#080;font-weight:bold">this</span>.tick(), <span style="color:#00d;font-weight:bold">1000</span>)
+    }
+    componentWillUnmount() {
+        console.log(<span style="background-color:#fff0f0">&#34;组件卸载&#34;</span>);
+        clearInterval(<span style="color:#080;font-weight:bold">this</span>.timerID);
+    }
+    tick() {
+        <span style="color:#080;font-weight:bold">this</span>.setState({
+            date<span style="color:#333">:</span> <span style="color:#080;font-weight:bold">new</span> <span style="color:#007020">Date</span>()
+        })
+    }
+    render() {
+        <span style="color:#080;font-weight:bold">return</span> (
+            &lt;<span style="color:#070">div</span>&gt;
+                &lt;<span style="color:#070">h1</span>&gt;Hello,World<span style="color:#333">!</span>&lt;/<span style="color:#070">h1</span>&gt;
+                &lt;<span style="color:#070">h2</span>&gt;It is {<span style="color:#080;font-weight:bold">this</span>.state.date.toLocaleTimeString()}.&lt;/<span style="color:#070">h2</span>&gt;
+            &lt;/<span style="color:#070">div</span>&gt;
+        )
+    }
+}</code></pre></div>
+<h3 id="state">State</h3>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-react" data-lang="react"><span style="color:#888">// 不要之间修改 State 值
+</span><span style="color:#888"></span><span style="color:#080;font-weight:bold">this</span>.state.comment <span style="color:#333">=</span> <span style="background-color:#fff0f0">&#34;Hello&#34;</span>; <span style="color:#888">// 错误
+</span><span style="color:#888"></span><span style="color:#080;font-weight:bold">this</span>.setState({comment<span style="color:#333">:</span> <span style="background-color:#fff0f0">&#39;Hello&#39;</span>}); <span style="color:#888">// 正确
+</span><span style="color:#888"></span>
+<span style="color:#888">// State 的更新可能时异步，this.props 和 this.state 可能异步更新，所以不能依赖于它的现在值来更新接下来的值
+</span><span style="color:#888"></span><span style="color:#080;font-weight:bold">this</span>.setState({
+    counter<span style="color:#333">:</span> <span style="color:#080;font-weight:bold">this</span>.state.counter <span style="color:#333">+</span> <span style="color:#080;font-weight:bold">this</span>.props.increment
+}); <span style="color:#888">// 错误
+</span><span style="color:#888"></span>
+<span style="color:#080;font-weight:bold">this</span>.setState((state,props)=&gt;({
+    counter<span style="color:#333">:</span> state.counter <span style="color:#333">+</span> props.increment
+}))</code></pre></div>
+<h2 id="事件处理">事件处理</h2>
+
+<h3 id="写法">写法</h3>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-react" data-lang="react">&lt;<span style="color:#070">button</span> <span style="color:#00c">onClick</span><span style="color:#333">=</span><span style="background-color:#fff0f0">{activateLasers}</span>&gt;
+&lt;/<span style="color:#070">button</span>&gt;
+<span style="color:#888">// 组织默认行为，不能通过函数的 return false，而得用 preventDefault
+</span><span style="color:#888"></span><span style="color:#080;font-weight:bold">function</span> ActionLink(){
+    <span style="color:#080;font-weight:bold">function</span> handleClick(e){
+        e.preventDefault();
+        console.log(<span style="background-color:#fff0f0">&#34;The link was clicked.&#34;</span>);
+    }
+    <span style="color:#080;font-weight:bold">return</span> (
+        &lt;<span style="color:#070">a</span> <span style="color:#00c">href</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;#&#34;</span> <span style="color:#00c">onClick</span><span style="color:#333">=</span><span style="background-color:#fff0f0">{handleClick}</span>&gt;
+         Click me
+        &lt;/<span style="color:#070">a</span>&gt;
+    )
+}</code></pre></div>
+<h3 id="指定-this-的几种方法">指定 this 的几种方法</h3>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-react" data-lang="react"><span style="color:#888">// bind 显示方式
+</span><span style="color:#888"></span><span style="color:#080;font-weight:bold">export</span> <span style="color:#080;font-weight:bold">class</span> Toggle <span style="color:#080;font-weight:bold">extends</span> Component {
+    constructor(props) {
+        <span style="color:#080;font-weight:bold">super</span>(props);
+        <span style="color:#080;font-weight:bold">this</span>.state <span style="color:#333">=</span> { isToggleOn<span style="color:#333">:</span> <span style="color:#080;font-weight:bold">true</span> };
+        <span style="color:#080;font-weight:bold">this</span>.handleClick <span style="color:#333">=</span> <span style="color:#080;font-weight:bold">this</span>.handleClick.bind(<span style="color:#080;font-weight:bold">this</span>);
+    }
+    handleClick() {
+        <span style="color:#080;font-weight:bold">this</span>.setState(state =&gt; ({
+            isToggleOn<span style="color:#333">:</span> <span style="color:#333">!</span>state.isToggleOn
+        }))
+    }
+    render() {
+        <span style="color:#080;font-weight:bold">return</span> (
+            &lt;<span style="color:#070">button</span> <span style="color:#00c">onClick</span><span style="color:#333">=</span><span style="background-color:#fff0f0">{this.handleClick}</span>&gt;
+                {<span style="color:#080;font-weight:bold">this</span>.state.isToggleOn <span style="color:#333">?</span> <span style="background-color:#fff0f0">&#34;ON&#34;</span> <span style="color:#333">:</span> <span style="background-color:#fff0f0">&#34;OFF&#34;</span>}
+            &lt;/<span style="color:#070">button</span>&gt;
+        )
+    }
+}
+<span style="color:#888">// public class field 方式
+</span><span style="color:#888"></span><span style="color:#080;font-weight:bold">export</span> <span style="color:#080;font-weight:bold">class</span> LoggingButton <span style="color:#080;font-weight:bold">extends</span> Component {
+    handleClick <span style="color:#333">=</span> () =&gt; {
+        console.log(<span style="background-color:#fff0f0">&#34;this is: &#34;</span>, <span style="color:#080;font-weight:bold">this</span>);
+    }
+    render() {
+        <span style="color:#080;font-weight:bold">return</span> (
+            &lt;<span style="color:#070">button</span> <span style="color:#00c">onClick</span><span style="color:#333">=</span><span style="background-color:#fff0f0">{this.handleClick}</span>&gt;
+                Click me
+            &lt;/<span style="color:#070">button</span>&gt;
+        )
+    }
+}
+<span style="color:#888">// 回调中使用监听函数
+</span><span style="color:#888">// 每次渲染都会重新创建回调函数，在该回调函数作为 prop 传给子组件，会有重新渲染造成的性能问题
+</span><span style="color:#888"></span><span style="color:#080;font-weight:bold">export</span> <span style="color:#080;font-weight:bold">class</span> LoggingButton2 <span style="color:#080;font-weight:bold">extends</span> Component {
+    handleClick() {
+        console.log(<span style="background-color:#fff0f0">&#34;this is:&#34;</span>, <span style="color:#080;font-weight:bold">this</span>);
+    }
+    render() {
+        <span style="color:#080;font-weight:bold">return</span> (
+            &lt;<span style="color:#070">button</span> <span style="color:#00c">onClick</span><span style="color:#333">=</span><span style="background-color:#fff0f0">{(e)</span> <span style="color:#f00;background-color:#faa">=</span>&gt; <span style="color:#080;font-weight:bold">this</span>.handleClick(e)}<span style="color:#333">&gt;</span>
+                Click me
+            &lt;/<span style="color:#070">button</span>&gt;
+        )
+    }
+}</code></pre></div>
+<h3 id="向事件处理函数传递参数">向事件处理函数传递参数</h3>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-react" data-lang="react"><span style="color:#888">// 传递参数
+</span><span style="color:#888"></span><span style="color:#080;font-weight:bold">export</span> <span style="color:#080;font-weight:bold">class</span> Parameters <span style="color:#080;font-weight:bold">extends</span> Component {
+    deleteRow(id) {
+        console.log(<span style="background-color:#fff0f0">&#34;this is: %s;ID: %s&#34;</span>, <span style="color:#080;font-weight:bold">this</span>, id);
+    }
+    render() {
+        <span style="color:#080;font-weight:bold">return</span> (
+            &lt;<span style="color:#070">button</span> <span style="color:#00c">onClick</span><span style="color:#333">=</span><span style="background-color:#fff0f0">{(e)</span> <span style="color:#f00;background-color:#faa">=</span>&gt; <span style="color:#080;font-weight:bold">this</span>.deleteRow(<span style="background-color:#fff0f0">&#34;id&#34;</span>, e)}<span style="color:#333">&gt;</span>Delete Row&lt;/<span style="color:#070">button</span>&gt;
+        )
+    }
+}
+<span style="color:#080;font-weight:bold">export</span> <span style="color:#080;font-weight:bold">class</span> Parameters2 <span style="color:#080;font-weight:bold">extends</span> Component {
+    deleteRow(id) {
+        console.log(<span style="background-color:#fff0f0">&#34;this is: %s;ID: %s&#34;</span>, <span style="color:#080;font-weight:bold">this</span>, id);
+    }
+    render() {
+        <span style="color:#080;font-weight:bold">return</span> (
+            &lt;<span style="color:#070">button</span> <span style="color:#00c">onClick</span><span style="color:#333">=</span><span style="background-color:#fff0f0">{this.deleteRow.bind(this,</span> <span style="color:#f00;background-color:#faa">&#34;</span><span style="color:#00c">id</span><span style="color:#f00;background-color:#faa">&#34;)</span>}&gt;Delete Row&lt;/<span style="color:#070">button</span>&gt;
+        )
+    }
+}</code></pre></div>
+<h2 id="条件渲染">条件渲染</h2>
+
+<h3 id="语法">语法</h3>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-react" data-lang="react"><span style="color:#888">// 条件渲染
+</span><span style="color:#888"></span><span style="color:#080;font-weight:bold">function</span> UserGreeting(props) {
+    <span style="color:#080;font-weight:bold">return</span> &lt;<span style="color:#070">h1</span>&gt;Welcome back<span style="color:#333">!</span>&lt;/<span style="color:#070">h1</span>&gt;
+}
+<span style="color:#080;font-weight:bold">function</span> GuestGreeting(props) {
+    <span style="color:#080;font-weight:bold">return</span> &lt;<span style="color:#070">h1</span>&gt;Please sign up.&lt;/<span style="color:#070">h1</span>&gt;
+}
+<span style="color:#080;font-weight:bold">export</span> <span style="color:#080;font-weight:bold">function</span> Greeting(props) {
+    <span style="color:#080;font-weight:bold">const</span> isLoggedIn <span style="color:#333">=</span> props.isLoggedIn;
+    <span style="color:#080;font-weight:bold">if</span> (isLoggedIn) {
+        <span style="color:#080;font-weight:bold">return</span> &lt;<span style="color:#070">UserGreeting</span> /&gt;
+    }
+    <span style="color:#080;font-weight:bold">return</span> &lt;<span style="color:#070">GuestGreeting</span> /&gt;
+}</code></pre></div>
+<h3 id="元素变量">元素变量</h3>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-react" data-lang="react"><span style="color:#888">// 元素变量
+</span><span style="color:#888"></span><span style="color:#080;font-weight:bold">function</span> LogginButton(props) {
+    <span style="color:#080;font-weight:bold">return</span> (
+        &lt;<span style="color:#070">button</span> <span style="color:#00c">onClick</span><span style="color:#333">=</span><span style="background-color:#fff0f0">{props.onClick}</span>&gt;
+            Login
+        &lt;/<span style="color:#070">button</span>&gt;
+    )
+}
+<span style="color:#080;font-weight:bold">function</span> LogoutButton(props) {
+    <span style="color:#080;font-weight:bold">return</span> (
+        &lt;<span style="color:#070">button</span> <span style="color:#00c">onClick</span><span style="color:#333">=</span><span style="background-color:#fff0f0">{props.onClick}</span>&gt;
+            Logout
+        &lt;/<span style="color:#070">button</span>&gt;
+    )
+}
+<span style="color:#080;font-weight:bold">export</span> <span style="color:#080;font-weight:bold">class</span> LoginControl <span style="color:#080;font-weight:bold">extends</span> Component {
+    constructor(props) {
+        <span style="color:#080;font-weight:bold">super</span>(props);
+        <span style="color:#080;font-weight:bold">this</span>.handleLoginClick <span style="color:#333">=</span> <span style="color:#080;font-weight:bold">this</span>.handleLoginClick.bind(<span style="color:#080;font-weight:bold">this</span>);
+        <span style="color:#080;font-weight:bold">this</span>.handleLogoutClick <span style="color:#333">=</span> <span style="color:#080;font-weight:bold">this</span>.handleLogoutClick.bind(<span style="color:#080;font-weight:bold">this</span>);
+        <span style="color:#080;font-weight:bold">this</span>.state <span style="color:#333">=</span> { isLoggedIn<span style="color:#333">:</span> <span style="color:#080;font-weight:bold">false</span> };
+    }
+    handleLoginClick() {
+        <span style="color:#080;font-weight:bold">this</span>.setState({ isLoggedIn<span style="color:#333">:</span> <span style="color:#080;font-weight:bold">true</span> });
+    }
+    handleLogoutClick() {
+        <span style="color:#080;font-weight:bold">this</span>.setState({ isLoggedIn<span style="color:#333">:</span> <span style="color:#080;font-weight:bold">false</span> });
+    }
+    render() {
+        <span style="color:#080;font-weight:bold">const</span> isLoggedIn <span style="color:#333">=</span> <span style="color:#080;font-weight:bold">this</span>.state.isLoggedIn;
+        <span style="color:#080;font-weight:bold">let</span> button;
+        <span style="color:#080;font-weight:bold">if</span> (isLoggedIn) {
+            button <span style="color:#333">=</span> &lt;<span style="color:#070">LogoutButton</span> <span style="color:#00c">onClick</span><span style="color:#333">=</span><span style="background-color:#fff0f0">{this.handleLogoutClick}</span> /&gt;
+        } <span style="color:#080;font-weight:bold">else</span> {
+            button <span style="color:#333">=</span> &lt;<span style="color:#070">LogginButton</span> <span style="color:#00c">onClick</span><span style="color:#333">=</span><span style="background-color:#fff0f0">{this.handleLoginClick}</span> /&gt;
+        }
+        <span style="color:#080;font-weight:bold">return</span> (
+            &lt;<span style="color:#070">div</span>&gt;
+                &lt;<span style="color:#070">Greeting</span> <span style="color:#00c">isLoggedIn</span><span style="color:#333">=</span><span style="background-color:#fff0f0">{isLoggedIn}</span> /&gt;
+                {button}
+            &lt;/<span style="color:#070">div</span>&gt;
+        )
+    }
+}</code></pre></div>
+<h3 id="运算符">运算符 &amp;&amp;</h3>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-react" data-lang="react"><span style="color:#888">// true &amp;&amp; expression 总是返回表达式 expression
+</span><span style="color:#888"></span><span style="color:#080;font-weight:bold">export</span> <span style="color:#080;font-weight:bold">function</span> Mailbox(props) {
+    <span style="color:#080;font-weight:bold">const</span> unreadMessages <span style="color:#333">=</span> props.unreadMessages;
+    <span style="color:#080;font-weight:bold">return</span> (
+        &lt;<span style="color:#070">div</span>&gt;
+            &lt;<span style="color:#070">h1</span>&gt;Hello<span style="color:#333">!</span>&lt;/<span style="color:#070">h1</span>&gt;
+            {unreadMessages.length <span style="color:#333">&gt;</span> <span style="color:#00d;font-weight:bold">0</span> <span style="color:#333">&amp;&amp;</span>
+                &lt;<span style="color:#070">h2</span>&gt;
+                    You have {unreadMessages.length} unread messages.
+            &lt;/<span style="color:#070">h2</span>&gt;}
+        &lt;/<span style="color:#070">div</span>&gt;
+    )
+}</code></pre></div>
+<h3 id="三目表达式">三目表达式</h3>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-react" data-lang="react"><span style="color:#888">// 三目表达式
+</span><span style="color:#888"></span><span style="color:#080;font-weight:bold">export</span> <span style="color:#080;font-weight:bold">function</span> Trinocular() {
+    <span style="color:#080;font-weight:bold">const</span> isLoggedIn <span style="color:#333">=</span> <span style="color:#080;font-weight:bold">this</span>.props.isLoggedIn;
+    <span style="color:#080;font-weight:bold">return</span> (
+        &lt;<span style="color:#070">div</span>&gt;
+            The User is &lt;<span style="color:#070">b</span>&gt;{isLoggedIn <span style="color:#333">?</span> <span style="background-color:#fff0f0">&#39;currently&#39;</span> <span style="color:#333">:</span> <span style="background-color:#fff0f0">&#39;not&#39;</span>}&lt;/<span style="color:#070">b</span>&gt; logged <span style="color:#080;font-weight:bold">in</span>.
+            &lt;/<span style="color:#070">div</span>&gt;
+    )
+}
+
+<span style="color:#080;font-weight:bold">export</span> <span style="color:#080;font-weight:bold">function</span> Trinocular2() {
+    <span style="color:#080;font-weight:bold">const</span> isLoggedIn <span style="color:#333">=</span> <span style="color:#080;font-weight:bold">this</span>.props.isLoggedIn;
+    <span style="color:#080;font-weight:bold">return</span> (
+        &lt;<span style="color:#070">div</span>&gt;
+            {isLoggedIn <span style="color:#333">?</span> (&lt;<span style="color:#070">LogginButton</span> /&gt;) <span style="color:#333">:</span> (&lt;<span style="color:#070">LogoutButton</span> /&gt;)}
+        &lt;/<span style="color:#070">div</span>&gt;
+    )
+}</code></pre></div>
+<h3 id="阻止组件渲染">阻止组件渲染</h3>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-react" data-lang="react"><span style="color:#888">// 阻止组件渲染
+</span><span style="color:#888"></span><span style="color:#080;font-weight:bold">function</span> WaringBanner(props) {
+    <span style="color:#080;font-weight:bold">if</span> (<span style="color:#333">!</span>props.warn) {
+        <span style="color:#080;font-weight:bold">return</span> <span style="color:#080;font-weight:bold">null</span>;
+    }
+    <span style="color:#080;font-weight:bold">return</span> (
+        &lt;<span style="color:#070">div</span> <span style="color:#00c">className</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;warning&#34;</span>&gt;
+            Warning<span style="color:#333">!</span>
+        &lt;/<span style="color:#070">div</span>&gt;
+    )
+}
+<span style="color:#080;font-weight:bold">export</span> <span style="color:#080;font-weight:bold">class</span> Page <span style="color:#080;font-weight:bold">extends</span> Component {
+    constructor(props) {
+        <span style="color:#080;font-weight:bold">super</span>(props);
+        <span style="color:#080;font-weight:bold">this</span>.state <span style="color:#333">=</span> { showWarning<span style="color:#333">:</span> <span style="color:#080;font-weight:bold">true</span> };
+        <span style="color:#080;font-weight:bold">this</span>.handleToggleClick <span style="color:#333">=</span> <span style="color:#080;font-weight:bold">this</span>.handleToggleClick.bind(<span style="color:#080;font-weight:bold">this</span>);
+    }
+    handleToggleClick() {
+        <span style="color:#080;font-weight:bold">this</span>.setState(state =&gt; ({
+            showWarning<span style="color:#333">:</span> <span style="color:#333">!</span>state.showWarning
+        }));
+    }
+    render() {
+        <span style="color:#080;font-weight:bold">return</span> (
+            &lt;<span style="color:#070">div</span>&gt;
+                &lt;<span style="color:#070">WaringBanner</span> <span style="color:#00c">warn</span><span style="color:#333">=</span><span style="background-color:#fff0f0">{this.state.showWarning}</span> /&gt;
+                &lt;<span style="color:#070">button</span> <span style="color:#00c">onClick</span><span style="color:#333">=</span><span style="background-color:#fff0f0">{this.handleToggleClick}</span>&gt;
+                    {<span style="color:#080;font-weight:bold">this</span>.state.showWarning <span style="color:#333">?</span> <span style="background-color:#fff0f0">&#39;Hide&#39;</span> <span style="color:#333">:</span> <span style="background-color:#fff0f0">&#39;Show&#39;</span>}
+                &lt;/<span style="color:#070">button</span>&gt;
+            &lt;/<span style="color:#070">div</span>&gt;
+        )
+    }
+}</code></pre></div>
+<h2 id="列表和-key">列表和 Key</h2>
+
+<p>元素的 Key 只有放在就近的数组上下文才有意义。</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-react" data-lang="react"><span style="color:#888">// 列表和 Key
+</span><span style="color:#888"></span><span style="color:#080;font-weight:bold">export</span> <span style="color:#080;font-weight:bold">function</span> List() {
+    <span style="color:#080;font-weight:bold">const</span> numbers <span style="color:#333">=</span> [<span style="color:#00d;font-weight:bold">1</span>, <span style="color:#00d;font-weight:bold">2</span>, <span style="color:#00d;font-weight:bold">3</span>, <span style="color:#00d;font-weight:bold">4</span>, <span style="color:#00d;font-weight:bold">5</span>];
+    <span style="color:#080;font-weight:bold">const</span> listItems <span style="color:#333">=</span> numbers.map(v =&gt; (
+        &lt;<span style="color:#070">li</span> <span style="color:#00c">key</span><span style="color:#333">=</span><span style="background-color:#fff0f0">{v.toString()}</span>&gt;{v}&lt;/<span style="color:#070">li</span>&gt;
+    ));
+    <span style="color:#080;font-weight:bold">return</span> (
+        &lt;<span style="color:#070">ul</span>&gt;
+            {listItems}
+        &lt;/<span style="color:#070">ul</span>&gt;
+    )
+}</code></pre></div>
+<h2 id="表单">表单</h2>
+
+<h3 id="受控组件">受控组件</h3>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-react" data-lang="react"><span style="color:#080;font-weight:bold">export</span> <span style="color:#080;font-weight:bold">class</span> NameForm <span style="color:#080;font-weight:bold">extends</span> Component {
+    constructor(props) {
+        <span style="color:#080;font-weight:bold">super</span>(props);
+        <span style="color:#080;font-weight:bold">this</span>.state <span style="color:#333">=</span> { value<span style="color:#333">:</span> <span style="background-color:#fff0f0">&#34;&#34;</span> };
+
+        <span style="color:#080;font-weight:bold">this</span>.handleChange <span style="color:#333">=</span> <span style="color:#080;font-weight:bold">this</span>.handleChange.bind(<span style="color:#080;font-weight:bold">this</span>);
+        <span style="color:#080;font-weight:bold">this</span>.handleSubmit <span style="color:#333">=</span> <span style="color:#080;font-weight:bold">this</span>.handleSubmit.bind(<span style="color:#080;font-weight:bold">this</span>);
+    }
+    handleChange(event) {
+        <span style="color:#080;font-weight:bold">this</span>.setState({ value<span style="color:#333">:</span> event.target.value.toUpperCase() });
+    }
+    handleSubmit(event) {
+        console.log(<span style="background-color:#fff0f0">&#34;提交的名字：&#34;</span> <span style="color:#333">+</span> <span style="color:#080;font-weight:bold">this</span>.state.value);
+        event.preventDefault();
+    }
+    render() {
+        <span style="color:#080;font-weight:bold">return</span> (
+            &lt;<span style="color:#070">form</span> <span style="color:#00c">onSubmit</span><span style="color:#333">=</span><span style="background-color:#fff0f0">{this.handleSubmit}</span>&gt;
+                &lt;<span style="color:#070">label</span>&gt;
+                    名字<span style="color:#f00;background-color:#faa">：</span>
+    &lt;<span style="color:#070">input</span> <span style="color:#00c">type</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;text&#34;</span> <span style="color:#00c">value</span><span style="color:#333">=</span><span style="background-color:#fff0f0">{this.state.value}</span> <span style="color:#00c">onChange</span><span style="color:#333">=</span><span style="background-color:#fff0f0">{this.handleChange}</span> /&gt;
+                &lt;/<span style="color:#070">label</span>&gt;
+                &lt;<span style="color:#070">input</span> <span style="color:#00c">type</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;submit&#34;</span> <span style="color:#00c">value</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;提交&#34;</span> /&gt;
+            &lt;/<span style="color:#070">form</span>&gt;
+        )
+    }
+}</code></pre></div>
+<h3 id="textarea-标签">textarea 标签</h3>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-react" data-lang="react"><span style="color:#888">// textarea 标签
+</span><span style="color:#888"></span><span style="color:#080;font-weight:bold">export</span> <span style="color:#080;font-weight:bold">class</span> EssayForm <span style="color:#080;font-weight:bold">extends</span> Component {
+    constructor(props) {
+        <span style="color:#080;font-weight:bold">super</span>(props);
+        <span style="color:#080;font-weight:bold">this</span>.state <span style="color:#333">=</span> {
+            value<span style="color:#333">:</span> <span style="background-color:#fff0f0">&#34;请攥写一篇相关于你喜欢的 DOM 元素的文章。&#34;</span>
+        };
+        <span style="color:#080;font-weight:bold">this</span>.handleChange <span style="color:#333">=</span> <span style="color:#080;font-weight:bold">this</span>.handleChange.bind(<span style="color:#080;font-weight:bold">this</span>);
+        <span style="color:#080;font-weight:bold">this</span>.handleSubmit <span style="color:#333">=</span> <span style="color:#080;font-weight:bold">this</span>.handleSubmit.bind(<span style="color:#080;font-weight:bold">this</span>);
+    }
+    handleChange(event) {
+        <span style="color:#080;font-weight:bold">this</span>.setState({ value<span style="color:#333">:</span> event.target.value });
+    }
+    handleSubmit(event) {
+        console.log(<span style="background-color:#fff0f0">&#34;提交的文章：&#34;</span> <span style="color:#333">+</span> <span style="color:#080;font-weight:bold">this</span>.state.value);
+        event.preventDefault();
+    }
+
+    render() {
+        <span style="color:#080;font-weight:bold">return</span> (
+            &lt;<span style="color:#070">form</span> <span style="color:#00c">onSubmit</span><span style="color:#333">=</span><span style="background-color:#fff0f0">{this.handleSubmit}</span>&gt;
+                &lt;<span style="color:#070">label</span>&gt;
+                    文章<span style="color:#f00;background-color:#faa">：</span>
+                    &lt;<span style="color:#070">textarea</span> <span style="color:#00c">value</span><span style="color:#333">=</span><span style="background-color:#fff0f0">{this.state.value}</span> <span style="color:#00c">onChange</span><span style="color:#333">=</span><span style="background-color:#fff0f0">{this.handleChange}</span>&gt;&lt;/<span style="color:#070">textarea</span>&gt;
+                &lt;/<span style="color:#070">label</span>&gt;
+                &lt;<span style="color:#070">input</span> <span style="color:#00c">type</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;submit&#34;</span> <span style="color:#00c">value</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;提交&#34;</span> /&gt;
+            &lt;/<span style="color:#070">form</span>&gt;
+        )
+    }
+}</code></pre></div>
+<h3 id="select-标签">select 标签</h3>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-react" data-lang="react"><span style="color:#080;font-weight:bold">export</span> <span style="color:#080;font-weight:bold">class</span> FlavorForm <span style="color:#080;font-weight:bold">extends</span> Component {
+    constructor(props) {
+        <span style="color:#080;font-weight:bold">super</span>(props);
+        <span style="color:#080;font-weight:bold">this</span>.state <span style="color:#333">=</span> { value<span style="color:#333">:</span> <span style="background-color:#fff0f0">&#34;coconut&#34;</span> };
+        <span style="color:#080;font-weight:bold">this</span>.handleChange <span style="color:#333">=</span> <span style="color:#080;font-weight:bold">this</span>.handleChange.bind(<span style="color:#080;font-weight:bold">this</span>);
+        <span style="color:#080;font-weight:bold">this</span>.handleSubmit <span style="color:#333">=</span> <span style="color:#080;font-weight:bold">this</span>.handleSubmit.bind(<span style="color:#080;font-weight:bold">this</span>);
+    }
+
+    handleChange(event) {
+        <span style="color:#080;font-weight:bold">this</span>.setState({ value<span style="color:#333">:</span> event.target.value })
+    }
+    handleSubmit(event) {
+        console.log(<span style="background-color:#fff0f0">&#34;你最喜欢的风味是：&#34;</span> <span style="color:#333">+</span> <span style="color:#080;font-weight:bold">this</span>.state.value);
+        event.preventDefault();
+    }
+    render() {
+        <span style="color:#080;font-weight:bold">return</span> (
+            &lt;<span style="color:#070">form</span> <span style="color:#00c">onSubmit</span><span style="color:#333">=</span><span style="background-color:#fff0f0">{this.handleSubmit}</span>&gt;
+                &lt;<span style="color:#070">label</span>&gt;
+                    选择你喜欢的风味<span style="color:#f00;background-color:#faa">：</span>
+                &lt;<span style="color:#070">select</span> <span style="color:#00c">value</span><span style="color:#333">=</span><span style="background-color:#fff0f0">{this.state.value}</span> <span style="color:#00c">onChange</span><span style="color:#333">=</span><span style="background-color:#fff0f0">{this.handleChange}</span>&gt;
+                        &lt;<span style="color:#070">option</span> <span style="color:#00c">value</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;grapefruit&#34;</span>&gt;葡萄柚&lt;/<span style="color:#070">option</span>&gt;
+                        &lt;<span style="color:#070">option</span> <span style="color:#00c">value</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;lime&#34;</span>&gt;酸橙&lt;/<span style="color:#070">option</span>&gt;
+                        &lt;<span style="color:#070">option</span> <span style="color:#00c">value</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;coconut&#34;</span>&gt;椰子&lt;/<span style="color:#070">option</span>&gt;
+                        &lt;<span style="color:#070">option</span> <span style="color:#00c">value</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;mango&#34;</span>&gt;芒果&lt;/<span style="color:#070">option</span>&gt;
+                    &lt;/<span style="color:#070">select</span>&gt;
+                &lt;/<span style="color:#070">label</span>&gt;
+                &lt;<span style="color:#070">input</span> <span style="color:#00c">type</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;submit&#34;</span> <span style="color:#00c">value</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;提交&#34;</span> /&gt;
+            &lt;/<span style="color:#070">form</span>&gt;
+        )
+    }
+}</code></pre></div>
+<h3 id="文件-input-标签">文件 input 标签</h3>
+
+<p>input 的 value 属性为只读，所以对于 React 它是一个非受控组件。</p>
+
+<h3 id="处理多个输入">处理多个输入</h3>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-react" data-lang="react"><span style="color:#080;font-weight:bold">export</span> <span style="color:#080;font-weight:bold">class</span> Reservation <span style="color:#080;font-weight:bold">extends</span> Component {
+    constructor(props) {
+        <span style="color:#080;font-weight:bold">super</span>(props);
+        <span style="color:#080;font-weight:bold">this</span>.state <span style="color:#333">=</span> {
+            isGoing<span style="color:#333">:</span> <span style="color:#080;font-weight:bold">true</span>,
+            numberOfGuests<span style="color:#333">:</span> <span style="color:#00d;font-weight:bold">2</span>
+        };
+        <span style="color:#080;font-weight:bold">this</span>.handleInputChange <span style="color:#333">=</span> <span style="color:#080;font-weight:bold">this</span>.handleInputChange.bind(<span style="color:#080;font-weight:bold">this</span>);
+    }
+    handleInputChange(event) {
+        <span style="color:#080;font-weight:bold">const</span> target <span style="color:#333">=</span> event.target;
+        <span style="color:#080;font-weight:bold">const</span> value <span style="color:#333">=</span> target.type <span style="color:#333">===</span> <span style="background-color:#fff0f0">&#39;checkbox&#39;</span> <span style="color:#333">?</span> target.checked <span style="color:#333">:</span> target.value;
+        <span style="color:#080;font-weight:bold">const</span> name <span style="color:#333">=</span> target.name;
+
+        <span style="color:#080;font-weight:bold">this</span>.setState({
+            [name]<span style="color:#333">:</span> value
+        })
+    }
+    render() {
+        <span style="color:#080;font-weight:bold">return</span> (
+            &lt;<span style="color:#070">form</span>&gt;
+                &lt;<span style="color:#070">label</span>&gt;
+                    参与<span style="color:#f00;background-color:#faa">：</span>
+                    &lt;<span style="color:#070">input</span> <span style="color:#00c">name</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;isGoing&#34;</span> <span style="color:#00c">type</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;checkbox&#34;</span> <span style="color:#00c">checked</span><span style="color:#333">=</span><span style="background-color:#fff0f0">{this.state.isGoing}</span> <span style="color:#00c">onChange</span><span style="color:#333">=</span><span style="background-color:#fff0f0">{this.handleInputChange}</span> /&gt;
+                &lt;/<span style="color:#070">label</span>&gt;
+                &lt;<span style="color:#070">br</span> /&gt;
+                &lt;<span style="color:#070">label</span>&gt;
+                    来宾人数<span style="color:#f00;background-color:#faa">：</span>
+                    &lt;<span style="color:#070">input</span> <span style="color:#00c">name</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;numberOfGuests&#34;</span> <span style="color:#00c">type</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;number&#34;</span> <span style="color:#00c">value</span><span style="color:#333">=</span><span style="background-color:#fff0f0">{this.state.numberOfGuests}</span> <span style="color:#00c">onChange</span><span style="color:#333">=</span><span style="background-color:#fff0f0">{this.handleInputChange}</span> /&gt;
+                &lt;/<span style="color:#070">label</span>&gt;
+            &lt;/<span style="color:#070">form</span>&gt;
+        )
+    }
+}</code></pre></div>
+<h3 id="受控组件的替代品-非受控组件">受控组件的替代品 - 非受控组件</h3>
+
+<h3 id="受控组件的解决方案-formik">受控组件的解决方案 - Formik</h3>
+
+<h2 id="状态提升">状态提升</h2>
+
+<p>多个组件需要反映相同的变化数据，讲共享状态提升到最近的共同父组件中去。</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-react" data-lang="react"><span style="color:#888">// 状态提升
+</span><span style="color:#888"></span><span style="color:#080;font-weight:bold">function</span> BoilingVerdict(props) {
+    <span style="color:#080;font-weight:bold">if</span> (props.celsius <span style="color:#333">&gt;=</span> <span style="color:#00d;font-weight:bold">100</span>) {
+        <span style="color:#080;font-weight:bold">return</span> &lt;<span style="color:#070">p</span>&gt;The Water would boil.&lt;/<span style="color:#070">p</span>&gt;
+    }
+    <span style="color:#080;font-weight:bold">return</span> &lt;<span style="color:#070">p</span>&gt;The Water would not boil.&lt;/<span style="color:#070">p</span>&gt;
+}
+
+<span style="color:#080;font-weight:bold">const</span> scaleNames <span style="color:#333">=</span> {
+    c<span style="color:#333">:</span> <span style="background-color:#fff0f0">&#39;Celsius&#39;</span>,
+    f<span style="color:#333">:</span> <span style="background-color:#fff0f0">&#39;Fahrenheit&#39;</span>
+};
+
+<span style="color:#080;font-weight:bold">export</span> <span style="color:#080;font-weight:bold">class</span> TemperatureInput <span style="color:#080;font-weight:bold">extends</span> Component {
+    constructor(props) {
+        <span style="color:#080;font-weight:bold">super</span>(props);
+        <span style="color:#080;font-weight:bold">this</span>.handleChange <span style="color:#333">=</span> <span style="color:#080;font-weight:bold">this</span>.handleChange.bind(<span style="color:#080;font-weight:bold">this</span>);
+    }
+    handleChange(e) {
+        <span style="color:#080;font-weight:bold">this</span>.props.onTemperatureChange(e.target.value);
+    }
+    render() {
+        <span style="color:#080;font-weight:bold">const</span> temperature <span style="color:#333">=</span> <span style="color:#080;font-weight:bold">this</span>.props.temperature;
+        <span style="color:#080;font-weight:bold">const</span> scale <span style="color:#333">=</span> <span style="color:#080;font-weight:bold">this</span>.props.scale;
+        <span style="color:#080;font-weight:bold">return</span> (
+            &lt;<span style="color:#070">fieldset</span>&gt;
+                &lt;<span style="color:#070">legand</span>&gt;Enter temperature <span style="color:#080;font-weight:bold">in</span> {scaleNames[scale]}&lt;/<span style="color:#070">legand</span>&gt;
+                &lt;<span style="color:#070">input</span> <span style="color:#00c">value</span><span style="color:#333">=</span><span style="background-color:#fff0f0">{temperature}</span> <span style="color:#00c">onChange</span><span style="color:#333">=</span><span style="background-color:#fff0f0">{this.handleChange}</span> /&gt;
+            &lt;/<span style="color:#070">fieldset</span>&gt;
+        )
+    }
+}
+<span style="color:#080;font-weight:bold">function</span> toCelsius(fahrenheit) {
+    <span style="color:#080;font-weight:bold">return</span> (fahrenheit <span style="color:#333">-</span> <span style="color:#00d;font-weight:bold">32</span>) <span style="color:#333">*</span> <span style="color:#00d;font-weight:bold">5</span> <span style="color:#333">/</span> <span style="color:#00d;font-weight:bold">9</span>;
+}
+
+<span style="color:#080;font-weight:bold">function</span> toFahrenheit(celsius) {
+    <span style="color:#080;font-weight:bold">return</span> (celsius <span style="color:#333">*</span> <span style="color:#00d;font-weight:bold">9</span> <span style="color:#333">/</span> <span style="color:#00d;font-weight:bold">5</span>) <span style="color:#333">+</span> <span style="color:#00d;font-weight:bold">32</span>;
+}
+<span style="color:#080;font-weight:bold">function</span> tryConvert(temperature, convert) {
+    <span style="color:#080;font-weight:bold">const</span> input <span style="color:#333">=</span> <span style="color:#007020">parseFloat</span>(temperature);
+    <span style="color:#080;font-weight:bold">if</span> (<span style="color:#007020">Number</span>.<span style="color:#007020">isNaN</span>(input)) {
+        <span style="color:#080;font-weight:bold">return</span> <span style="background-color:#fff0f0">&#39;&#39;</span>;
+    }
+    <span style="color:#080;font-weight:bold">const</span> output <span style="color:#333">=</span> convert(input);
+    <span style="color:#080;font-weight:bold">const</span> rounded <span style="color:#333">=</span> <span style="color:#007020">Math</span>.round(output <span style="color:#333">*</span> <span style="color:#00d;font-weight:bold">1000</span>) <span style="color:#333">/</span> <span style="color:#00d;font-weight:bold">1000</span>;
+    <span style="color:#080;font-weight:bold">return</span> rounded.toString();
+}
+<span style="color:#080;font-weight:bold">export</span> <span style="color:#080;font-weight:bold">class</span> Calculator <span style="color:#080;font-weight:bold">extends</span> Component {
+    constructor(props) {
+        <span style="color:#080;font-weight:bold">super</span>(props);
+        <span style="color:#080;font-weight:bold">this</span>.handleCelsiusChange <span style="color:#333">=</span> <span style="color:#080;font-weight:bold">this</span>.handleCelsiusChange.bind(<span style="color:#080;font-weight:bold">this</span>);
+        <span style="color:#080;font-weight:bold">this</span>.handleFahrenheitChange <span style="color:#333">=</span> <span style="color:#080;font-weight:bold">this</span>.handleFahrenheitChange.bind(<span style="color:#080;font-weight:bold">this</span>);
+        <span style="color:#080;font-weight:bold">this</span>.state <span style="color:#333">=</span> { temperature<span style="color:#333">:</span> <span style="background-color:#fff0f0">&#39;&#39;</span>, scale<span style="color:#333">:</span> <span style="background-color:#fff0f0">&#39;c&#39;</span> };
+    }
+    handleCelsiusChange(temperature) {
+        <span style="color:#080;font-weight:bold">this</span>.setState({ scale<span style="color:#333">:</span> <span style="background-color:#fff0f0">&#39;c&#39;</span>, temperature });
+    }
+
+    handleFahrenheitChange(temperature) {
+        <span style="color:#080;font-weight:bold">this</span>.setState({ scale<span style="color:#333">:</span> <span style="background-color:#fff0f0">&#39;f&#39;</span>, temperature });
+    }
+
+    render() {
+        <span style="color:#080;font-weight:bold">const</span> scale <span style="color:#333">=</span> <span style="color:#080;font-weight:bold">this</span>.state.scale;
+        <span style="color:#080;font-weight:bold">const</span> temperature <span style="color:#333">=</span> <span style="color:#080;font-weight:bold">this</span>.state.temperature;
+        <span style="color:#080;font-weight:bold">const</span> celsius <span style="color:#333">=</span> scale <span style="color:#333">===</span> <span style="background-color:#fff0f0">&#39;f&#39;</span> <span style="color:#333">?</span> tryConvert(temperature, toCelsius) <span style="color:#333">:</span> temperature;
+        <span style="color:#080;font-weight:bold">const</span> fahrenheit <span style="color:#333">=</span> scale <span style="color:#333">===</span> <span style="background-color:#fff0f0">&#39;c&#39;</span> <span style="color:#333">?</span> tryConvert(temperature, toFahrenheit) <span style="color:#333">:</span> temperature;
+
+        <span style="color:#080;font-weight:bold">return</span> (
+            &lt;<span style="color:#070">div</span>&gt;
+                &lt;<span style="color:#070">TemperatureInput</span>
+                    <span style="color:#00c">scale</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;c&#34;</span>
+                    <span style="color:#00c">temperature</span><span style="color:#333">=</span><span style="background-color:#fff0f0">{celsius}</span>
+                    <span style="color:#00c">onTemperatureChange</span><span style="color:#333">=</span><span style="background-color:#fff0f0">{this.handleCelsiusChange}</span> /&gt;
+
+                &lt;<span style="color:#070">TemperatureInput</span>
+                    <span style="color:#00c">scale</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;f&#34;</span>
+                    <span style="color:#00c">temperature</span><span style="color:#333">=</span><span style="background-color:#fff0f0">{fahrenheit}</span>
+                    <span style="color:#00c">onTemperatureChange</span><span style="color:#333">=</span><span style="background-color:#fff0f0">{this.handleFahrenheitChange}</span> /&gt;
+
+                &lt;<span style="color:#070">BoilingVerdict</span>
+                    <span style="color:#00c">celsius</span><span style="color:#333">=</span><span style="background-color:#fff0f0">{parseFloat(celsius)}</span> /&gt;
+
+            &lt;/<span style="color:#070">div</span>&gt;
+        );
+    }
+}</code></pre></div>
+<h2 id="组合">组合</h2>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-react" data-lang="react"><span style="color:#080;font-weight:bold">function</span> FancyBorder(props) {
+    <span style="color:#080;font-weight:bold">return</span> (
+        &lt;<span style="color:#070">div</span> <span style="color:#00c">className</span><span style="color:#333">=</span><span style="background-color:#fff0f0">{&#39;FancyBorder</span> <span style="color:#00c">FancyBorder</span><span style="color:#f00;background-color:#faa">-&#39;</span> <span style="color:#f00;background-color:#faa">+</span> <span style="color:#00c">props.color</span>}&gt;
+            {props.children}
+        &lt;/<span style="color:#070">div</span>&gt;
+    )
+}
+<span style="color:#080;font-weight:bold">export</span> <span style="color:#080;font-weight:bold">function</span> WelcomeDialog() {
+    <span style="color:#080;font-weight:bold">return</span> (
+        &lt;<span style="color:#070">FancyBorder</span> <span style="color:#00c">color</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;blue&#34;</span>&gt;
+            &lt;<span style="color:#070">h1</span> <span style="color:#00c">className</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;Dialog-title&#34;</span>&gt;Welcome&lt;/<span style="color:#070">h1</span>&gt;
+            &lt;<span style="color:#070">p</span> <span style="color:#00c">className</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;Dialog-message&#34;</span>&gt;
+                Thank tou <span style="color:#080;font-weight:bold">for</span> visitting our spacecraft<span style="color:#333">!</span>
+            &lt;/<span style="color:#070">p</span>&gt;
+        &lt;/<span style="color:#070">FancyBorder</span>&gt;
+    )
+}</code></pre></div>
+
+    <script>
+        let colNum = document.querySelector("#sheet_column").innerText;
+        const sheetBox = document.body.querySelector("#sheet_box");
+        let eleList = [];
+        Array.prototype.max = function () {
+            return Math.max.apply(null, this);
+        };
+        Array.prototype.minindex = function (col) {
+            let _index = 0,
+                min = this[0];
+            for (var i = 1; i < col; i++) {
+                if (min > this[i]) {
+                    min = this[i];
+                    _index = i;
+                }
+            }
+            return _index;
+        };
+
+
+        for (let key in sheetBox.children) {
+            eleList.push(sheetBox.children[key]);
+        }
+        let _section, _wrap, _x = 0,
+            _y = 0;
+        eleList.forEach(ele => {
+            if (ele.localName === "h2") {
+                _section = document.createElement("div");
+                _wrap = document.createElement("div");
+                _wrap.className = "h3_wrap";
+                _section.className = "h2_section";
+                _section.appendChild(ele);
+                sheetBox.appendChild(_section);
+                sheetBox.appendChild(_wrap);
+                _x = 0;
+                _y = 0;
+            }
+            if (ele.localName === "h3") {
+                _section = document.createElement("div");
+                _section.className = "h3_section";
+                if (!_wrap) {
+                    _wrap = document.createElement("div");
+                    _wrap.className = "h3_wrap";
+                }
+                if (colNum === "2") {
+                    _section.style.width = "49.4%";
+                } else {
+                    _section.style.width = "32.8%";
+                }
+                _section.appendChild(ele);
+                _wrap.appendChild(_section);
+            }
+            if (_section && ele.localName && ele.localName !== "script") {
+                _section.appendChild(ele);
+            }
+        });
+
+        function layout(col, _onlyChangeWidth) {
+            let _w = sheetBox.offsetWidth;
+            const _tars = sheetBox.querySelectorAll(".h3_wrap");
+            let _e_offset = _w * 1.012 / col;
+
+            _tars.forEach(t => {
+                let _hs = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+                let es = [];
+                let _h3_wrap_height = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+                for (let key in t.children) {
+                    if (t.children[key].localName) {
+                        es.push(t.children[key]);
+                    }
+                }
+                es.forEach((e, i) => {
+                    let _colOrder = _hs.minindex(col);
+                    e.style.left = _colOrder * _e_offset + 'px';
+                    e.style.top = _hs[_colOrder] + 'px';
+                    e.style.width = (_w - (col - 1) * _w * 0.012) / col + 'px';
+                    _hs[_colOrder] += e.offsetHeight + 8;
+                    _h3_wrap_height[_colOrder] += e.offsetHeight + 8;
+
+                })
+                t.style.height = _h3_wrap_height.max() + 'px';
+            })
+        }
+
+        colNum = Number(colNum) ? Number(colNum) : 3;
+        let _colCounter;
+        if (window.innerWidth > 768) {
+            _colCounter = colNum;
+        } else if (window.innerWidth > 480) {
+            _colCounter = colNum - 1 <= 0 ? colNum : colNum - 1;
+        } else {
+            _colCounter = colNum - 2 <= 0 ? colNum - 1 <= 0 ? colNum : colNum - 1 : colNum - 2;
+        }
+        layout(_colCounter);
+        window.onresize = function () {
+            let _cols;
+            if (window.innerWidth >= 768) {
+                _cols = colNum;
+            } else if (window.innerWidth > 480) {
+                _cols = colNum - 1 <= 0 ? colNum : colNum - 1;
+            } else {
+                _cols = colNum - 2 <= 0 ? colNum - 1 <= 0 ? colNum : colNum - 1 : colNum - 2;
+            }
+            layout(_cols);
+        }
+    </script>
+</div>
+</div>
+
+    </main>
+
+    <footer>
+        
+        
+        
+    </footer>
+
+</body>
+
+</html>

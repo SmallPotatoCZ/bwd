@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Clis on EsilyZhang 的备忘单</title>
+    <link>https://bwd.zhangchao.online/cli/</link>
+    <description>Recent content in Clis on EsilyZhang 的备忘单</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sun, 21 Jul 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://bwd.zhangchao.online/cli/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>adb (Android Debug Bridge)</title>
+      <link>https://bwd.zhangchao.online/cli/adb/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://bwd.zhangchao.online/cli/adb/</guid>
+      <description>Device Basics    Command Description     adb devices Lists connected devices   adb devices -l Lists connected devices and kind   &amp;mdash; &amp;mdash;   adb root Restarts adbd with root permissions   adb start-server Starts the adb server   adb kill-server Kills the adb server   adb remount Remounts file system with read/write access   adb reboot Reboots the device   adb reboot bootloader Reboots the device into fastboot   adb disable-verity Reboots the device into fastboot    wait-for-device can be specified after adb to ensure that the command will run once the device is connected.</description>
+    </item>
+    
+    <item>
+      <title>Bash 命令行</title>
+      <link>https://bwd.zhangchao.online/cli/bash/</link>
+      <pubDate>Sun, 21 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://bwd.zhangchao.online/cli/bash/</guid>
+      <description>if 语法 if test-command; then consequesnt-commands; [elif more-test-commands; then more-consequesnt;] [else alternate-consequesnt;] fi for 语法 # words 不指定，只执行一次 for name [in words ...]; do commands; done for (( expr1; expr2 )); do commands; done # 等价于 (( expr1 )) while (( expr2 ));do commands done words file1.txt file2.txt file3.txt # 或者 Apple Sony &amp;#34;Hewlett Packard&amp;#34; 通配符 * 表示的是文件夹中的文件名字
+for thisfile in *; do echo &amp;#34;found $thisfile&amp;#34;; done 例子 1 - 10 for i in `seq 1 10` do echo &amp;#34;$i&amp;#34;; done # 大括号实现 for i in {1.</description>
+    </item>
+    
+  </channel>
+</rss>

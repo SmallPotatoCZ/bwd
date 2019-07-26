@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Reacts on EsilyZhang 的备忘单</title>
+    <link>https://bwd.zhangchao.online/react/</link>
+    <description>Recent content in Reacts on EsilyZhang 的备忘单</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Thu, 18 Jul 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://bwd.zhangchao.online/react/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>React</title>
+      <link>https://bwd.zhangchao.online/react/react/</link>
+      <pubDate>Thu, 18 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://bwd.zhangchao.online/react/react/</guid>
+      <description>JSX 与元素渲染 const name = &amp;#34;Josh Perez&amp;#34;; const element = &amp;lt;h1 tabIndex=&amp;#34;0&amp;#34;&amp;gt;Hello,{name}&amp;lt;/h1&amp;gt;; ReactDOM.render(element, document.querySelector(&amp;#34;#jsx&amp;#34;)); 组件和 Props 组件的构建 // 简单方式 function Welcome(props){ return &amp;lt;h1&amp;gt;Hello,{props.name}&amp;lt;/h1&amp;gt; } // ES6 类构建的组件 class Welcome extends Comment { render() { return ( &amp;lt;h1&amp;gt;Hello, {this.props.name}&amp;lt;/h1&amp;gt; ) } } 渲染组件 function Welcome (props){ return &amp;lt;h1&amp;gt;Hello, {props.name}&amp;lt;/h1&amp;gt; } const element = &amp;lt;Welcome name=&amp;#34;渲染组件&amp;#34; /&amp;gt; 组合组件 function Welcome(props){ return &amp;lt;h1&amp;gt;Hello,{props.name}&amp;lt;/h1&amp;gt; } function App(){ return ( &amp;lt;div&amp;gt; &amp;lt;Welcome name=&amp;#34;name1&amp;#34; /&amp;gt; &amp;lt;Welcome name=&amp;#34;name2&amp;#34; /&amp;gt; &amp;lt;Welcome name=&amp;#34;name3&amp;#34; /&amp;gt; &amp;lt;/div&amp;gt; ) } 提取组件 // Avator function Avatar(props) { return ( &amp;lt;img className=&amp;#34;Avatar&amp;#34; src={props.</description>
+    </item>
+    
+  </channel>
+</rss>

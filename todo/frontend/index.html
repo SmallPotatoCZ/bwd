@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+<meta content='width=device-width, initial-scale=1.0' name='viewport'>
+<link href='/favicon.png' rel='shortcut icon'>
+<meta content='' name='app:pageurl'>
+
+
+
+
+
+
+
+<link rel="canonical" href="">
+<meta name="og:url" content="">
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <title>EsilyZhang 的备忘单</title>
+    
+    <link rel="stylesheet" href="/sass/home.min.de7c29548feadde2ec038bd703cb5297c0c0d6ae56e095e1f9e1d89f08855611.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+
+<link rel="stylesheet" href="/sass/post.min.73af919387c4b2c68aada5d541dadec89e4cf1f095f2b0e7fb1445046b5e955a.css">
+
+</head>
+
+<body>
+    <header role="heading">
+        <nav class='top-nav' data-js-no-preview role='navigation'>
+    <div class='container'>
+        
+        <div class='left'>
+            <a class='back-button icons' href='/'>keyboard_backspace</a>
+        </div>
+        
+
+        <a class='brand' href='/'>
+            EsilyZhang 的备忘单
+        </a>
+    </div>
+</nav>
+    </header>
+    <main role="main">
+        
+<div class='site-header' role='banner'>
+    <h1>
+        前端 todo list - 笔记
+    </h1>
+</div>
+<div>
+    
+
+<h2 id="html">HTML</h2>
+
+<ul class="task-list">
+<li><label><input type="checkbox" disabled class="task-list-item"> event.preventDefault 和 event.stopPropagation() 的功能</label></li>
+<li><label><input type="checkbox" disabled class="task-list-item"> 事件函数回调中的 return false 的目的以及 addEventListner 回调中第二个参数的 false;</label></li>
+</ul>
+
+    <script>
+    var todoEles = document.querySelectorAll("li");
+    todoEles.forEach(v => {
+        if (/^\[x\]/.test(v.innerText)) {
+            v.innerHTML =
+                `<label class="todolist"><input type="checkbox" checked readonly />${v.innerText.replace(/^\[x\]/, "")}</label>`
+        } else if (/^\[\ \]/.test(v.innerText)) {
+            v.innerHTML =
+                `<label class="todolist"><input type="checkbox" readonly />${v.innerText.replace(/^\[x\]/, "")}</label>`
+        }
+    })
+</script>
+</div>
+
+    </main>
+
+    <footer>
+        
+        
+        
+    </footer>
+
+</body>
+
+</html>
