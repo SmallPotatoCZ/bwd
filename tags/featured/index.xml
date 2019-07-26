@@ -5,10 +5,20 @@
     <link>https://bwd.zhangchao.online/tags/featured/</link>
     <description>Recent content in featured on EsilyZhang 的备忘单</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sun, 21 Jul 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 22 Jul 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://bwd.zhangchao.online/tags/featured/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Vue</title>
+      <link>https://bwd.zhangchao.online/vue/vue/</link>
+      <pubDate>Mon, 22 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://bwd.zhangchao.online/vue/vue/</guid>
+      <description>Vue 实例 语法 var vm = new VUe({ // 选项 });  数据和方法 var data = {a: 1}; var vm = new Vue({ data: data }); // 获取这个实例上的属性  vm.a == data.a; // true;  // 设置属性会影响原始的数据 vm.a = 2; data.a = 2; // 反之也是 data.a = 3; vm.a = 3;   只有在实例创建时data中存在的属性才是响应的。 Vue 实例中暴露的属性和方都会携带$前缀
+ 生命钩子 模板语法 插值 文本 &amp;lt;span&amp;gt;Message: {{msg}}&amp;lt;span&amp;gt; // v-noce 执行一次性的插值，当数据改变时，插值处的值并不会改变 原始 html {{}} 会将数据解释为普通文本，为了输出 HTML，使用v-html。</description>
+    </item>
     
     <item>
       <title>Bash 命令行</title>
@@ -18,17 +28,6 @@
       <guid>https://bwd.zhangchao.online/cli/bash/</guid>
       <description>if 语法 if test-command; then consequesnt-commands; [elif more-test-commands; then more-consequesnt;] [else alternate-consequesnt;] fi for 语法 # words 不指定，只执行一次 for name [in words ...]; do commands; done for (( expr1; expr2 )); do commands; done # 等价于 (( expr1 )) while (( expr2 ));do commands done words file1.txt file2.txt file3.txt # 或者 Apple Sony &amp;#34;Hewlett Packard&amp;#34; 通配符 * 表示的是文件夹中的文件名字
 for thisfile in *; do echo &amp;#34;found $thisfile&amp;#34;; done 例子 1 - 10 for i in `seq 1 10` do echo &amp;#34;$i&amp;#34;; done # 大括号实现 for i in {1.</description>
-    </item>
-    
-    <item>
-      <title>JavaScript 基础知识</title>
-      <link>https://bwd.zhangchao.online/javascript/basic/</link>
-      <pubDate>Wed, 10 Jul 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://bwd.zhangchao.online/javascript/basic/</guid>
-      <description> 基本值和类型 值有类型，但变量无类型
-内置类型：
- 字符串（string） 数字（number） 布尔值（boolean） null 和 undefined 对象（object） 符号（symbol）  typeof typeof &amp;#34;helloworld&amp;#34;; // string typeof 10; // number typeof true; // bollean typeof null; // object typeof a; // undefined typeof []; // object typeof Symbol(&amp;#34;a&amp;#34;); // symbol typeof function(){}; // function  内置子对象 Array </description>
     </item>
     
     <item>

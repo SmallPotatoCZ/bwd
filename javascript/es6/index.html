@@ -365,8 +365,8 @@ s1.normalize().codePointAt(<span style="color:#00d;font-weight:bold">2</span>).t
 <ul>
 <li>不能也不应对<code>Symbol()</code>使用<code>new</code>。</li>
 <li>传给<code>Symbol()</code>的参数是可选的。传入的值是为这个 symbol 的用途给出用户友好的描述的字符串。</li>
-<li><code>typeof</code>的输出是一个新的值“stmbol”，这是失败 symbol 的首选方法。</li>
-</ul>
+
+<li><p><code>typeof</code>的输出是一个新的值“stmbol”，这是失败 symbol 的首选方法。</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#080;font-weight:bold">var</span> sym <span style="color:#333">=</span> Symbol(<span style="background-color:#fff0f0">&#34;some optional description&#34;</span>);
 <span style="color:#080;font-weight:bold">typeof</span> sym; <span style="color:#888">// &#34;symbol&#34;
 </span><span style="color:#888"></span>
@@ -374,17 +374,19 @@ sym.toString(); <span style="color:#888">// &#34;some optional description&#34;
 </span><span style="color:#888"></span>
 <span style="color:#080;font-weight:bold">const</span> INSTANCE <span style="color:#333">=</span> Symbol(<span style="background-color:#fff0f0">&#34;instance&#34;</span>);
 <span style="color:#080;font-weight:bold">function</span> HappyFace(){
-  <span style="color:#080;font-weight:bold">if</span>(HappyFace[INSTANCE]) <span style="color:#080;font-weight:bold">return</span> HappyFace[INSTANCE];
-  <span style="color:#080;font-weight:bold">function</span> smile(){}
-  <span style="color:#080;font-weight:bold">return</span> HappyFace[INSTANCE] <span style="color:#333">=</span> {
-    smile<span style="color:#333">:</span> smile
-  };
+<span style="color:#080;font-weight:bold">if</span>(HappyFace[INSTANCE]) <span style="color:#080;font-weight:bold">return</span> HappyFace[INSTANCE];
+<span style="color:#080;font-weight:bold">function</span> smile(){}
+<span style="color:#080;font-weight:bold">return</span> HappyFace[INSTANCE] <span style="color:#333">=</span> {
+smile<span style="color:#333">:</span> smile
+};
 }
 <span style="color:#080;font-weight:bold">var</span> ne <span style="color:#333">=</span> HappyFace(),
-  you <span style="color:#333">=</span> HappyFace();
+you <span style="color:#333">=</span> HappyFace();
 
-  me <span style="color:#333">===</span> you; <span style="color:#888">//true
-</span></code></pre></div>
+me <span style="color:#333">===</span> you; <span style="color:#888">//true
+</span></code></pre></div></li>
+</ul>
+
 <h4 id="符号注册">符号注册</h4>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#080;font-weight:bold">const</span> EVT_LOGIN <span style="color:#333">=</span> Symbol(<span style="background-color:#fff0f0">&#34;event.login&#34;</span>);
 console.log(Symbol.<span style="color:#080;font-weight:bold">for</span>(<span style="background-color:#fff0f0">&#34;event.login&#34;</span>));
@@ -1023,8 +1025,8 @@ x <span style="color:#333">=</span> <span style="color:#080;font-weight:bold">nu
 
 <ul>
 <li>回调函数需要传入的参数封装为数组</li>
-<li>构建 Array 子类，并且想要你的子类实例中创建和初始化元素</li>
-</ul>
+
+<li><p>构建 Array 子类，并且想要你的子类实例中创建和初始化元素</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#080;font-weight:bold">var</span> a <span style="color:#333">=</span> <span style="color:#007020">Array</span>(<span style="color:#00d;font-weight:bold">3</span>);
 a.length;
 
@@ -1037,16 +1039,18 @@ c.length;
 c;
 
 <span style="color:#080;font-weight:bold">class</span> MyCoolArray <span style="color:#080;font-weight:bold">extends</span> <span style="color:#007020">Array</span>{
-  sum(){
-    <span style="color:#080;font-weight:bold">return</span> <span style="color:#080;font-weight:bold">this</span>.reduce(<span style="color:#080;font-weight:bold">function</span> reduceer(acc, curr){
-      <span style="color:#080;font-weight:bold">return</span> acc <span style="color:#333">+</span> curr;
-    }, <span style="color:#00d;font-weight:bold">0</span>);
-  }
+sum(){
+<span style="color:#080;font-weight:bold">return</span> <span style="color:#080;font-weight:bold">this</span>.reduce(<span style="color:#080;font-weight:bold">function</span> reduceer(acc, curr){
+  <span style="color:#080;font-weight:bold">return</span> acc <span style="color:#333">+</span> curr;
+}, <span style="color:#00d;font-weight:bold">0</span>);
+}
 }
 <span style="color:#080;font-weight:bold">var</span> z <span style="color:#333">=</span>  MyCoolArray.<span style="color:#080;font-weight:bold">of</span>(<span style="color:#00d;font-weight:bold">3</span>);
 z.length;
 z.sum();
-</code></pre></div>
+</code></pre></div></li>
+</ul>
+
 <h4 id="静态函数-array-from">静态函数 Array.from</h4>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#080;font-weight:bold">var</span> a <span style="color:#333">=</span> <span style="color:#007020">Array</span>(<span style="color:#00d;font-weight:bold">4</span>); <span style="color:#888">// 4 个空槽位
 </span><span style="color:#888"></span><span style="color:#080;font-weight:bold">var</span> b <span style="color:#333">=</span> <span style="color:#007020">Array</span>.apply(<span style="color:#080;font-weight:bold">null</span>, {length<span style="color:#333">:</span> <span style="color:#00d;font-weight:bold">4</span>}); <span style="color:#888">//  4 个 undefined 值

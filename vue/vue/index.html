@@ -584,8 +584,8 @@ computed<span style="color:#333">:</span> {
 <li>.capture()</li>
 <li>self()</li>
 <li>once()</li>
-<li>passive()</li>
-</ul>
+
+<li><p>passive()</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#888">&lt;!-- 组织事件继续传播 --&gt;</span>
 &lt;<span style="color:#070">a</span> <span style="color:#00c">v-on:click</span><span style="color:#f00;background-color:#faa">.</span><span style="color:#00c">stop</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;doThis&#34;</span>&gt;&lt;/<span style="color:#070">a</span>&gt;
 
@@ -610,7 +610,9 @@ computed<span style="color:#333">:</span> {
 <span style="color:#888">&lt;!-- 滚动事件的默认行为（即滚动行为）将会立即触发 --&gt;</span>
 <span style="color:#888">&lt;!-- 而不会等待 onScroll 完成 --&gt;</span>
 <span style="color:#888">&lt;!-- 其中包括 event.preventDefault() 的情况 --&gt;</span>
-&lt;<span style="color:#070">div</span> <span style="color:#00c">v-on:scroll</span><span style="color:#f00;background-color:#faa">.</span><span style="color:#00c">passive</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;onScroll&#34;</span>&gt;&lt;/<span style="color:#070">div</span>&gt;</code></pre></div>
+&lt;<span style="color:#070">div</span> <span style="color:#00c">v-on:scroll</span><span style="color:#f00;background-color:#faa">.</span><span style="color:#00c">passive</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;onScroll&#34;</span>&gt;&lt;/<span style="color:#070">div</span>&gt;</code></pre></div></li>
+</ul>
+
 <blockquote>
 <p>修饰符的顺序也很重要。<code>v-on:click.prevent.self</code> 会阻止所有的点击，<code>v-on:click.self.prevent</code>只会组织对元素自身的点击。
 <code>.passive</code>和<code>.prevent</code>不要一起使用。</p>
@@ -633,13 +635,15 @@ computed<span style="color:#333">:</span> {
 <li>.ctrl</li>
 <li>.alt</li>
 <li>.shift</li>
-<li>.meta</li>
-</ul>
+
+<li><p>.meta</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#888">&lt;!-- Alt + C --&gt;</span>
 &lt;<span style="color:#070">input</span> <span style="color:#f00;background-color:#faa">@</span><span style="color:#00c">keyup</span><span style="color:#f00;background-color:#faa">.</span><span style="color:#00c">alt</span><span style="color:#f00;background-color:#faa">.</span><span style="color:#00c">67</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;clear&#34;</span> /&gt;
 
 <span style="color:#888">&lt;!-- Ctrl + Click --&gt;</span>
-&lt;<span style="color:#070">div</span> <span style="color:#f00;background-color:#faa">@</span><span style="color:#00c">click</span><span style="color:#f00;background-color:#faa">.</span><span style="color:#00c">ctrl</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;doSomething&#34;</span>&gt;Do doSomething&lt;/<span style="color:#070">div</span>&gt;</code></pre></div>
+&lt;<span style="color:#070">div</span> <span style="color:#f00;background-color:#faa">@</span><span style="color:#00c">click</span><span style="color:#f00;background-color:#faa">.</span><span style="color:#00c">ctrl</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;doSomething&#34;</span>&gt;Do doSomething&lt;/<span style="color:#070">div</span>&gt;</code></pre></div></li>
+</ul>
+
 <h4 id="exact-修饰符"><code>.exact</code>修饰符</h4>
 
 <p>与系统修饰符组合触发的事件。</p>

@@ -108,15 +108,15 @@ ReactDOM.render(element, <span style="color:#007020">document</span>.querySelect
 </span><span style="color:#888"></span><span style="color:#080;font-weight:bold">function</span> Avatar(props) {
     <span style="color:#080;font-weight:bold">return</span> (
         &lt;<span style="color:#070">img</span> <span style="color:#00c">className</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;Avatar&#34;</span>
-            <span style="color:#00c">src</span><span style="color:#333">=</span><span style="background-color:#fff0f0">{props.user.avatarUrl}</span>
-            <span style="color:#00c">alt</span><span style="color:#333">=</span><span style="background-color:#fff0f0">{props.user.name}</span> /&gt;
+            <span style="color:#00c">src</span><span style="color:#333">=</span>{props.user.avatarUrl}
+            <span style="color:#00c">alt</span><span style="color:#333">=</span>{props.user.name} /&gt;
     )
 }
 <span style="color:#888">// UserInfo
 </span><span style="color:#888"></span><span style="color:#080;font-weight:bold">function</span> UserInfo(props) {
     <span style="color:#080;font-weight:bold">return</span> (
         &lt;<span style="color:#070">div</span>&gt;
-            &lt;<span style="color:#070">Avatar</span> <span style="color:#00c">user</span><span style="color:#333">=</span><span style="background-color:#fff0f0">{props.user}</span> /&gt;
+            &lt;<span style="color:#070">Avatar</span> <span style="color:#00c">user</span><span style="color:#333">=</span>{props.user} /&gt;
             &lt;<span style="color:#070">div</span> <span style="color:#00c">className</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;UserInfo-name&#34;</span>&gt;
                 {props.user.name}
             &lt;/<span style="color:#070">div</span>&gt;
@@ -127,7 +127,7 @@ ReactDOM.render(element, <span style="color:#007020">document</span>.querySelect
 <span style="color:#080;font-weight:bold">export</span> <span style="color:#080;font-weight:bold">function</span> Comment(props) {
     <span style="color:#080;font-weight:bold">return</span> (
         &lt;<span style="color:#070">div</span> <span style="color:#00c">className</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;Comment&#34;</span>&gt;
-            &lt;<span style="color:#070">UserInfo</span> <span style="color:#00c">user</span><span style="color:#333">=</span><span style="background-color:#fff0f0">{props.author}</span> /&gt;
+            &lt;<span style="color:#070">UserInfo</span> <span style="color:#00c">user</span><span style="color:#333">=</span>{props.author} /&gt;
             &lt;<span style="color:#070">div</span> <span style="color:#00c">className</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;Comment-text&#34;</span>&gt;
                 {props.text}
             &lt;/<span style="color:#070">div</span>&gt;
@@ -184,7 +184,7 @@ ReactDOM.render(element, <span style="color:#007020">document</span>.querySelect
 <h2 id="事件处理">事件处理</h2>
 
 <h3 id="写法">写法</h3>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-react" data-lang="react">&lt;<span style="color:#070">button</span> <span style="color:#00c">onClick</span><span style="color:#333">=</span><span style="background-color:#fff0f0">{activateLasers}</span>&gt;
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-react" data-lang="react">&lt;<span style="color:#070">button</span> <span style="color:#00c">onClick</span><span style="color:#333">=</span>{activateLasers}&gt;
 &lt;/<span style="color:#070">button</span>&gt;
 <span style="color:#888">// 组织默认行为，不能通过函数的 return false，而得用 preventDefault
 </span><span style="color:#888"></span><span style="color:#080;font-weight:bold">function</span> ActionLink(){
@@ -193,7 +193,7 @@ ReactDOM.render(element, <span style="color:#007020">document</span>.querySelect
         console.log(<span style="background-color:#fff0f0">&#34;The link was clicked.&#34;</span>);
     }
     <span style="color:#080;font-weight:bold">return</span> (
-        &lt;<span style="color:#070">a</span> <span style="color:#00c">href</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;#&#34;</span> <span style="color:#00c">onClick</span><span style="color:#333">=</span><span style="background-color:#fff0f0">{handleClick}</span>&gt;
+        &lt;<span style="color:#070">a</span> <span style="color:#00c">href</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;#&#34;</span> <span style="color:#00c">onClick</span><span style="color:#333">=</span>{handleClick}&gt;
          Click me
         &lt;/<span style="color:#070">a</span>&gt;
     )
@@ -213,7 +213,7 @@ ReactDOM.render(element, <span style="color:#007020">document</span>.querySelect
     }
     render() {
         <span style="color:#080;font-weight:bold">return</span> (
-            &lt;<span style="color:#070">button</span> <span style="color:#00c">onClick</span><span style="color:#333">=</span><span style="background-color:#fff0f0">{this.handleClick}</span>&gt;
+            &lt;<span style="color:#070">button</span> <span style="color:#00c">onClick</span><span style="color:#333">=</span>{<span style="color:#080;font-weight:bold">this</span>.handleClick}&gt;
                 {<span style="color:#080;font-weight:bold">this</span>.state.isToggleOn <span style="color:#333">?</span> <span style="background-color:#fff0f0">&#34;ON&#34;</span> <span style="color:#333">:</span> <span style="background-color:#fff0f0">&#34;OFF&#34;</span>}
             &lt;/<span style="color:#070">button</span>&gt;
         )
@@ -226,7 +226,7 @@ ReactDOM.render(element, <span style="color:#007020">document</span>.querySelect
     }
     render() {
         <span style="color:#080;font-weight:bold">return</span> (
-            &lt;<span style="color:#070">button</span> <span style="color:#00c">onClick</span><span style="color:#333">=</span><span style="background-color:#fff0f0">{this.handleClick}</span>&gt;
+            &lt;<span style="color:#070">button</span> <span style="color:#00c">onClick</span><span style="color:#333">=</span>{<span style="color:#080;font-weight:bold">this</span>.handleClick}&gt;
                 Click me
             &lt;/<span style="color:#070">button</span>&gt;
         )
@@ -240,7 +240,7 @@ ReactDOM.render(element, <span style="color:#007020">document</span>.querySelect
     }
     render() {
         <span style="color:#080;font-weight:bold">return</span> (
-            &lt;<span style="color:#070">button</span> <span style="color:#00c">onClick</span><span style="color:#333">=</span><span style="background-color:#fff0f0">{(e)</span> <span style="color:#f00;background-color:#faa">=</span>&gt; <span style="color:#080;font-weight:bold">this</span>.handleClick(e)}<span style="color:#333">&gt;</span>
+            &lt;<span style="color:#070">button</span> <span style="color:#00c">onClick</span><span style="color:#333">=</span>{(e) =&gt; <span style="color:#080;font-weight:bold">this</span>.handleClick(e)}&gt;
                 Click me
             &lt;/<span style="color:#070">button</span>&gt;
         )
@@ -254,7 +254,7 @@ ReactDOM.render(element, <span style="color:#007020">document</span>.querySelect
     }
     render() {
         <span style="color:#080;font-weight:bold">return</span> (
-            &lt;<span style="color:#070">button</span> <span style="color:#00c">onClick</span><span style="color:#333">=</span><span style="background-color:#fff0f0">{(e)</span> <span style="color:#f00;background-color:#faa">=</span>&gt; <span style="color:#080;font-weight:bold">this</span>.deleteRow(<span style="background-color:#fff0f0">&#34;id&#34;</span>, e)}<span style="color:#333">&gt;</span>Delete Row&lt;/<span style="color:#070">button</span>&gt;
+            &lt;<span style="color:#070">button</span> <span style="color:#00c">onClick</span><span style="color:#333">=</span>{(e) =&gt; <span style="color:#080;font-weight:bold">this</span>.deleteRow(<span style="background-color:#fff0f0">&#34;id&#34;</span>, e)}&gt;Delete Row&lt;/<span style="color:#070">button</span>&gt;
         )
     }
 }
@@ -264,7 +264,7 @@ ReactDOM.render(element, <span style="color:#007020">document</span>.querySelect
     }
     render() {
         <span style="color:#080;font-weight:bold">return</span> (
-            &lt;<span style="color:#070">button</span> <span style="color:#00c">onClick</span><span style="color:#333">=</span><span style="background-color:#fff0f0">{this.deleteRow.bind(this,</span> <span style="color:#f00;background-color:#faa">&#34;</span><span style="color:#00c">id</span><span style="color:#f00;background-color:#faa">&#34;)</span>}&gt;Delete Row&lt;/<span style="color:#070">button</span>&gt;
+            &lt;<span style="color:#070">button</span> <span style="color:#00c">onClick</span><span style="color:#333">=</span>{<span style="color:#080;font-weight:bold">this</span>.deleteRow.bind(<span style="color:#080;font-weight:bold">this</span>, <span style="background-color:#fff0f0">&#34;id&#34;</span>)}&gt;Delete Row&lt;/<span style="color:#070">button</span>&gt;
         )
     }
 }</code></pre></div>
@@ -289,14 +289,14 @@ ReactDOM.render(element, <span style="color:#007020">document</span>.querySelect
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-react" data-lang="react"><span style="color:#888">// 元素变量
 </span><span style="color:#888"></span><span style="color:#080;font-weight:bold">function</span> LogginButton(props) {
     <span style="color:#080;font-weight:bold">return</span> (
-        &lt;<span style="color:#070">button</span> <span style="color:#00c">onClick</span><span style="color:#333">=</span><span style="background-color:#fff0f0">{props.onClick}</span>&gt;
+        &lt;<span style="color:#070">button</span> <span style="color:#00c">onClick</span><span style="color:#333">=</span>{props.onClick}&gt;
             Login
         &lt;/<span style="color:#070">button</span>&gt;
     )
 }
 <span style="color:#080;font-weight:bold">function</span> LogoutButton(props) {
     <span style="color:#080;font-weight:bold">return</span> (
-        &lt;<span style="color:#070">button</span> <span style="color:#00c">onClick</span><span style="color:#333">=</span><span style="background-color:#fff0f0">{props.onClick}</span>&gt;
+        &lt;<span style="color:#070">button</span> <span style="color:#00c">onClick</span><span style="color:#333">=</span>{props.onClick}&gt;
             Logout
         &lt;/<span style="color:#070">button</span>&gt;
     )
@@ -318,13 +318,13 @@ ReactDOM.render(element, <span style="color:#007020">document</span>.querySelect
         <span style="color:#080;font-weight:bold">const</span> isLoggedIn <span style="color:#333">=</span> <span style="color:#080;font-weight:bold">this</span>.state.isLoggedIn;
         <span style="color:#080;font-weight:bold">let</span> button;
         <span style="color:#080;font-weight:bold">if</span> (isLoggedIn) {
-            button <span style="color:#333">=</span> &lt;<span style="color:#070">LogoutButton</span> <span style="color:#00c">onClick</span><span style="color:#333">=</span><span style="background-color:#fff0f0">{this.handleLogoutClick}</span> /&gt;
+            button <span style="color:#333">=</span> &lt;<span style="color:#070">LogoutButton</span> <span style="color:#00c">onClick</span><span style="color:#333">=</span>{<span style="color:#080;font-weight:bold">this</span>.handleLogoutClick} /&gt;
         } <span style="color:#080;font-weight:bold">else</span> {
-            button <span style="color:#333">=</span> &lt;<span style="color:#070">LogginButton</span> <span style="color:#00c">onClick</span><span style="color:#333">=</span><span style="background-color:#fff0f0">{this.handleLoginClick}</span> /&gt;
+            button <span style="color:#333">=</span> &lt;<span style="color:#070">LogginButton</span> <span style="color:#00c">onClick</span><span style="color:#333">=</span>{<span style="color:#080;font-weight:bold">this</span>.handleLoginClick} /&gt;
         }
         <span style="color:#080;font-weight:bold">return</span> (
             &lt;<span style="color:#070">div</span>&gt;
-                &lt;<span style="color:#070">Greeting</span> <span style="color:#00c">isLoggedIn</span><span style="color:#333">=</span><span style="background-color:#fff0f0">{isLoggedIn}</span> /&gt;
+                &lt;<span style="color:#070">Greeting</span> <span style="color:#00c">isLoggedIn</span><span style="color:#333">=</span>{isLoggedIn} /&gt;
                 {button}
             &lt;/<span style="color:#070">div</span>&gt;
         )
@@ -389,8 +389,8 @@ ReactDOM.render(element, <span style="color:#007020">document</span>.querySelect
     render() {
         <span style="color:#080;font-weight:bold">return</span> (
             &lt;<span style="color:#070">div</span>&gt;
-                &lt;<span style="color:#070">WaringBanner</span> <span style="color:#00c">warn</span><span style="color:#333">=</span><span style="background-color:#fff0f0">{this.state.showWarning}</span> /&gt;
-                &lt;<span style="color:#070">button</span> <span style="color:#00c">onClick</span><span style="color:#333">=</span><span style="background-color:#fff0f0">{this.handleToggleClick}</span>&gt;
+                &lt;<span style="color:#070">WaringBanner</span> <span style="color:#00c">warn</span><span style="color:#333">=</span>{<span style="color:#080;font-weight:bold">this</span>.state.showWarning} /&gt;
+                &lt;<span style="color:#070">button</span> <span style="color:#00c">onClick</span><span style="color:#333">=</span>{<span style="color:#080;font-weight:bold">this</span>.handleToggleClick}&gt;
                     {<span style="color:#080;font-weight:bold">this</span>.state.showWarning <span style="color:#333">?</span> <span style="background-color:#fff0f0">&#39;Hide&#39;</span> <span style="color:#333">:</span> <span style="background-color:#fff0f0">&#39;Show&#39;</span>}
                 &lt;/<span style="color:#070">button</span>&gt;
             &lt;/<span style="color:#070">div</span>&gt;
@@ -404,7 +404,7 @@ ReactDOM.render(element, <span style="color:#007020">document</span>.querySelect
 </span><span style="color:#888"></span><span style="color:#080;font-weight:bold">export</span> <span style="color:#080;font-weight:bold">function</span> List() {
     <span style="color:#080;font-weight:bold">const</span> numbers <span style="color:#333">=</span> [<span style="color:#00d;font-weight:bold">1</span>, <span style="color:#00d;font-weight:bold">2</span>, <span style="color:#00d;font-weight:bold">3</span>, <span style="color:#00d;font-weight:bold">4</span>, <span style="color:#00d;font-weight:bold">5</span>];
     <span style="color:#080;font-weight:bold">const</span> listItems <span style="color:#333">=</span> numbers.map(v =&gt; (
-        &lt;<span style="color:#070">li</span> <span style="color:#00c">key</span><span style="color:#333">=</span><span style="background-color:#fff0f0">{v.toString()}</span>&gt;{v}&lt;/<span style="color:#070">li</span>&gt;
+        &lt;<span style="color:#070">li</span> <span style="color:#00c">key</span><span style="color:#333">=</span>{v.toString()}&gt;{v}&lt;/<span style="color:#070">li</span>&gt;
     ));
     <span style="color:#080;font-weight:bold">return</span> (
         &lt;<span style="color:#070">ul</span>&gt;
@@ -432,10 +432,10 @@ ReactDOM.render(element, <span style="color:#007020">document</span>.querySelect
     }
     render() {
         <span style="color:#080;font-weight:bold">return</span> (
-            &lt;<span style="color:#070">form</span> <span style="color:#00c">onSubmit</span><span style="color:#333">=</span><span style="background-color:#fff0f0">{this.handleSubmit}</span>&gt;
+            &lt;<span style="color:#070">form</span> <span style="color:#00c">onSubmit</span><span style="color:#333">=</span>{<span style="color:#080;font-weight:bold">this</span>.handleSubmit}&gt;
                 &lt;<span style="color:#070">label</span>&gt;
                     名字<span style="color:#f00;background-color:#faa">：</span>
-    &lt;<span style="color:#070">input</span> <span style="color:#00c">type</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;text&#34;</span> <span style="color:#00c">value</span><span style="color:#333">=</span><span style="background-color:#fff0f0">{this.state.value}</span> <span style="color:#00c">onChange</span><span style="color:#333">=</span><span style="background-color:#fff0f0">{this.handleChange}</span> /&gt;
+    &lt;<span style="color:#070">input</span> <span style="color:#00c">type</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;text&#34;</span> <span style="color:#00c">value</span><span style="color:#333">=</span>{<span style="color:#080;font-weight:bold">this</span>.state.value} <span style="color:#00c">onChange</span><span style="color:#333">=</span>{<span style="color:#080;font-weight:bold">this</span>.handleChange} /&gt;
                 &lt;/<span style="color:#070">label</span>&gt;
                 &lt;<span style="color:#070">input</span> <span style="color:#00c">type</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;submit&#34;</span> <span style="color:#00c">value</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;提交&#34;</span> /&gt;
             &lt;/<span style="color:#070">form</span>&gt;
@@ -463,10 +463,10 @@ ReactDOM.render(element, <span style="color:#007020">document</span>.querySelect
 
     render() {
         <span style="color:#080;font-weight:bold">return</span> (
-            &lt;<span style="color:#070">form</span> <span style="color:#00c">onSubmit</span><span style="color:#333">=</span><span style="background-color:#fff0f0">{this.handleSubmit}</span>&gt;
+            &lt;<span style="color:#070">form</span> <span style="color:#00c">onSubmit</span><span style="color:#333">=</span>{<span style="color:#080;font-weight:bold">this</span>.handleSubmit}&gt;
                 &lt;<span style="color:#070">label</span>&gt;
                     文章<span style="color:#f00;background-color:#faa">：</span>
-                    &lt;<span style="color:#070">textarea</span> <span style="color:#00c">value</span><span style="color:#333">=</span><span style="background-color:#fff0f0">{this.state.value}</span> <span style="color:#00c">onChange</span><span style="color:#333">=</span><span style="background-color:#fff0f0">{this.handleChange}</span>&gt;&lt;/<span style="color:#070">textarea</span>&gt;
+                    &lt;<span style="color:#070">textarea</span> <span style="color:#00c">value</span><span style="color:#333">=</span>{<span style="color:#080;font-weight:bold">this</span>.state.value} <span style="color:#00c">onChange</span><span style="color:#333">=</span>{<span style="color:#080;font-weight:bold">this</span>.handleChange}&gt;&lt;/<span style="color:#070">textarea</span>&gt;
                 &lt;/<span style="color:#070">label</span>&gt;
                 &lt;<span style="color:#070">input</span> <span style="color:#00c">type</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;submit&#34;</span> <span style="color:#00c">value</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;提交&#34;</span> /&gt;
             &lt;/<span style="color:#070">form</span>&gt;
@@ -491,10 +491,10 @@ ReactDOM.render(element, <span style="color:#007020">document</span>.querySelect
     }
     render() {
         <span style="color:#080;font-weight:bold">return</span> (
-            &lt;<span style="color:#070">form</span> <span style="color:#00c">onSubmit</span><span style="color:#333">=</span><span style="background-color:#fff0f0">{this.handleSubmit}</span>&gt;
+            &lt;<span style="color:#070">form</span> <span style="color:#00c">onSubmit</span><span style="color:#333">=</span>{<span style="color:#080;font-weight:bold">this</span>.handleSubmit}&gt;
                 &lt;<span style="color:#070">label</span>&gt;
                     选择你喜欢的风味<span style="color:#f00;background-color:#faa">：</span>
-                &lt;<span style="color:#070">select</span> <span style="color:#00c">value</span><span style="color:#333">=</span><span style="background-color:#fff0f0">{this.state.value}</span> <span style="color:#00c">onChange</span><span style="color:#333">=</span><span style="background-color:#fff0f0">{this.handleChange}</span>&gt;
+                &lt;<span style="color:#070">select</span> <span style="color:#00c">value</span><span style="color:#333">=</span>{<span style="color:#080;font-weight:bold">this</span>.state.value} <span style="color:#00c">onChange</span><span style="color:#333">=</span>{<span style="color:#080;font-weight:bold">this</span>.handleChange}&gt;
                         &lt;<span style="color:#070">option</span> <span style="color:#00c">value</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;grapefruit&#34;</span>&gt;葡萄柚&lt;/<span style="color:#070">option</span>&gt;
                         &lt;<span style="color:#070">option</span> <span style="color:#00c">value</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;lime&#34;</span>&gt;酸橙&lt;/<span style="color:#070">option</span>&gt;
                         &lt;<span style="color:#070">option</span> <span style="color:#00c">value</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;coconut&#34;</span>&gt;椰子&lt;/<span style="color:#070">option</span>&gt;
@@ -534,12 +534,12 @@ ReactDOM.render(element, <span style="color:#007020">document</span>.querySelect
             &lt;<span style="color:#070">form</span>&gt;
                 &lt;<span style="color:#070">label</span>&gt;
                     参与<span style="color:#f00;background-color:#faa">：</span>
-                    &lt;<span style="color:#070">input</span> <span style="color:#00c">name</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;isGoing&#34;</span> <span style="color:#00c">type</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;checkbox&#34;</span> <span style="color:#00c">checked</span><span style="color:#333">=</span><span style="background-color:#fff0f0">{this.state.isGoing}</span> <span style="color:#00c">onChange</span><span style="color:#333">=</span><span style="background-color:#fff0f0">{this.handleInputChange}</span> /&gt;
+                    &lt;<span style="color:#070">input</span> <span style="color:#00c">name</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;isGoing&#34;</span> <span style="color:#00c">type</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;checkbox&#34;</span> <span style="color:#00c">checked</span><span style="color:#333">=</span>{<span style="color:#080;font-weight:bold">this</span>.state.isGoing} <span style="color:#00c">onChange</span><span style="color:#333">=</span>{<span style="color:#080;font-weight:bold">this</span>.handleInputChange} /&gt;
                 &lt;/<span style="color:#070">label</span>&gt;
                 &lt;<span style="color:#070">br</span> /&gt;
                 &lt;<span style="color:#070">label</span>&gt;
                     来宾人数<span style="color:#f00;background-color:#faa">：</span>
-                    &lt;<span style="color:#070">input</span> <span style="color:#00c">name</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;numberOfGuests&#34;</span> <span style="color:#00c">type</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;number&#34;</span> <span style="color:#00c">value</span><span style="color:#333">=</span><span style="background-color:#fff0f0">{this.state.numberOfGuests}</span> <span style="color:#00c">onChange</span><span style="color:#333">=</span><span style="background-color:#fff0f0">{this.handleInputChange}</span> /&gt;
+                    &lt;<span style="color:#070">input</span> <span style="color:#00c">name</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;numberOfGuests&#34;</span> <span style="color:#00c">type</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;number&#34;</span> <span style="color:#00c">value</span><span style="color:#333">=</span>{<span style="color:#080;font-weight:bold">this</span>.state.numberOfGuests} <span style="color:#00c">onChange</span><span style="color:#333">=</span>{<span style="color:#080;font-weight:bold">this</span>.handleInputChange} /&gt;
                 &lt;/<span style="color:#070">label</span>&gt;
             &lt;/<span style="color:#070">form</span>&gt;
         )
@@ -579,7 +579,7 @@ ReactDOM.render(element, <span style="color:#007020">document</span>.querySelect
         <span style="color:#080;font-weight:bold">return</span> (
             &lt;<span style="color:#070">fieldset</span>&gt;
                 &lt;<span style="color:#070">legand</span>&gt;Enter temperature <span style="color:#080;font-weight:bold">in</span> {scaleNames[scale]}&lt;/<span style="color:#070">legand</span>&gt;
-                &lt;<span style="color:#070">input</span> <span style="color:#00c">value</span><span style="color:#333">=</span><span style="background-color:#fff0f0">{temperature}</span> <span style="color:#00c">onChange</span><span style="color:#333">=</span><span style="background-color:#fff0f0">{this.handleChange}</span> /&gt;
+                &lt;<span style="color:#070">input</span> <span style="color:#00c">value</span><span style="color:#333">=</span>{temperature} <span style="color:#00c">onChange</span><span style="color:#333">=</span>{<span style="color:#080;font-weight:bold">this</span>.handleChange} /&gt;
             &lt;/<span style="color:#070">fieldset</span>&gt;
         )
     }
@@ -625,16 +625,16 @@ ReactDOM.render(element, <span style="color:#007020">document</span>.querySelect
             &lt;<span style="color:#070">div</span>&gt;
                 &lt;<span style="color:#070">TemperatureInput</span>
                     <span style="color:#00c">scale</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;c&#34;</span>
-                    <span style="color:#00c">temperature</span><span style="color:#333">=</span><span style="background-color:#fff0f0">{celsius}</span>
-                    <span style="color:#00c">onTemperatureChange</span><span style="color:#333">=</span><span style="background-color:#fff0f0">{this.handleCelsiusChange}</span> /&gt;
+                    <span style="color:#00c">temperature</span><span style="color:#333">=</span>{celsius}
+                    <span style="color:#00c">onTemperatureChange</span><span style="color:#333">=</span>{<span style="color:#080;font-weight:bold">this</span>.handleCelsiusChange} /&gt;
 
                 &lt;<span style="color:#070">TemperatureInput</span>
                     <span style="color:#00c">scale</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;f&#34;</span>
-                    <span style="color:#00c">temperature</span><span style="color:#333">=</span><span style="background-color:#fff0f0">{fahrenheit}</span>
-                    <span style="color:#00c">onTemperatureChange</span><span style="color:#333">=</span><span style="background-color:#fff0f0">{this.handleFahrenheitChange}</span> /&gt;
+                    <span style="color:#00c">temperature</span><span style="color:#333">=</span>{fahrenheit}
+                    <span style="color:#00c">onTemperatureChange</span><span style="color:#333">=</span>{<span style="color:#080;font-weight:bold">this</span>.handleFahrenheitChange} /&gt;
 
                 &lt;<span style="color:#070">BoilingVerdict</span>
-                    <span style="color:#00c">celsius</span><span style="color:#333">=</span><span style="background-color:#fff0f0">{parseFloat(celsius)}</span> /&gt;
+                    <span style="color:#00c">celsius</span><span style="color:#333">=</span>{<span style="color:#007020">parseFloat</span>(celsius)} /&gt;
 
             &lt;/<span style="color:#070">div</span>&gt;
         );
@@ -643,7 +643,7 @@ ReactDOM.render(element, <span style="color:#007020">document</span>.querySelect
 <h2 id="组合">组合</h2>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-react" data-lang="react"><span style="color:#080;font-weight:bold">function</span> FancyBorder(props) {
     <span style="color:#080;font-weight:bold">return</span> (
-        &lt;<span style="color:#070">div</span> <span style="color:#00c">className</span><span style="color:#333">=</span><span style="background-color:#fff0f0">{&#39;FancyBorder</span> <span style="color:#00c">FancyBorder</span><span style="color:#f00;background-color:#faa">-&#39;</span> <span style="color:#f00;background-color:#faa">+</span> <span style="color:#00c">props.color</span>}&gt;
+        &lt;<span style="color:#070">div</span> <span style="color:#00c">className</span><span style="color:#333">=</span>{<span style="background-color:#fff0f0">&#39;FancyBorder FancyBorder-&#39;</span> <span style="color:#333">+</span> props.color}&gt;
             {props.children}
         &lt;/<span style="color:#070">div</span>&gt;
     )
