@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+<meta content='width=device-width, initial-scale=1.0' name='viewport'>
+<link href='/favicon.png' rel='shortcut icon'>
+<meta content='' name='app:pageurl'>
+
+
+
+
+
+
+
+<link rel="canonical" href="">
+<meta name="og:url" content="">
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <title>EsilyZhang 的备忘单</title>
+    
+    <link rel="stylesheet" href="/sass/home.min.de7c29548feadde2ec038bd703cb5297c0c0d6ae56e095e1f9e1d89f08855611.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+
+<link rel="stylesheet" href="/sass/cheatsheet.min.29b176f268c93dd5c14a8afbb583624af531cd4d6e962f5d5c8fc18bd4256a32.css">
+
+</head>
+
+<body>
+    <header role="heading">
+        <nav class='top-nav' data-js-no-preview role='navigation'>
+    <div class='container'>
+        
+        <div class='left'>
+            <a class='back-button icons' href='/'>keyboard_backspace</a>
+        </div>
+        
+
+        <a class='brand' href='/'>
+            EsilyZhang 的备忘单
+        </a>
+    </div>
+</nav>
+    </header>
+    <main role="main">
+        
+<div class='site-header' role='banner'>
+    <h1>
+        Vue 组件 - 备忘录
+    </h1>
+</div>
+<div class="md_content">
+    <div id="sheet_box">
+    <div id="sheet_column" hidden>2</div>
+    
+
+<h2 id="组件注册">组件注册</h2>
+
+<h3 id="组件名">组件名</h3>
+
+<p>两种方式：</p>
+
+<ol>
+<li>kebab-case - <code>&lt;kebab-case&gt;</code></li>
+<li>PascalCase - <code>&lt;PascalCase&gt;</code> 或者 <code>&lt;pascal-case&gt;</code>，直接在 DOM 中只有 kebab-case。</li>
+</ol>
+
+<h3 id="全局注册">全局注册</h3>
+
+<p>子组件直接可以互相使用。</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">Vue.component(<span style="background-color:#fff0f0">&#34;cmpt-name&#34;</span>, {<span style="color:#888">/*...*/</span>});
+</code></pre></div>
+<h3 id="局部注册">局部注册</h3>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#888">// 在其子组件中不可用。
+</span><span style="color:#888"></span><span style="color:#080;font-weight:bold">var</span> ComponentA <span style="color:#333">=</span> {<span style="color:#888">/*...*/</span>};
+<span style="color:#080;font-weight:bold">var</span> ComponentB <span style="color:#333">=</span> {<span style="color:#888">/*...*/</span>};
+<span style="color:#080;font-weight:bold">new</span> Vue({
+    el<span style="color:#333">:</span><span style="background-color:#fff0f0">&#34;#app&#34;</span>,
+    components<span style="color:#333">:</span>{
+        <span style="background-color:#fff0f0">&#34;cmpt-a&#34;</span><span style="color:#333">:</span> ComponentA,
+        <span style="background-color:#fff0f0">&#34;cmpt-b&#34;</span><span style="color:#333">:</span> ComponentB
+    }
+})
+
+<span style="color:#888">// 如果要互相使用
+</span><span style="color:#888"></span><span style="color:#080;font-weight:bold">var</span> ComponentA <span style="color:#333">=</span> {<span style="color:#888">/*...*/</span>};
+<span style="color:#080;font-weight:bold">var</span> ComponentB <span style="color:#333">=</span> {
+    components<span style="color:#333">:</span> {
+        <span style="background-color:#fff0f0">&#39;component-a&#39;</span><span style="color:#333">:</span> ComponentA
+    }
+};
+</code></pre></div>
+<h3 id="模块系统">模块系统</h3>
+
+<h4 id="模块系统中局部注册">模块系统中局部注册</h4>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#080;font-weight:bold">import</span> ComponentA form <span style="background-color:#fff0f0">&#39;./ComponentA&#39;</span>
+
+<span style="color:#080;font-weight:bold">export</span> <span style="color:#080;font-weight:bold">default</span> {
+    components<span style="color:#333">:</span> {
+        ComponentA
+    }
+}
+</code></pre></div>
+<h4 id="基础组件的自动化全局注册">基础组件的自动化全局注册</h4>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#080;font-weight:bold">const</span> requireComponent <span style="color:#333">=</span> require.context(
+  <span style="color:#888">// 其组件目录的相对路径
+</span><span style="color:#888"></span>  <span style="background-color:#fff0f0">&#39;./components&#39;</span>,
+  <span style="color:#888">// 是否查询其子目录
+</span><span style="color:#888"></span>  <span style="color:#080;font-weight:bold">false</span>,
+  <span style="color:#888">// 匹配基础组件文件名的正则表达式
+</span><span style="color:#888"></span>  <span style="color:#000;background-color:#fff0ff">/Base[A-Z]\w+\.(vue|js)$/</span>
+)
+
+requireComponent.keys().forEach(fileName =&gt; {
+  <span style="color:#888">// 获取组件配置
+</span><span style="color:#888"></span>  <span style="color:#080;font-weight:bold">const</span> componentConfig <span style="color:#333">=</span> requireComponent(fileName)
+
+  <span style="color:#888">// 获取组件的 PascalCase 命名
+</span><span style="color:#888"></span>  <span style="color:#080;font-weight:bold">const</span> componentName <span style="color:#333">=</span> upperFirst(
+    camelCase(
+      <span style="color:#888">// 获取和目录深度无关的文件名
+</span><span style="color:#888"></span>      fileName
+        .split(<span style="background-color:#fff0f0">&#39;/&#39;</span>)
+        .pop()
+        .replace(<span style="color:#000;background-color:#fff0ff">/\.\w+$/</span>, <span style="background-color:#fff0f0">&#39;&#39;</span>)
+    )
+  )
+
+  <span style="color:#888">// 全局注册组件
+</span><span style="color:#888"></span>  Vue.component(
+    componentName,
+    <span style="color:#888">// 如果这个组件选项是通过 `export default` 导出的，
+</span><span style="color:#888"></span>    <span style="color:#888">// 那么就会优先使用 `.default`，
+</span><span style="color:#888"></span>    <span style="color:#888">// 否则回退到使用模块的根。
+</span><span style="color:#888"></span>    componentConfig.<span style="color:#080;font-weight:bold">default</span> <span style="color:#333">||</span> componentConfig
+  )
+})
+</code></pre></div>
+<h2 id="prop">Prop</h2>
+
+<h3 id="大小写">大小写</h3>
+
+<p>HTMl 中的特性名会把所有大写字符解释成小写字符。</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">Vue.Component(<span style="background-color:#fff0f0">&#39;blog-post&#39;</span>, {
+    props<span style="color:#333">:</span> [<span style="background-color:#fff0f0">&#39;postTitle&#39;</span>],
+    template<span style="color:#333">:</span> <span style="background-color:#fff0f0">&#39;&lt;h3&gt;{{postTitle}}&lt;/h3&gt;&#39;</span>;
+});
+</code></pre></div><div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#070">blog-post</span> <span style="color:#00c">post-tile</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;hello&#34;</span>&gt;&lt;/<span style="color:#070">blog-post</span>&gt;</code></pre></div>
+<h3 id="类型">类型</h3>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">props<span style="color:#333">:</span>{
+  title<span style="color:#333">:</span> <span style="color:#007020">String</span>,
+  likes<span style="color:#333">:</span> <span style="color:#007020">Number</span>,
+  isPublished<span style="color:#333">:</span> <span style="color:#007020">Boolean</span>,
+  commentIds<span style="color:#333">:</span> <span style="color:#007020">Array</span>,
+  author<span style="color:#333">:</span> <span style="color:#007020">Object</span>,
+  callback<span style="color:#333">:</span> <span style="color:#007020">Function</span>,
+  contactsPromise<span style="color:#333">:</span> <span style="color:#007020">Promise</span>
+}
+</code></pre></div>
+<h3 id="传递静态或动态-prop">传递静态或动态 Prop</h3>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#888">&lt;!-- 字符串 --&gt;</span>
+&lt;<span style="color:#070">blog-post</span> <span style="color:#00c">title</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;My journey with Vue&#34;</span>&gt;&lt;/<span style="color:#070">blog-post</span>&gt;
+<span style="color:#888">&lt;!-- 动态赋值一个复杂的表达式 --&gt;</span>
+&lt;<span style="color:#070">blog-post</span> <span style="color:#00c">v-bind:title</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;post.title + &#39;by&#39; + post.author.name&#34;</span>&gt;&lt;/<span style="color:#070">blog-post</span>&gt;</code></pre></div>
+<h4 id="传入数字">传入数字</h4>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#888">&lt;!-- 通过 v-bind 标识 42 是表达式 --&gt;</span>
+&lt;<span style="color:#070">blog-post</span> <span style="color:#00c">v-bind:likes</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;42&#34;</span>&gt;&lt;/<span style="color:#070">blog-post</span>&gt;
+
+<span style="color:#888">&lt;!-- 通过变量动态赋值 --&gt;</span>
+&lt;<span style="color:#070">blog-post</span> <span style="color:#00c">v-bind:likes</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;post.likes&#34;</span>&gt;&lt;/<span style="color:#070">blog-post</span>&gt;</code></pre></div>
+<h4 id="传入布尔值">传入布尔值</h4>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#888">&lt;!-- prop 没有值的情况表示 true --&gt;</span>
+&lt;<span style="color:#070">blog-post</span> <span style="color:#00c">is-published</span>&gt;&lt;/<span style="color:#070">blog-post</span>&gt;
+
+<span style="color:#888">&lt;!-- v-bind 表明 false 是表达式 --&gt;</span>
+&lt;<span style="color:#070">blog-post</span> <span style="color:#00c">v-bind:is-published</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;false&#34;</span>&gt;&lt;/<span style="color:#070">blog-post</span>&gt;
+
+<span style="color:#888">&lt;!-- 通过变量动态赋值 --&gt;</span>
+&lt;<span style="color:#070">blog-post</span> <span style="color:#00c">v-bind:is-published</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;post.isPublished&#34;</span>&gt;&lt;/<span style="color:#070">blog-post</span>&gt;</code></pre></div>
+<h4 id="传入数组">传入数组</h4>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#888">&lt;!-- v-bind 表明静态的数组是表达式 --&gt;</span>
+&lt;<span style="color:#070">blog-post</span> <span style="color:#00c">v-bind:comment-ids</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;[234,266,273]&#34;</span>&gt;&lt;/<span style="color:#070">blog-post</span>&gt;
+
+<span style="color:#888">&lt;!-- 变量动态赋值 --&gt;</span>
+&lt;<span style="color:#070">blog-post</span> <span style="color:#00c">v-bind:comment-ids</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;post.commentIds&#34;</span>&gt;&lt;/<span style="color:#070">blog-post</span>&gt;</code></pre></div>
+<h4 id="传入对象">传入对象</h4>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#888">&lt;!-- v-bind 表明静态的对象是表达式 --&gt;</span>
+&lt;<span style="color:#070">blog-post</span> <span style="color:#00c">v-bind:author</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;{
+</span><span style="background-color:#fff0f0">  name: &#39;zc&#39;,
+</span><span style="background-color:#fff0f0">  company: &#39;Veridian Dynamics&#39;
+</span><span style="background-color:#fff0f0">}&#34;</span>&gt;&lt;/<span style="color:#070">blog-post</span>&gt;
+
+<span style="color:#888">&lt;!-- 用动态变量进行动态赋值 --&gt;</span>
+&lt;<span style="color:#070">blog-post</span> <span style="color:#00c">v-bind:author</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;post.author&#34;</span>&gt;&lt;/<span style="color:#070">blog-post</span>&gt;</code></pre></div>
+<h4 id="传入一个对象的所有属性">传入一个对象的所有属性</h4>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">post<span style="color:#333">:</span>{
+  id<span style="color:#333">:</span><span style="color:#00d;font-weight:bold">1</span>,
+  title<span style="color:#333">:</span><span style="background-color:#fff0f0">&#39;My Journey with Vue&#39;</span>
+}
+</code></pre></div><div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#070">blog-post</span> <span style="color:#00c">v-bind</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;post&#34;</span>&gt;&lt;/<span style="color:#070">blog-post</span>&gt;
+<span style="color:#888">&lt;!-- 等价于 --&gt;</span>
+&lt;<span style="color:#070">blog-post</span> <span style="color:#00c">v-bind:id</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;post.id&#34;</span> <span style="color:#00c">v-bind:title</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;post.title&#34;</span>&gt;&lt;/<span style="color:#070">blog-post</span>&gt;</code></pre></div>
+<h2 id="单项数据流">单项数据流</h2>
+
+<p>父级的 prop 的更新会向下流动到子组件，反过来不可以。防止子组件意外的改变父组件的状态。</p>
+
+<p>试图改变 prop 值的两种情况:</p>
+
+<p>1.prop 传递初始值，接下来希望作为一个本地的数据使用。</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">  props<span style="color:#333">:</span> [<span style="background-color:#fff0f0">&#34;initialCounter&#34;</span>],
+  data<span style="color:#333">:</span> <span style="color:#080;font-weight:bold">function</span>(){
+    <span style="color:#080;font-weight:bold">return</span> {
+      counter<span style="color:#333">:</span> <span style="color:#080;font-weight:bold">this</span>.initialCounter
+    }
+  }
+</code></pre></div>
+<p>2.prop 是原始的值且需要转换</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">  props<span style="color:#333">:</span> [<span style="background-color:#fff0f0">&#39;size&#39;</span>],
+  computed<span style="color:#333">:</span> {
+    normalizedSize<span style="color:#333">:</span> <span style="color:#080;font-weight:bold">function</span>(){
+      <span style="color:#080;font-weight:bold">return</span> <span style="color:#080;font-weight:bold">this</span>.size.trim().toLowerCase()
+    }
+  }
+</code></pre></div>
+<blockquote>
+<p>数组或对象类的 prop ,在子组件中改变这个对象或者数组本身将会影响到父组件。</p>
+</blockquote>
+
+<h2 id="prop-验证">Prop 验证</h2>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">Vue.component(<span style="background-color:#fff0f0">&#34;my-cmpt&#34;</span>,{
+  props<span style="color:#333">:</span>{
+    <span style="color:#888">// 基础类型检查（`null`和`undefined` 会通过任何类型的验证）
+</span><span style="color:#888"></span>    propA<span style="color:#333">:</span> <span style="color:#007020">Number</span>,
+    <span style="color:#888">// 多个类型
+</span><span style="color:#888"></span>    propB<span style="color:#333">:</span>[<span style="color:#007020">String</span>,<span style="color:#007020">Number</span>],
+    <span style="color:#888">// 必填字段
+</span><span style="color:#888"></span>    propC<span style="color:#333">:</span>{
+      type<span style="color:#333">:</span><span style="color:#007020">String</span>,
+      required<span style="color:#333">:</span><span style="color:#080;font-weight:bold">true</span>
+    }
+    <span style="color:#888">// 带有默认的数字
+</span><span style="color:#888"></span>    propD<span style="color:#333">:</span>{
+      type<span style="color:#333">:</span><span style="color:#007020">Number</span>,
+      <span style="color:#080;font-weight:bold">default</span><span style="color:#333">:</span><span style="color:#00d;font-weight:bold">100</span>
+    },
+    <span style="color:#888">// 带有默认值的对象
+</span><span style="color:#888"></span>    propE<span style="color:#333">:</span>{
+      type<span style="color:#333">:</span><span style="color:#007020">Object</span>,
+      <span style="color:#080;font-weight:bold">default</span><span style="color:#333">:</span><span style="color:#080;font-weight:bold">function</span>(){
+        <span style="color:#080;font-weight:bold">return</span>{message<span style="color:#333">:</span><span style="background-color:#fff0f0">&#39;hello&#39;</span>}
+      }
+    },
+    <span style="color:#888">// 自定义验证函数
+</span><span style="color:#888"></span>    propF<span style="color:#333">:</span>{
+      validator<span style="color:#333">:</span><span style="color:#080;font-weight:bold">function</span>(value){
+        <span style="color:#888">// 这个值必须匹配下列字符串中的一个
+</span><span style="color:#888"></span>        <span style="color:#080;font-weight:bold">return</span> [<span style="background-color:#fff0f0">&#39;success&#39;</span>,<span style="background-color:#fff0f0">&#39;warning&#39;</span>,<span style="background-color:#fff0f0">&#39;danger&#39;</span>].indexOf(value) <span style="color:#333">!==</span> <span style="color:#333">-</span><span style="color:#00d;font-weight:bold">1</span>;
+      }
+    }
+  }
+})
+</code></pre></div>
+<blockquote>
+<p>会在组件创建之前进行验证，所以实例的属性（如：<code>data</code>、<code>computed</code>等）在<code>default</code>或<code>validator</code>函数中不可用的。</p>
+</blockquote>
+
+
+    <script>
+        let colNum = document.querySelector("#sheet_column").innerText;
+        const sheetBox = document.body.querySelector("#sheet_box");
+        let eleList = [];
+        Array.prototype.max = function () {
+            return Math.max.apply(null, this);
+        };
+        Array.prototype.minindex = function (col) {
+            let _index = 0,
+                min = this[0];
+            for (var i = 1; i < col; i++) {
+                if (min > this[i]) {
+                    min = this[i];
+                    _index = i;
+                }
+            }
+            return _index;
+        };
+
+
+        for (let key in sheetBox.children) {
+            eleList.push(sheetBox.children[key]);
+        }
+        let _section, _wrap, _x = 0,
+            _y = 0;
+        eleList.forEach(ele => {
+            if (ele.localName === "h2") {
+                _section = document.createElement("div");
+                _wrap = document.createElement("div");
+                _wrap.className = "h3_wrap";
+                _section.className = "h2_section";
+                _section.appendChild(ele);
+                sheetBox.appendChild(_section);
+                sheetBox.appendChild(_wrap);
+                _x = 0;
+                _y = 0;
+            }
+            if (ele.localName === "h3") {
+                _section = document.createElement("div");
+                _section.className = "h3_section";
+                if (!_wrap) {
+                    _wrap = document.createElement("div");
+                    _wrap.className = "h3_wrap";
+                }
+                if (colNum === "2") {
+                    _section.style.width = "49.4%";
+                } else {
+                    _section.style.width = "32.8%";
+                }
+                _section.appendChild(ele);
+                _wrap.appendChild(_section);
+            }
+            if (_section && ele.localName && ele.localName !== "script") {
+                _section.appendChild(ele);
+            }
+        });
+
+        function layout(col, _onlyChangeWidth) {
+            let _w = sheetBox.offsetWidth;
+            const _tars = sheetBox.querySelectorAll(".h3_wrap");
+            let _e_offset = _w * 1.012 / col;
+
+            _tars.forEach(t => {
+                let _hs = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+                let es = [];
+                let _h3_wrap_height = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+                for (let key in t.children) {
+                    if (t.children[key].localName) {
+                        es.push(t.children[key]);
+                    }
+                }
+                es.forEach((e, i) => {
+                    let _colOrder = _hs.minindex(col);
+                    e.style.left = _colOrder * _e_offset + 'px';
+                    e.style.top = _hs[_colOrder] + 'px';
+                    e.style.width = (_w - (col - 1) * _w * 0.012) / col + 'px';
+                    _hs[_colOrder] += e.offsetHeight + 8;
+                    _h3_wrap_height[_colOrder] += e.offsetHeight + 8;
+
+                })
+                t.style.height = _h3_wrap_height.max() + 'px';
+            })
+        }
+
+        colNum = Number(colNum) ? Number(colNum) : 3;
+        let _colCounter;
+        if (window.innerWidth > 768) {
+            _colCounter = colNum;
+        } else if (window.innerWidth > 480) {
+            _colCounter = colNum - 1 <= 0 ? colNum : colNum - 1;
+        } else {
+            _colCounter = colNum - 2 <= 0 ? colNum - 1 <= 0 ? colNum : colNum - 1 : colNum - 2;
+        }
+        layout(_colCounter);
+        window.onresize = function () {
+            let _cols;
+            if (window.innerWidth >= 768) {
+                _cols = colNum;
+            } else if (window.innerWidth > 480) {
+                _cols = colNum - 1 <= 0 ? colNum : colNum - 1;
+            } else {
+                _cols = colNum - 2 <= 0 ? colNum - 1 <= 0 ? colNum : colNum - 1 : colNum - 2;
+            }
+            layout(_cols);
+        }
+    </script>
+</div>
+</div>
+
+    </main>
+
+    <footer>
+        
+        
+        
+    </footer>
+
+</body>
+
+</html>
