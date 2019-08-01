@@ -2,88 +2,108 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>featured on EsilyZhang 的备忘单</title>
-    <link>https://bwd.zhangchao.online/tags/featured/</link>
+    <link>https://www.zhangchao.online/tags/featured/</link>
     <description>Recent content in featured on EsilyZhang 的备忘单</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 22 Jul 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 01 Aug 2019 20:31:15 +0800</lastBuildDate>
     
-	<atom:link href="https://bwd.zhangchao.online/tags/featured/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://www.zhangchao.online/tags/featured/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>Web Performer</title>
+      <link>https://www.zhangchao.online/web/web-performer/</link>
+      <pubDate>Thu, 01 Aug 2019 20:31:15 +0800</pubDate>
+      
+      <guid>https://www.zhangchao.online/web/web-performer/</guid>
+      <description>Web 性能 加载快 服务器的返回快 web 自身加载快和渲染快 JavaScript 压缩（Minify） ####### webpack mode: &amp;lsquo;production&amp;rsquo;
+####### Babel babel-preset-minify
+####### Gulp gulp-uglify
+Async &amp;amp;&amp;amp; Defer 浏览器加载网页的过程： 1. 开始加载 HTML 文档 2. 解析 HTML 3. 如果遇到 script 标签，暂停解析 HTML，开始下载脚本，执行脚本 4. 继续解析 5. 渲染
+Async 是异步下载脚本，一旦完成下载，立即执行；
+Defer 是异步下载脚本，但是只有在 HTML 解析完成才会开始执行；
+两者还有重要的不同是：Async 不能保证脚本执行的顺序，而 Defer 会在所有脚本下载完成才会执行，保证正确的顺序。
+代码分割 对于多页的 Web 应用，使用一个 Bundle.js 增加了页面加载的时间。
+通过将代码分割，可以根据应用的功能加载相应功能的 js 代码。
+分隔的代码如何使用：
+首先，像 Webpack、Parcel 或 Rollup等工具，支持的 import 函数。import 函数会将 import 中引入的文件，包含文件中引入的依赖，都会打包成一个独立的块文件。只有当在应用通过import调用文件时，才会加载模块。
+浏览器中的 import 是异步下载的方式。</description>
+    </item>
+    
+    <item>
       <title>Vue</title>
-      <link>https://bwd.zhangchao.online/vue/vue/</link>
+      <link>https://www.zhangchao.online/vue/vue/</link>
       <pubDate>Mon, 22 Jul 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://bwd.zhangchao.online/vue/vue/</guid>
+      <guid>https://www.zhangchao.online/vue/vue/</guid>
       <description>Vue 实例 语法 var vm = new VUe({ // 选项 });  数据和方法 var data = {a: 1}; var vm = new Vue({ data: data }); // 获取这个实例上的属性  vm.a == data.a; // true;  // 设置属性会影响原始的数据 vm.a = 2; data.a = 2; // 反之也是 data.a = 3; vm.a = 3;   只有在实例创建时data中存在的属性才是响应的。 Vue 实例中暴露的属性和方都会携带$前缀
  生命钩子 模板语法 插值 文本 &amp;lt;span&amp;gt;Message: {{msg}}&amp;lt;span&amp;gt; // v-noce 执行一次性的插值，当数据改变时，插值处的值并不会改变 原始 html {{}} 会将数据解释为普通文本，为了输出 HTML，使用v-html。</description>
     </item>
     
     <item>
       <title>Bash 命令行</title>
-      <link>https://bwd.zhangchao.online/cli/bash/</link>
+      <link>https://www.zhangchao.online/cli/bash/</link>
       <pubDate>Sun, 21 Jul 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://bwd.zhangchao.online/cli/bash/</guid>
+      <guid>https://www.zhangchao.online/cli/bash/</guid>
       <description>if 语法 if test-command; then consequesnt-commands; [elif more-test-commands; then more-consequesnt;] [else alternate-consequesnt;] fi for 语法 # words 不指定，只执行一次 for name [in words ...]; do commands; done for (( expr1; expr2 )); do commands; done # 等价于 (( expr1 )) while (( expr2 ));do commands done words file1.txt file2.txt file3.txt # 或者 Apple Sony &amp;#34;Hewlett Packard&amp;#34; 通配符 * 表示的是文件夹中的文件名字
 for thisfile in *; do echo &amp;#34;found $thisfile&amp;#34;; done 例子 1 - 10 for i in `seq 1 10` do echo &amp;#34;$i&amp;#34;; done # 大括号实现 for i in {1.</description>
     </item>
     
     <item>
       <title>ES2015&#43;</title>
-      <link>https://bwd.zhangchao.online/javascript/es6/</link>
+      <link>https://www.zhangchao.online/javascript/es6/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://bwd.zhangchao.online/javascript/es6/</guid>
+      <guid>https://www.zhangchao.online/javascript/es6/</guid>
       <description>语法 块作用域声明 let var a = 2; { let a = 3; console.log(&amp;#34;块作用域&amp;#34;, a); } console.log(&amp;#34;函数作用域&amp;#34;, a);  const { const a = 2; console.log(a); // 2  a = 3; // TypeError } // 常量不是对这个值本身的限制，而是对赋值的哪个变量的限制 { const a = [1, 2, 3]; a.push(4); console.log(a); // [1, 2, 3, 4]  a = 42; // TypeError }  块作用域函数 { foo(); function foo(){} } foo(); // ReferenceError  spread/rest spread function foo(a, b, c){ console.</description>
     </item>
     
     <item>
       <title>JavaScript 面试题</title>
-      <link>https://bwd.zhangchao.online/interview-question/javascript/</link>
+      <link>https://www.zhangchao.online/interview-question/javascript/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://bwd.zhangchao.online/interview-question/javascript/</guid>
+      <guid>https://www.zhangchao.online/interview-question/javascript/</guid>
       <description>JavaScript 修改以下 print 函数，使之输出 0 到 99，或者 99 到 0  只能修改 setTimeout 到 Math.floor(Math.random() * 1000 的代码 不能修改 Math.floor(Math.random() * 1000 不能使用全局变量  代码 function print(n){ setTimeout(() =&amp;gt; { console.log(n); }, Math.floor(Math.random() * 1000)); } for(var i = 0; i &amp;lt; 100; i++){ print(i); }  关键 将输出执行脱离异步定时器，变为立即执行。
 答案 function print(n){ setTimeout((() =&amp;gt; { console.log(n); return null; })(), Math.floor(Math.random() * 1000)); } for(var i = 0; i &amp;lt; 100; i++){ print(i); }  请写出如下代码的打印结果 代码 function Foo() { Foo.</description>
     </item>
     
     <item>
       <title>MongoDB 常用语句</title>
-      <link>https://bwd.zhangchao.online/database/mongodb/</link>
+      <link>https://www.zhangchao.online/database/mongodb/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://bwd.zhangchao.online/database/mongodb/</guid>
+      <guid>https://www.zhangchao.online/database/mongodb/</guid>
       <description> 删除 数据 语法：db.collection.remove(&amp;lt;query&amp;gt;, &amp;lt;justone&amp;gt;)
 // 全部删除 db.collection.remove({}); // 特定数据 db.collection.remove({ {category: cate} }); </description>
     </item>
     
     <item>
       <title>Sass</title>
-      <link>https://bwd.zhangchao.online/css/sass/</link>
+      <link>https://www.zhangchao.online/css/sass/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://bwd.zhangchao.online/css/sass/</guid>
+      <guid>https://www.zhangchao.online/css/sass/</guid>
       <description>Basics {: .-three-column}
 Variables $red: #833;body { color: $red; } Nesting .markdown-body { p { color: blue; } &amp;amp;:hover { color: red; } } Comments /* Block comments */ // Line comments Mixins @mixinheading-font { font-family: sans-serif; font-weight: bold; }h1 { @includeheading-font; } with parameters @mixinfont-size($n) { font-size: $n * 1.2em; }body { @includefont-size(2); } with default values @mixinpad($n: 10px) { padding: $n; }body { @includepad(15px); } with a default variable // Set a default value $default-padding: 10px;@mixinpad($n: $default-padding) { padding: $n; }body { @includepad(15px); } Extend .</description>
     </item>
     
     <item>
       <title>Visual Studio Code</title>
-      <link>https://bwd.zhangchao.online/apps/vscode/</link>
+      <link>https://www.zhangchao.online/apps/vscode/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://bwd.zhangchao.online/apps/vscode/</guid>
+      <guid>https://www.zhangchao.online/apps/vscode/</guid>
       <description>Shortcuts Command palette    Key Description     ⇧⌘P Show all commands   ⇧⌘P Show all commands   ⌘P Show files    Sidebars    Key Description     ⌘B Toggle sidebar   ⇧⌘E Explorer   ⇧⌘F Search   ⇧⌘D Debug   ⇧⌘X Extensions   ⇧^G Git (SCM)    Search    Key Description     ⌘F Find   ⌥⌘F Replace   ⇧⌘F Find in files   ⇧⌘H Replace in files    Panel    Key Description     ⌘J Toggle panel   ⇧⌘M Problems   ⇧⌘U Output   ⇧⌘Y Debug console   ^` Terminal    View    Key Description     ⌘k z Zen mode   ⌘k u Close unmodified   ⌘k w Close all    Debug    Key Description     F5 Start   ⇧F5 Stop   ⇧⌘F5 Restart   ^F5 Start without debugging   F9 Toggle breakpoint   F10 Step over   F11 Step into   ⇧F11 Step out   ⇧⌘D Debug sidebar   ⇧⌘Y Debug panel    References  Keyboard shortcuts (MacOS) (code.</description>
     </item>
     
     <item>
       <title>Web 通用知识面试题</title>
-      <link>https://bwd.zhangchao.online/interview-question/web/</link>
+      <link>https://www.zhangchao.online/interview-question/web/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://bwd.zhangchao.online/interview-question/web/</guid>
+      <guid>https://www.zhangchao.online/interview-question/web/</guid>
       <description> 安全 介绍下前端加密的常见场景和方法 协议 介绍下 HTTPS 中间人攻击 </description>
     </item>
     

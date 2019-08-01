@@ -58,7 +58,7 @@
         
 <div class='site-header' role='banner'>
     <h1>
-        前端 todo list - 备忘录
+        Fluid Width Equal Height Columns - 备忘录
     </h1>
 </div>
 <div class="md_content">
@@ -66,13 +66,22 @@
     <div id="sheet_column" hidden></div>
     
 
-<h2 id="html">HTML</h2>
+<h2 id="等高列的流式宽度分布">等高列的流式宽度分布</h2>
 
-<ul class="task-list">
-<li><label><input type="checkbox" disabled class="task-list-item"> event.preventDefault 和 event.stopPropagation() 的功能</label></li>
-<li><label><input type="checkbox" disabled class="task-list-item"> 事件函数回调中的 return false 的目的以及 addEventListner 回调中第二个参数的 false;</label></li>
-</ul>
+<p>所有的列分享父级的设置的相同的背景。</p>
 
+<p>HTML 代码：</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"> &lt;<span style="color:#070">div</span> <span style="color:#00c">id</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;page-wrap&#34;</span>&gt;
+    &lt;<span style="color:#070">div</span> <span style="color:#00c">class</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;five-columns group&#34;</span>&gt;
+        &lt;<span style="color:#070">div</span> <span style="color:#00c">class</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;col&#34;</span>&gt;content-1&lt;/<span style="color:#070">div</span>&gt;
+        &lt;<span style="color:#070">div</span> <span style="color:#00c">class</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;col&#34;</span>&gt;content-2&lt;/<span style="color:#070">div</span>&gt;
+        &lt;<span style="color:#070">div</span> <span style="color:#00c">class</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;col&#34;</span>&gt;content-3&lt;/<span style="color:#070">div</span>&gt;
+        &lt;<span style="color:#070">div</span> <span style="color:#00c">class</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;col&#34;</span>&gt;content-4&lt;/<span style="color:#070">div</span>&gt;
+        &lt;<span style="color:#070">div</span> <span style="color:#00c">class</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;col&#34;</span>&gt;content-5&lt;/<span style="color:#070">div</span>&gt;
+    &lt;/<span style="color:#070">div</span>&gt;
+&lt;/<span style="color:#070">div</span>&gt;</code></pre></div>
+<h3 id="float">float</h3>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-css" data-lang="css"></code></pre></div>
 
     <script>
         let colNum = document.querySelector("#sheet_column").innerText;

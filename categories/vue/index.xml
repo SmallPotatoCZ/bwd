@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>vue on EsilyZhang 的备忘单</title>
-    <link>https://bwd.zhangchao.online/categories/vue/</link>
+    <link>https://www.zhangchao.online/categories/vue/</link>
     <description>Recent content in vue on EsilyZhang 的备忘单</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Mon, 22 Jul 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://bwd.zhangchao.online/categories/vue/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://www.zhangchao.online/categories/vue/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Vue</title>
-      <link>https://bwd.zhangchao.online/vue/vue/</link>
+      <link>https://www.zhangchao.online/vue/vue/</link>
       <pubDate>Mon, 22 Jul 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://bwd.zhangchao.online/vue/vue/</guid>
+      <guid>https://www.zhangchao.online/vue/vue/</guid>
       <description>Vue 实例 语法 var vm = new VUe({ // 选项 });  数据和方法 var data = {a: 1}; var vm = new Vue({ data: data }); // 获取这个实例上的属性  vm.a == data.a; // true;  // 设置属性会影响原始的数据 vm.a = 2; data.a = 2; // 反之也是 data.a = 3; vm.a = 3;   只有在实例创建时data中存在的属性才是响应的。 Vue 实例中暴露的属性和方都会携带$前缀
  生命钩子 模板语法 插值 文本 &amp;lt;span&amp;gt;Message: {{msg}}&amp;lt;span&amp;gt; // v-noce 执行一次性的插值，当数据改变时，插值处的值并不会改变 原始 html {{}} 会将数据解释为普通文本，为了输出 HTML，使用v-html。</description>
     </item>

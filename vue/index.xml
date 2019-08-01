@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Vues on EsilyZhang 的备忘单</title>
-    <link>https://bwd.zhangchao.online/vue/</link>
+    <link>https://www.zhangchao.online/vue/</link>
     <description>Recent content in Vues on EsilyZhang 的备忘单</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Sat, 27 Jul 2019 00:05:00 +0800</lastBuildDate>
     
-	<atom:link href="https://bwd.zhangchao.online/vue/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://www.zhangchao.online/vue/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Vue 组件</title>
-      <link>https://bwd.zhangchao.online/vue/component/</link>
+      <link>https://www.zhangchao.online/vue/component/</link>
       <pubDate>Sat, 27 Jul 2019 00:05:00 +0800</pubDate>
       
-      <guid>https://bwd.zhangchao.online/vue/component/</guid>
+      <guid>https://www.zhangchao.online/vue/component/</guid>
       <description>组件注册 组件名 两种方式：
  kebab-case - &amp;lt;kebab-case&amp;gt; PascalCase - &amp;lt;PascalCase&amp;gt; 或者 &amp;lt;pascal-case&amp;gt;，直接在 DOM 中只有 kebab-case。  全局注册 子组件直接可以互相使用。
 Vue.component(&amp;#34;cmpt-name&amp;#34;, {/*...*/});  局部注册 // 在其子组件中不可用。 var ComponentA = {/*...*/}; var ComponentB = {/*...*/}; new Vue({ el:&amp;#34;#app&amp;#34;, components:{ &amp;#34;cmpt-a&amp;#34;: ComponentA, &amp;#34;cmpt-b&amp;#34;: ComponentB } }) // 如果要互相使用 var ComponentA = {/*...*/}; var ComponentB = { components: { &amp;#39;component-a&amp;#39;: ComponentA } };  模块系统 模块系统中局部注册 import ComponentA form &amp;#39;./ComponentA&amp;#39; export default { components: { ComponentA } }  基础组件的自动化全局注册 const requireComponent = require.</description>
@@ -23,10 +23,10 @@ Vue.component(&amp;#34;cmpt-name&amp;#34;, {/*...*/});  局部注册 // 在其�
     
     <item>
       <title>Vue</title>
-      <link>https://bwd.zhangchao.online/vue/vue/</link>
+      <link>https://www.zhangchao.online/vue/vue/</link>
       <pubDate>Mon, 22 Jul 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://bwd.zhangchao.online/vue/vue/</guid>
+      <guid>https://www.zhangchao.online/vue/vue/</guid>
       <description>Vue 实例 语法 var vm = new VUe({ // 选项 });  数据和方法 var data = {a: 1}; var vm = new Vue({ data: data }); // 获取这个实例上的属性  vm.a == data.a; // true;  // 设置属性会影响原始的数据 vm.a = 2; data.a = 2; // 反之也是 data.a = 3; vm.a = 3;   只有在实例创建时data中存在的属性才是响应的。 Vue 实例中暴露的属性和方都会携带$前缀
  生命钩子 模板语法 插值 文本 &amp;lt;span&amp;gt;Message: {{msg}}&amp;lt;span&amp;gt; // v-noce 执行一次性的插值，当数据改变时，插值处的值并不会改变 原始 html {{}} 会将数据解释为普通文本，为了输出 HTML，使用v-html。</description>
     </item>

@@ -1,20 +1,41 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>CSS on EsilyZhang 的备忘单</title>
-    <link>https://bwd.zhangchao.online/categories/css/</link>
-    <description>Recent content in CSS on EsilyZhang 的备忘单</description>
+    <title>css on EsilyZhang 的备忘单</title>
+    <link>https://www.zhangchao.online/categories/css/</link>
+    <description>Recent content in css on EsilyZhang 的备忘单</description>
     <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Wed, 31 Jul 2019 23:26:07 +0800</lastBuildDate>
     
-	<atom:link href="https://bwd.zhangchao.online/categories/css/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://www.zhangchao.online/categories/css/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>Layout</title>
+      <link>https://www.zhangchao.online/css/layout/</link>
+      <pubDate>Wed, 31 Jul 2019 23:26:07 +0800</pubDate>
+      
+      <guid>https://www.zhangchao.online/css/layout/</guid>
+      <description> 非替换元素的绝对位置 </description>
+    </item>
+    
+    <item>
+      <title>Fluid Width Equal Height Columns</title>
+      <link>https://www.zhangchao.online/css/fluid-width-equal-height-columns/</link>
+      <pubDate>Wed, 31 Jul 2019 22:18:43 +0800</pubDate>
+      
+      <guid>https://www.zhangchao.online/css/fluid-width-equal-height-columns/</guid>
+      <description> 等高列的流式宽度分布 所有的列分享父级的设置的相同的背景。
+HTML 代码：
+&amp;lt;div id=&amp;#34;page-wrap&amp;#34;&amp;gt; &amp;lt;div class=&amp;#34;five-columns group&amp;#34;&amp;gt; &amp;lt;div class=&amp;#34;col&amp;#34;&amp;gt;content-1&amp;lt;/div&amp;gt; &amp;lt;div class=&amp;#34;col&amp;#34;&amp;gt;content-2&amp;lt;/div&amp;gt; &amp;lt;div class=&amp;#34;col&amp;#34;&amp;gt;content-3&amp;lt;/div&amp;gt; &amp;lt;div class=&amp;#34;col&amp;#34;&amp;gt;content-4&amp;lt;/div&amp;gt; &amp;lt;div class=&amp;#34;col&amp;#34;&amp;gt;content-5&amp;lt;/div&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;/div&amp;gt; float </description>
+    </item>
+    
+    <item>
       <title>CSS</title>
-      <link>https://bwd.zhangchao.online/posts/css/</link>
+      <link>https://www.zhangchao.online/posts/css/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://bwd.zhangchao.online/posts/css/</guid>
+      <guid>https://www.zhangchao.online/posts/css/</guid>
       <description> 元素分类 Normal flow 从左向右，从上向下。脱离文档流的方式：float、position、flex和grid。
 Nonreplace element 它的文本内容可以在元素自身里。如：p。
 Rplaced element 简单来说，它们的内容不受当前文档的样式的影响。CSS 可以影响可替换元素的位置，但不会影响到可替换元素自身的内容。
@@ -30,10 +51,10 @@ Inline-block box 元素内部像块元素，外部行为像行内元素。就像
     
     <item>
       <title>Sass</title>
-      <link>https://bwd.zhangchao.online/css/sass/</link>
+      <link>https://www.zhangchao.online/css/sass/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://bwd.zhangchao.online/css/sass/</guid>
+      <guid>https://www.zhangchao.online/css/sass/</guid>
       <description>Basics {: .-three-column}
 Variables $red: #833;body { color: $red; } Nesting .markdown-body { p { color: blue; } &amp;amp;:hover { color: red; } } Comments /* Block comments */ // Line comments Mixins @mixinheading-font { font-family: sans-serif; font-weight: bold; }h1 { @includeheading-font; } with parameters @mixinfont-size($n) { font-size: $n * 1.2em; }body { @includefont-size(2); } with default values @mixinpad($n: 10px) { padding: $n; }body { @includepad(15px); } with a default variable // Set a default value $default-padding: 10px;@mixinpad($n: $default-padding) { padding: $n; }body { @includepad(15px); } Extend .</description>
     </item>
