@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+<meta content='width=device-width, initial-scale=1.0' name='viewport'>
+<link href='/favicon.png' rel='shortcut icon'>
+<meta content='' name='app:pageurl'>
+
+
+
+
+
+
+
+<link rel="canonical" href="">
+<meta name="og:url" content="">
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <title>EsilyZhang 的备忘单</title>
+    
+    <link rel="stylesheet" href="/sass/home.min.de7c29548feadde2ec038bd703cb5297c0c0d6ae56e095e1f9e1d89f08855611.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+
+<link rel="stylesheet" href="/sass/cheatsheet.min.1cce9f1e81b5dae0de70667bf5dc73882e37a9ff2246da3fb053fd3257108832.css">
+
+</head>
+
+<body>
+    <header role="heading">
+        <nav class='top-nav' data-js-no-preview role='navigation'>
+    <div class='container'>
+        
+        <div class='left'>
+            <a class='back-button icons' href='/'>keyboard_backspace</a>
+        </div>
+        
+
+        <a class='brand' href='/'>
+            EsilyZhang 的备忘单
+        </a>
+    </div>
+</nav>
+    </header>
+    <main role="main">
+        
+<div class='site-header' role='banner'>
+    <h1>
+        Symbol - 备忘录
+    </h1>
+</div>
+<div class="md_content">
+    <div id="sheet_box">
+    <div id="sheet_column" hidden>2</div>
+    
+
+<h2 id="基础">基础</h2>
+
+<p>Symbol 类型没有字面量的形式。主要作用是创建一个类字符串的不会与其它任何值冲突的值。</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#888">// 不能使用 new
+</span><span style="color:#888"></span><span style="color:#080;font-weight:bold">var</span> sym <span style="color:#333">=</span> Symbol(<span style="background-color:#fff0f0">&#34;sym description&#34;</span>);
+<span style="color:#888">// 识别 sym
+</span><span style="color:#888"></span><span style="color:#080;font-weight:bold">typeof</span> sym;
+<span style="color:#888">// sym 的字符串表示
+</span><span style="color:#888"></span>sym.toString();
+<span style="color:#888">// 几乎隐藏的属性，类似元属性
+</span><span style="color:#888"></span><span style="color:#080;font-weight:bold">var</span> Foo <span style="color:#333">=</span> {};
+Foo[sym] <span style="color:#333">=</span> <span style="background-color:#fff0f0">&#34;symbol&#34;</span>;
+<span style="color:#888">// 不参与 for...in 的循环，但是 Object.assign 是能够将其复制
+</span><span style="color:#888"></span><span style="color:#080;font-weight:bold">var</span> clone <span style="color:#333">=</span> <span style="color:#007020">Object</span>.assign({}, Foo);
+</code></pre></div>
+<h2 id="使用-symbol">使用 Symbol</h2>
+
+<h3 id="全局搜索">全局搜索</h3>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">(<span style="color:#080;font-weight:bold">function</span> () {
+    <span style="color:#080;font-weight:bold">var</span> sym1 <span style="color:#333">=</span> Symbol(<span style="background-color:#fff0f0">&#34;symbol1&#34;</span>);
+    <span style="color:#080;font-weight:bold">var</span> sym2 <span style="color:#333">=</span> Symbol(<span style="background-color:#fff0f0">&#34;symbol2&#34;</span>);
+})();
+(<span style="color:#080;font-weight:bold">function</span> () {
+    <span style="color:#888">// 搜索全局 symbol
+</span><span style="color:#888"></span>    <span style="color:#080;font-weight:bold">var</span> sym_index1 <span style="color:#333">=</span> Symbol.<span style="color:#080;font-weight:bold">for</span>(<span style="background-color:#fff0f0">&#34;symbol1&#34;</span>);
+    <span style="color:#080;font-weight:bold">var</span> sym_index2 <span style="color:#333">=</span> Symbol.<span style="color:#080;font-weight:bold">for</span>(<span style="background-color:#fff0f0">&#34;symbol2&#34;</span>);
+    console.log(<span style="background-color:#fff0f0">&#34;symbol1 &#34;</span>, sym_index1.toString());
+    console.log(<span style="background-color:#fff0f0">&#34;symbol2 &#34;</span>, sym_index2.toString());
+})();
+</code></pre></div>
+<h3 id="提取注册符号描述文本">提取注册符号描述文本</h3>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#080;font-weight:bold">var</span> sym1 <span style="color:#333">=</span> Symbol(<span style="background-color:#fff0f0">&#34;symbol1&#34;</span>);
+<span style="color:#080;font-weight:bold">var</span> desc <span style="color:#333">=</span> Symbol.keyFor(symb1); <span style="color:#888">// symbol1
+</span></code></pre></div>
+<h3 id="对象属性符号">对象属性符号</h3>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#080;font-weight:bold">var</span> sym1 <span style="color:#333">=</span> Symbol(<span style="background-color:#fff0f0">&#34;symbol1&#34;</span>);
+<span style="color:#080;font-weight:bold">var</span> obj <span style="color:#333">=</span> {
+    name<span style="color:#333">:</span> <span style="background-color:#fff0f0">&#34;name&#34;</span>,
+    [sym1]<span style="color:#333">:</span> <span style="background-color:#fff0f0">&#34;sym1&#34;</span>
+};
+<span style="color:#007020">Object</span>.getOwnPropertyNames(obj); <span style="color:#888">// [&#34;name&#34;]
+</span><span style="color:#888"></span><span style="color:#007020">Object</span>.getOwnPropertySymbols(obj); <span style="color:#888">// [Symbol(symbol1)]
+</span></code></pre></div>
+<h3 id="内置符号">内置符号</h3>
+
+<p>内部符号区别于全局注册的 Symbol，而是保存在 Symbol 函数对象的属性中。如：<code>Symbol.iterator</code>、<code>Symbol.toString</code>、<code>Symbol.toPrimitive</code>等。</p>
+
+<h2 id="参考链接">参考链接</h2>
+
+<ol>
+<li>你不知道的 JavaScript 下卷（2.13）</li>
+<li><a href="https://javascript.info/symbol">javascript.info</a></li>
+</ol>
+
+    
+    <script type="text/javascript" src="/js/sheet.min.js"></script>
+
+    
+    <div id="remark-wrap">
+    <h2>备注 <span id="remark-out">Out</span></h2>
+    <div id="remark-content">
+
+    </div>
+</div>
+</div>
+</div>
+
+    </main>
+
+    <footer>
+        
+        
+        
+    </footer>
+
+</body>
+
+</html>

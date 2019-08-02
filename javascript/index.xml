@@ -5,10 +5,20 @@
     <link>https://www.zhangchao.online/javascript/</link>
     <description>Recent content in Javascripts on EsilyZhang 的备忘单</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Tue, 23 Jul 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 02 Aug 2019 23:02:24 +0800</lastBuildDate>
     
 	<atom:link href="https://www.zhangchao.online/javascript/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Symbol</title>
+      <link>https://www.zhangchao.online/javascript/symbol/</link>
+      <pubDate>Fri, 02 Aug 2019 23:02:24 +0800</pubDate>
+      
+      <guid>https://www.zhangchao.online/javascript/symbol/</guid>
+      <description>基础 Symbol 类型没有字面量的形式。主要作用是创建一个类字符串的不会与其它任何值冲突的值。
+// 不能使用 new var sym = Symbol(&amp;#34;sym description&amp;#34;); // 识别 sym typeof sym; // sym 的字符串表示 sym.toString(); // 几乎隐藏的属性，类似元属性 var Foo = {}; Foo[sym] = &amp;#34;symbol&amp;#34;; // 不参与 for...in 的循环，但是 Object.assign 是能够将其复制 var clone = Object.assign({}, Foo);  使用 Symbol 全局搜索 (function () { var sym1 = Symbol(&amp;#34;symbol1&amp;#34;); var sym2 = Symbol(&amp;#34;symbol2&amp;#34;); })(); (function () { // 搜索全局 symbol  var sym_index1 = Symbol.for(&amp;#34;symbol1&amp;#34;); var sym_index2 = Symbol.</description>
+    </item>
     
     <item>
       <title>Nodejs 基础</title>

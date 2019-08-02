@@ -5,10 +5,19 @@
     <link>https://www.zhangchao.online/categories/</link>
     <description>Recent content in Categories on EsilyZhang 的备忘单</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Fri, 02 Aug 2019 20:21:14 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 02 Aug 2019 23:02:24 +0800</lastBuildDate>
     
 	<atom:link href="https://www.zhangchao.online/categories/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>javascript</title>
+      <link>https://www.zhangchao.online/categories/javascript/</link>
+      <pubDate>Fri, 02 Aug 2019 23:02:24 +0800</pubDate>
+      
+      <guid>https://www.zhangchao.online/categories/javascript/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>apps</title>
@@ -34,15 +43,6 @@
       <pubDate>Wed, 31 Jul 2019 23:26:07 +0800</pubDate>
       
       <guid>https://www.zhangchao.online/categories/css/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>javascript</title>
-      <link>https://www.zhangchao.online/categories/javascript/</link>
-      <pubDate>Tue, 23 Jul 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.zhangchao.online/categories/javascript/</guid>
       <description></description>
     </item>
     
