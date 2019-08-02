@@ -16,18 +16,7 @@
       <pubDate>Thu, 01 Aug 2019 20:31:15 +0800</pubDate>
       
       <guid>https://www.zhangchao.online/web/web-performer/</guid>
-      <description>Web 性能 加载快 服务器的返回快 web 自身加载快和渲染快 JavaScript 压缩（Minify） ####### webpack mode: &amp;lsquo;production&amp;rsquo;
-####### Babel babel-preset-minify
-####### Gulp gulp-uglify
-Async &amp;amp;&amp;amp; Defer 浏览器加载网页的过程： 1. 开始加载 HTML 文档 2. 解析 HTML 3. 如果遇到 script 标签，暂停解析 HTML，开始下载脚本，执行脚本 4. 继续解析 5. 渲染
-Async 是异步下载脚本，一旦完成下载，立即执行；
-Defer 是异步下载脚本，但是只有在 HTML 解析完成才会开始执行；
-两者还有重要的不同是：Async 不能保证脚本执行的顺序，而 Defer 会在所有脚本下载完成才会执行，保证正确的顺序。
-代码分割 对于多页的 Web 应用，使用一个 Bundle.js 增加了页面加载的时间。
-通过将代码分割，可以根据应用的功能加载相应功能的 js 代码。
-分隔的代码如何使用：
-首先，像 Webpack、Parcel 或 Rollup等工具，支持的 import 函数。import 函数会将 import 中引入的文件，包含文件中引入的依赖，都会打包成一个独立的块文件。只有当在应用通过import调用文件时，才会加载模块。
-浏览器中的 import 是异步下载的方式。</description>
+      <description>Web 性能 graph LR perf[Web 性能] -- load[加载快] perf -- work[运行快] click work callNotes &#34;work&#34; perf -- response[服务器的返回快] perf -- self[web 自身加载快和渲染快] self -- js[JavaScript] js -- jsminify[压缩 minify] jsminify -- webpackmode[webpack mode:production] jsminify -- babeljs[babel babel-preset-minify] jsminify -- gulpjs[gulp gulp-uglify] js -- asyncdefer[Async &amp;&amp; Defer] click asyncdefer callNotes &#34;asyncdefer&#34; js -- codecomplit[代码分割] click codecomplit callNotes &#34;codecomplit&#34; js -- dependences[优化代码依赖] click dependences callNotes &#34;dependences&#34; self -- css[CSS] css -- cssminify[压缩 minify] cssminify -- webpackcss[webpack postcss-loader] click webpackcss callNotes &#34;</description>
     </item>
     
   </channel>

@@ -34,7 +34,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     
 
-<link rel="stylesheet" href="/sass/cheatsheet.min.29b176f268c93dd5c14a8afbb583624af531cd4d6e962f5d5c8fc18bd4256a32.css">
+<link rel="stylesheet" href="/sass/cheatsheet.min.1cce9f1e81b5dae0de70667bf5dc73882e37a9ff2246da3fb053fd3257108832.css">
 
 </head>
 
@@ -272,113 +272,16 @@ blue($color)
 <li><a href="http://sass-lang.com/documentation/file.SASS_REFERENCE.html#sassscript">http://sass-lang.com/documentation/file.SASS_REFERENCE.html#sassscript</a></li>
 </ul>
 
+    
+    <script type="text/javascript" src="/js/sheet.min.js"></script>
 
-    <script>
-        let colNum = document.querySelector("#sheet_column").innerText;
-        const sheetBox = document.body.querySelector("#sheet_box");
-        let eleList = [];
-        Array.prototype.max = function () {
-            return Math.max.apply(null, this);
-        };
-        Array.prototype.minindex = function (col) {
-            let _index = 0,
-                min = this[0];
-            for (var i = 1; i < col; i++) {
-                if (min > this[i]) {
-                    min = this[i];
-                    _index = i;
-                }
-            }
-            return _index;
-        };
+    
+    <div id="remark-wrap">
+    <h2>备注 <span id="remark-out">Out</span></h2>
+    <div id="remark-content">
 
-
-        for (let key in sheetBox.children) {
-            eleList.push(sheetBox.children[key]);
-        }
-        let _section, _wrap, _x = 0,
-            _y = 0;
-        eleList.forEach(ele => {
-            if (ele.localName === "h2") {
-                _section = document.createElement("div");
-                _wrap = document.createElement("div");
-                _wrap.className = "h3_wrap";
-                _section.className = "h2_section";
-                _section.appendChild(ele);
-                sheetBox.appendChild(_section);
-                sheetBox.appendChild(_wrap);
-                _x = 0;
-                _y = 0;
-            }
-            if (ele.localName === "h3") {
-                _section = document.createElement("div");
-                _section.className = "h3_section";
-                if (!_wrap) {
-                    _wrap = document.createElement("div");
-                    _wrap.className = "h3_wrap";
-                }
-                if (colNum === "2") {
-                    _section.style.width = "49.4%";
-                } else {
-                    _section.style.width = "32.8%";
-                }
-                _section.appendChild(ele);
-                _wrap.appendChild(_section);
-            }
-            if (_section && ele.localName && ele.localName !== "script") {
-                _section.appendChild(ele);
-            }
-        });
-
-        function layout(col, _onlyChangeWidth) {
-            let _w = sheetBox.offsetWidth;
-            const _tars = sheetBox.querySelectorAll(".h3_wrap");
-            let _e_offset = _w * 1.012 / col;
-
-            _tars.forEach(t => {
-                let _hs = [0, 0, 0, 0, 0, 0, 0, 0, 0];
-                let es = [];
-                let _h3_wrap_height = [0, 0, 0, 0, 0, 0, 0, 0, 0];
-                for (let key in t.children) {
-                    if (t.children[key].localName) {
-                        es.push(t.children[key]);
-                    }
-                }
-                es.forEach((e, i) => {
-                    let _colOrder = _hs.minindex(col);
-                    e.style.left = _colOrder * _e_offset + 'px';
-                    e.style.top = _hs[_colOrder] + 'px';
-                    e.style.width = (_w - (col - 1) * _w * 0.012) / col + 'px';
-                    _hs[_colOrder] += e.offsetHeight + 8;
-                    _h3_wrap_height[_colOrder] += e.offsetHeight + 8;
-
-                })
-                t.style.height = _h3_wrap_height.max() + 'px';
-            })
-        }
-
-        colNum = Number(colNum) ? Number(colNum) : 3;
-        let _colCounter;
-        if (window.innerWidth > 768) {
-            _colCounter = colNum;
-        } else if (window.innerWidth > 480) {
-            _colCounter = colNum - 1 <= 0 ? colNum : colNum - 1;
-        } else {
-            _colCounter = colNum - 2 <= 0 ? colNum - 1 <= 0 ? colNum : colNum - 1 : colNum - 2;
-        }
-        layout(_colCounter);
-        window.onresize = function () {
-            let _cols;
-            if (window.innerWidth >= 768) {
-                _cols = colNum;
-            } else if (window.innerWidth > 480) {
-                _cols = colNum - 1 <= 0 ? colNum : colNum - 1;
-            } else {
-                _cols = colNum - 2 <= 0 ? colNum - 1 <= 0 ? colNum : colNum - 1 : colNum - 2;
-            }
-            layout(_cols);
-        }
-    </script>
+    </div>
+</div>
 </div>
 </div>
 
