@@ -20,6 +20,55 @@
     </item>
     
     <item>
+      <title>Docker</title>
+      <link>https://www.zhangchao.online/apps/docker/</link>
+      <pubDate>Fri, 02 Aug 2019 20:21:14 +0800</pubDate>
+      
+      <guid>https://www.zhangchao.online/apps/docker/</guid>
+      <description>镜像 列出本机的所有 image 文件 docker image ls 删除 image 文件 docker image rm $imagename 从远程拉去镜像 docker image pull $group/$imagename 创建 image 文件 docker image build -t $imagename[:$version] $DockerfilePath 为本地的image标注用户名和版本 docker image tag $imagename $username/$repository:$tag # 实例 docker image tag koa-demo:0.0.1 [group]/[imagename:version] 容器 新建并重启 # 运行脚本之后终止容器 docker run $imagename /bin/echo &amp;#34;Hello World&amp;#34; # 启动一个交互的终端 # -t,--tty 启动一个伪终端；-i,--interactive 保持容器的标准输入 docker run -it $imagename /bin/bash # 启动已经终止的容器 docker container start $imagename 后台运行容器 # -d,--detach 后台运行容器 docker run -d $imagename 查看后台容器的日志 docker container logs $imagename 列出容器列表 # 正在运行的容器 docker container ls # 包括已经停止的容器 docker container ls --all 终止容器 当 Docker 容器中指定的应用终结时，容器也会自动终结</description>
+    </item>
+    
+    <item>
+      <title>Docker Machine</title>
+      <link>https://www.zhangchao.online/apps/docker-machine/</link>
+      <pubDate>Fri, 02 Aug 2019 20:18:05 +0800</pubDate>
+      
+      <guid>https://www.zhangchao.online/apps/docker-machine/</guid>
+      <description> 命令行使用方法 新建虚拟机 docker-machine create --engine-registry-mirror=$mirrorurl -d $provider $vmname 删除虚拟机 docker-machine rm $vmname 从虚拟机挂载目录到主机 # 主机新建共享目录 mkdir $localpath # 虚拟机新建目录 docker-machine ssh $vmname mkdir $vmpath # 挂载目录 docker-machine mount $vmname:$vmpath $localpath ssh 连接虚拟机 dokcer-machine --native-ssh ssh $vmname $command 使用例子 新建配置阿里云镜像地址的 Docker 虚拟机  官网地址
+ 先按照官网进行注册。
+# 创建指定 docker 镜像的虚拟机 default docker-machine create --engine-registry-mirror=$alimirrorurl -d $provider default # 关闭虚拟机，新增固定共享目录 vboxmanage controlvm default savestate vboxmanage controlvm default poweroff vboxmanage sharedfolder add default --name $sharename --hostpath $hostpath vboxmanage startvm default --type headless # 新建共享目录 docker-machine ssh default sudo mkdir $vmpath # 修改目录权限 docker-machine ssh default sudo chmod 777 $vmpath # 挂载共享目录 docker-machine ssh default sudo mount -t vboxsf -o uid=1000,gid=1000 $sharename $vmpath 参考链接  docker-machine 官网  </description>
+    </item>
+    
+    <item>
+      <title>配置本地 HTTPS </title>
+      <link>https://www.zhangchao.online/apps/generate-certificate/</link>
+      <pubDate>Fri, 02 Aug 2019 20:06:27 +0800</pubDate>
+      
+      <guid>https://www.zhangchao.online/apps/generate-certificate/</guid>
+      <description>生成证书 openssl req -new -sha256 -newkey rsa:2048 -nodes \  -keyout dev.zc.com.key \  -x509 -days 365 -out dev.zc.com.crt 其中的 Common Name 是重要的。
+openssl 根据 SAN(Subject Alternative Name) 配置文件生成证书。
+openssl req -config dev.zc.com.conf -new -sha256 -newkey rsa:2048 \ -nodes -keyout dev.zc.com.key -x509 -days 365 \ -out dev.zc.com.crt SAN 配置文件内容:
+[ req ] default_bits = 2048 default_keyfile = server-key.pem distinguished_name = subject req_extensions = req_ext x509_extensions = x509_ext string_mask = utf8only [ subject ] countryName = Country Name (2 letter code) countryName_default = US stateOrProvinceName = State or Province Name (full name) stateOrProvinceName_default = NY localityName = Locality Name (eg, city) localityName_default = New York organizationName = Organization Name (eg, company) organizationName_default = Example, LLC commonName = Common Name (e.</description>
+    </item>
+    
+    <item>
+      <title>配置多个 ssh 账号</title>
+      <link>https://www.zhangchao.online/apps/multiply-ssh-key/</link>
+      <pubDate>Fri, 02 Aug 2019 20:00:21 +0800</pubDate>
+      
+      <guid>https://www.zhangchao.online/apps/multiply-ssh-key/</guid>
+      <description>创建不同的公钥 创建不同的 ssh key
+ssh-keygen -t rsa -C &amp;#34;your_email@youremail.com&amp;#34; 下面是创建的两个 key
+~/.ssh/id_rsa_num01 ~/.ssh/id_rsa_num02 下一步像下面一样，增加这两个 key
+ssh-add ~/.ssh/id_rsa_num01 ssh-add ~/.ssh/id_rsa_num02 在 windows 环境下，如果出现 Could not open a connection to your authentication agent. 
+需要先执行如下命令 windows 需要在 git bash 中执行
+eval `ssh-agent -s` ssh-add ~/.ssh/id_rsa_num01 ssh-add ~/.ssh/id_rsa_num02 可以删除之前缓存的 key
+ssh-add -D 最后可以查看已保存的 key
+ssh-add -l 修改你的 ssh 配置文件 config 字段的解释
+Host vps(这里是自定义的host简称,以后连接远程服务器就可以用命令ssh vps) User 这里填用户名(如:root) HostName 这里填服务器地址也可以是域名(如:server.xxoo.com) Port 这里填服务器 open-ssh 端口(默认:22) IdentityFile 这里是刚刚生成的私钥文件地址(如 ~/.</description>
+    </item>
+    
+    <item>
       <title>Web Performer</title>
       <link>https://www.zhangchao.online/web/web-performer/</link>
       <pubDate>Thu, 01 Aug 2019 20:31:15 +0800</pubDate>
@@ -217,7 +266,7 @@ Variables $red: #833;body { color: $red; } Nesting .markdown-body { p { color: b
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://www.zhangchao.online/todo/frontend/</guid>
-      <description> HTML event.preventDefault 和 event.stopPropagation() 的功能 事件函数回调中的 return false 的目的以及 addEventListner 回调中第二个参数的 false;  </description>
+      <description> HTML  [ x ] event.preventDefault 和 event.stopPropagation() 的功能 [ x ] 事件函数回调中的 return false 的目的以及 addEventListner 回调中第二个参数的 false;  </description>
     </item>
     
   </channel>

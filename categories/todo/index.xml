@@ -15,7 +15,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://www.zhangchao.online/todo/frontend/</guid>
-      <description> HTML event.preventDefault 和 event.stopPropagation() 的功能 事件函数回调中的 return false 的目的以及 addEventListner 回调中第二个参数的 false;  </description>
+      <description> HTML  [ x ] event.preventDefault 和 event.stopPropagation() 的功能 [ x ] 事件函数回调中的 return false 的目的以及 addEventListner 回调中第二个参数的 false;  </description>
     </item>
     
   </channel>

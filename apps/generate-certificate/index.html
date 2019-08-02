@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+<meta content='width=device-width, initial-scale=1.0' name='viewport'>
+<link href='/favicon.png' rel='shortcut icon'>
+<meta content='' name='app:pageurl'>
+
+
+
+
+
+
+
+<link rel="canonical" href="">
+<meta name="og:url" content="">
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <title>EsilyZhang 的备忘单</title>
+    
+    <link rel="stylesheet" href="/sass/home.min.de7c29548feadde2ec038bd703cb5297c0c0d6ae56e095e1f9e1d89f08855611.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+
+<link rel="stylesheet" href="/sass/post.min.173bcf01da6fdd8138f38a5006b6cfc500f643ca05c09fd7be51a1f29bafa152.css">
+
+</head>
+
+<body>
+    <header role="heading">
+        <nav class='top-nav' data-js-no-preview role='navigation'>
+    <div class='container'>
+        
+        <div class='left'>
+            <a class='back-button icons' href='/'>keyboard_backspace</a>
+        </div>
+        
+
+        <a class='brand' href='/'>
+            EsilyZhang 的备忘单
+        </a>
+    </div>
+</nav>
+    </header>
+    <main role="main">
+        
+<div class='site-header' role='banner'>
+    <h1>
+        配置本地 HTTPS  - 笔记
+    </h1>
+</div>
+<div>
+    
+
+<h2 id="生成证书">生成证书</h2>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">openssl req -new -sha256 -newkey rsa:2048 -nodes <span style="color:#666;background-color:#fff0f0;font-weight:bold">\ </span>
+-keyout dev.zc.com.key <span style="color:#666;background-color:#fff0f0;font-weight:bold">\ </span>
+-x509 -days <span style="color:#60e;font-weight:bold">365</span> -out dev.zc.com.crt</code></pre></div>
+<p>其中的 Common Name 是重要的。</p>
+
+<p><code>openssl</code> 根据 SAN(Subject Alternative Name) 配置文件生成证书。</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">openssl req -config dev.zc.com.conf -new -sha256 -newkey rsa:2048 <span style="color:#666;background-color:#fff0f0;font-weight:bold">\
+</span><span style="color:#666;background-color:#fff0f0;font-weight:bold"></span>-nodes -keyout dev.zc.com.key -x509 -days <span style="color:#60e;font-weight:bold">365</span> <span style="color:#666;background-color:#fff0f0;font-weight:bold">\
+</span><span style="color:#666;background-color:#fff0f0;font-weight:bold"></span>-out dev.zc.com.crt</code></pre></div>
+<p>SAN 配置文件内容:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-config" data-lang="config">[ req ]
+
+default_bits        = 2048
+default_keyfile     = server-key.pem
+distinguished_name  = subject
+req_extensions      = req_ext
+x509_extensions     = x509_ext
+string_mask         = utf8only
+
+[ subject ]
+
+countryName                 = Country Name (2 letter code)
+countryName_default         = US
+
+stateOrProvinceName         = State or Province Name (full name)
+stateOrProvinceName_default = NY
+
+localityName                = Locality Name (eg, city)
+localityName_default        = New York
+
+organizationName            = Organization Name (eg, company)
+organizationName_default    = Example, LLC
+
+commonName                  = Common Name (e.g. server FQDN or YOUR name)
+commonName_default          = Example Company
+
+emailAddress                = Email Address
+emailAddress_default        = sp@zhangchao@gmail.com
+
+[ x509_ext ]
+
+subjectKeyIdentifier   = hash
+authorityKeyIdentifier = keyid,issuer
+
+basicConstraints       = CA:FALSE
+keyUsage               = digitalSignature, keyEncipherment
+subjectAltName         = @alternate_names
+nsComment              = &#34;OpenSSL Generated Certificate&#34;
+
+[ req_ext ]
+
+subjectKeyIdentifier = hash
+
+basicConstraints     = CA:FALSE
+keyUsage             = digitalSignature, keyEncipherment
+subjectAltName       = @alternate_names
+nsComment            = &#34;OpenSSL Generated Certificate&#34;
+
+[ alternate_names ]
+
+DNS.1       = dev.zc.com</code></pre></div>
+<p>修改 DNS.1 的值。</p>
+
+<h2 id="安装证书">安装证书</h2>
+
+<p>为 Edge 浏览器安装证书。</p>
+
+<p>打开 edge://settings ,搜索 certificate ，选择【证书管理】</p>
+
+<p><img src="/apps/manage-certificate.png" alt="证书管理" /></p>
+
+<p>导入证书到受信任的根证书颁发机构。</p>
+
+<p><img src="/apps/import-root-cretificate.png" alt="导入证书" /></p>
+
+<h2 id="参考链接">参考链接</h2>
+
+<ol>
+<li><a href="https://deliciousbrains.com/https-locally-without-browser-privacy-errors/">How to Set Up HTTPS Locally Without Getting Annoying Browser Privacy Errors</a></li>
+<li><a href="https://support.dnsimple.com/articles/what-is-ssl-san/">What is the SSL Certificate Subject Alternative Name?</a></li>
+<li><a href="https://support.dnsimple.com/articles/what-is-common-name/#common-name-vs-subject-alternative-name">Common Name vs Subject Alternative Name</a></li>
+<li><a href="https://cattail.me/tech/2015/11/30/how-https-works.html">HTTPS工作原理</a></li>
+</ol>
+
+</div>
+
+    </main>
+
+    <footer>
+        
+        
+        
+    </footer>
+
+</body>
+
+</html>

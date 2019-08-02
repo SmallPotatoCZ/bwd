@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+<meta content='width=device-width, initial-scale=1.0' name='viewport'>
+<link href='/favicon.png' rel='shortcut icon'>
+<meta content='' name='app:pageurl'>
+
+
+
+
+
+
+
+<link rel="canonical" href="">
+<meta name="og:url" content="">
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <title>EsilyZhang 的备忘单</title>
+    
+    <link rel="stylesheet" href="/sass/home.min.de7c29548feadde2ec038bd703cb5297c0c0d6ae56e095e1f9e1d89f08855611.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+
+<link rel="stylesheet" href="/sass/cheatsheet.min.1cce9f1e81b5dae0de70667bf5dc73882e37a9ff2246da3fb053fd3257108832.css">
+
+</head>
+
+<body>
+    <header role="heading">
+        <nav class='top-nav' data-js-no-preview role='navigation'>
+    <div class='container'>
+        
+        <div class='left'>
+            <a class='back-button icons' href='/'>keyboard_backspace</a>
+        </div>
+        
+
+        <a class='brand' href='/'>
+            EsilyZhang 的备忘单
+        </a>
+    </div>
+</nav>
+    </header>
+    <main role="main">
+        
+<div class='site-header' role='banner'>
+    <h1>
+        Docker - 备忘录
+    </h1>
+</div>
+<div class="md_content">
+    <div id="sheet_box">
+    <div id="sheet_column" hidden>2</div>
+    
+
+<h2 id="镜像">镜像</h2>
+
+<h3 id="列出本机的所有-image-文件">列出本机的所有 image 文件</h3>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">docker image ls</code></pre></div>
+<h3 id="删除-image-文件">删除 image 文件</h3>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">docker image rm <span style="color:#963">$imagename</span></code></pre></div>
+<h3 id="从远程拉去镜像">从远程拉去镜像</h3>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">docker image pull <span style="color:#963">$group</span>/<span style="color:#963">$imagename</span></code></pre></div>
+<h3 id="创建-image-文件">创建 image 文件</h3>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">docker image build -t <span style="color:#963">$imagename</span><span style="color:#333">[</span>:<span style="color:#963">$version</span><span style="color:#333">]</span> <span style="color:#963">$DockerfilePath</span></code></pre></div>
+<h3 id="为本地的image标注用户名和版本">为本地的image标注用户名和版本</h3>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">docker image tag <span style="color:#963">$imagename</span> <span style="color:#963">$username</span>/<span style="color:#963">$repository</span>:<span style="color:#963">$tag</span>
+
+<span style="color:#888"># 实例</span>
+docker image tag koa-demo:0.0.1 <span style="color:#333">[</span>group<span style="color:#333">]</span>/<span style="color:#333">[</span>imagename:version<span style="color:#333">]</span></code></pre></div>
+<h2 id="容器">容器</h2>
+
+<h3 id="新建并重启">新建并重启</h3>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#888"># 运行脚本之后终止容器</span>
+docker run <span style="color:#963">$imagename</span> /bin/echo <span style="background-color:#fff0f0">&#34;Hello World&#34;</span>
+
+<span style="color:#888"># 启动一个交互的终端</span>
+<span style="color:#888"># -t,--tty 启动一个伪终端；-i,--interactive 保持容器的标准输入</span>
+docker run -it <span style="color:#963">$imagename</span> /bin/bash
+
+
+<span style="color:#888"># 启动已经终止的容器</span>
+docker container start <span style="color:#963">$imagename</span></code></pre></div>
+<h3 id="后台运行容器">后台运行容器</h3>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#888"># -d,--detach 后台运行容器</span>
+docker run -d <span style="color:#963">$imagename</span></code></pre></div>
+<h3 id="查看后台容器的日志">查看后台容器的日志</h3>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">docker container logs <span style="color:#963">$imagename</span></code></pre></div>
+<h3 id="列出容器列表">列出容器列表</h3>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#888"># 正在运行的容器</span>
+docker container ls
+
+<span style="color:#888"># 包括已经停止的容器</span>
+docker container ls --all</code></pre></div>
+<h3 id="终止容器">终止容器</h3>
+
+<p>当 Docker 容器中指定的应用终结时，容器也会自动终结</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">docker container stop <span style="color:#963">$imagename</span></code></pre></div>
+<h3 id="重新启动容器">重新启动容器</h3>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#888"># 启动终止的容器</span>
+docker contianer start <span style="color:#963">$imagename</span>
+
+<span style="color:#888"># 重新启动运行状态的容器</span>
+docker container restart <span style="color:#963">$imagename</span></code></pre></div>
+<h3 id="进入正在运行的容器">进入正在运行的容器</h3>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#888"># 从伪终端退出会导致容器退出</span>
+docker attch  <span style="color:#963">$containerid</span>
+
+<span style="color:#888"># 不会因为从伪终端退出导致容器退出</span>
+docker <span style="color:#007020">exec</span> -it <span style="color:#963">$containerid</span> bash</code></pre></div>
+<h3 id="导入和导出容器">导入和导出容器</h3>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#888"># 到处某个容器的快照</span>
+docker <span style="color:#007020">export</span> <span style="color:#963">$containerid</span> &gt; <span style="color:#963">$name</span>.tar
+
+<span style="color:#888"># 从容器快照导入为镜像</span>
+cat <span style="color:#963">$name</span>.tar | docker import - <span style="color:#963">$repository</span>/<span style="color:#963">$imagename</span></code></pre></div>
+<h3 id="删除容器">删除容器</h3>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#888"># 删除处于终止状态的容器</span>
+docker container rm <span style="color:#963">$containername</span>
+
+<span style="color:#888"># 删除运行中的容器</span>
+docker container rm -f <span style="color:#963">$contianername</span>
+
+<span style="color:#888"># 清理所有处于终止状态的容器</span>
+docker container prune</code></pre></div>
+<h3 id="从-image-文件生成容器">从 image 文件生成容器</h3>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">docker container run -p <span style="color:#60e;font-weight:bold">8000</span>:3000 -it <span style="color:#963">$DockerFile</span> /bin/bash</code></pre></div>
+<h3 id="从-image-文件生成容器-1">从 image 文件生成容器</h3>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">docker container run -p <span style="color:#60e;font-weight:bold">8000</span>:3000 -it <span style="color:#963">$DockerFile</span><span style="color:#333">[</span>:<span style="color:#963">$version</span><span style="color:#333">]</span> /bin/bash</code></pre></div>
+<h3 id="在容器终止运行后自动删除容器文件">在容器终止运行后自动删除容器文件</h3>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">docker cotainer run --rm -p <span style="color:#60e;font-weight:bold">8000</span>:3000 -it koa-demo /bin/bash</code></pre></div>
+<h3 id="查看容器的输出">查看容器的输出</h3>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">docker container logs <span style="color:#963">$containerID</span></code></pre></div>
+<h3 id="从正在运行的容器中拷贝文件到本地">从正在运行的容器中拷贝文件到本地</h3>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">docker container cp <span style="color:#963">$containerID</span>:<span style="color:#963">$path</span></code></pre></div>
+<h2 id="网络">网络</h2>
+
+<p>外部容器的访问容器的网络应用，通过 <code>-P</code> 和 <code>-p</code> 参数指定端口映射。</p>
+
+<p><code>-P</code> 随机映射 <code>49000-49900</code> 的端口到内部开房的网络端口。</p>
+
+<p><code>-p</code> 支持的格式<code>ip:hostPort:containerPort | ip::containerPort | hostport:containerPort</code></p>
+
+<h3 id="查看应用的端口映射">查看应用的端口映射</h3>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">docker container ls -l
+
+docker logs -f <span style="color:#963">$containername</span>
+
+docker port <span style="color:#963">$containername</span> <span style="color:#963">$contaienrport</span></code></pre></div>
+<h3 id="映射指定端口">映射指定端口</h3>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#888"># 映射指定端口</span>
+<span style="color:#888"># $1-主机端口; $2-容器端口;</span>
+docker container -p <span style="color:#963">$hostport</span>:<span style="color:#963">$contaienrport</span> -d <span style="color:#963">$imagename</span> <span style="color:#963">$command</span>
+
+<span style="color:#888"># 指定多个端口</span>
+docker container -p <span style="color:#963">$hostport</span>:<span style="color:#963">$contaienrport</span> -p <span style="color:#963">$hostport</span>:<span style="color:#963">$contaienrport</span> -d <span style="color:#963">$imagename</span> <span style="color:#963">$command</span></code></pre></div>
+<h3 id="映射指定地址的指定端口">映射指定地址的指定端口</h3>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#888"># 映射到 localhost 的指定端口</span>
+docker run -p <span style="color:#60e;font-weight:bold">127</span>.0.0.1:<span style="color:#963">$hostport</span>:<span style="color:#963">$containerport</span> -d <span style="color:#963">$imagename</span> <span style="color:#963">$command</span></code></pre></div>
+<h3 id="指定指定地址的任意端口">指定指定地址的任意端口</h3>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#888"># 绑定 localhost 的地址的任意端口</span>
+docker run -p <span style="color:#60e;font-weight:bold">127</span>.0.0.1::<span style="color:#963">$containerport</span> -d <span style="color:#963">$imagename</span> <span style="color:#963">$command</span>
+
+<span style="color:#888"># 指定 udp</span>
+docker run -p <span style="color:#60e;font-weight:bold">127</span>.0.0.1::<span style="color:#963">$containerport</span>/udp -d <span style="color:#963">$imagename</span> <span style="color:#963">$command</span></code></pre></div>
+<h3 id="新建网络">新建网络</h3>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#888"># 新建 net 名称的网络</span>
+docker network create -d bridge net</code></pre></div>
+<h3 id="连接容器">连接容器</h3>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">docker run -it --name <span style="color:#963">$contaienrname</span> --network <span style="color:#963">$net</span></code></pre></div>
+<h3 id="测试互联">测试互联</h3>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">ping <span style="color:#963">$containername</span></code></pre></div>
+<h3 id="查看容器地址">查看容器地址</h3>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">docker inspect -f <span style="background-color:#fff0f0">&#34;{{.NetworkSettings.Networks.net.IPAddress}}&#34;</span>  <span style="color:#963">$containername</span></code></pre></div>
+<h2 id="其它">其它</h2>
+
+<p>Ctrl + c 停止 node 进程
+Ctrl + d （或 exit）退出容器</p>
+
+<h3 id="发布镜像">发布镜像</h3>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#888"># 登录</span>
+docker login
+
+<span style="color:#888"># 发布</span>
+docker image push <span style="color:#963">$username</span>/<span style="color:#963">$repository</span>:<span style="color:#963">$tag</span></code></pre></div>
+<h3 id="将镜像保存成本地文件">将镜像保存成本地文件</h3>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">docker save -o <span style="color:#963">$filename</span>.tar <span style="color:#963">$imagename</span></code></pre></div>
+<h3 id="安装本地镜像">安装本地镜像</h3>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">docker load --input <span style="color:#963">$filename</span>.tar</code></pre></div>
+<h2 id="实际例子">实际例子</h2>
+
+<h3 id="mongodb">MongoDB</h3>
+
+<blockquote>
+<p><a href="https://hub.docker.com/_/mongo">资料来源</a></p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#888"># 从 27017 端口启动数据库</span>
+<span style="color:#888"># $1-指定容器的名字; $2-选择的容器名字</span>
+docker run --name <span style="color:#963">$containername</span> -d mongo
+
+<span style="color:#888"># 指定随机端口到主机</span>
+docker run -P --name <span style="color:#963">$containername</span> -d mongo
+
+<span style="color:#888"># 指定端口映射到容器端口</span>
+docker run -p <span style="color:#963">$hostPort</span>:<span style="color:#963">$containerPort</span> --name <span style="color:#963">$containername</span> -d mongo
+
+<span style="color:#888"># 指定多个端口</span>
+docker run -p <span style="color:#963">$hostPort</span>:<span style="color:#963">$containerPort</span> -p <span style="color:#963">$hostPort</span>:<span style="color:#963">$containerPort</span> --name <span style="color:#963">$containername</span> -d mongo
+
+<span style="color:#888"># 指定用户名和密码</span>
+docker run -p <span style="color:#963">$hostPort</span>:<span style="color:#963">$containerPort</span> --name <span style="color:#963">$containername</span> -e <span style="color:#963">MONGO_INITDB_ROOT_USERNAME</span><span style="color:#333">=</span>admin -e <span style="color:#963">MONGO_INITDB_ROOT_PASSWORD</span><span style="color:#333">=</span>admin123456 -d mongo
+
+<span style="color:#888"># 共享数据</span>
+<span style="color:#888"># 注意：对于 windows 系统，通过虚拟机的 Docker ,不能共享到 windows 的共享目录中</span>
+docker run -p <span style="color:#963">$hostPort</span>:<span style="color:#963">$containerPort</span> -v <span style="color:#963">$hostpath</span>:containerpath --name <span style="color:#963">$containername</span> -d <span style="color:#963">$imangename</span></code></pre></div></blockquote>
+
+<h3 id="node">Node</h3>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#888"># 拉去最新的 node 镜像</span>
+docker pull node
+
+<span style="color:#888"># 新建并重启一个 node 容器</span>
+docker run -it -p <span style="color:#963">$hostport</span>:<span style="color:#963">$containerport</span> -v <span style="color:#963">$hostpath</span>:<span style="color:#963">$apppath</span> --name <span style="color:#963">$containername</span> -d node</code></pre></div>
+<h3 id="建立-knowledge-app-镜像">建立 Knowledge App 镜像</h3>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#888"># 解压 knowledge app</span> 
+tar -xzvf knowledge.tar.gz
+
+<span style="color:#888"># 建立镜像</span>
+docker build -t knowledge:0.0.2 .
+
+<span style="color:#888"># 建立容器</span>
+docker run -it --network my-net -p <span style="color:#60e;font-weight:bold">443</span>:8000 --name knowledge -d knowledge:0.0.2
+
+# </code></pre></div>
+<h2 id="参考链接">参考链接</h2>
+
+<ol>
+<li><a href="https://www.cntofu.com/book/139/index.html">Docker 从入门到实践</a></li>
+<li><a href="http://www.ruanyifeng.com/blog/2018/02/docker-tutorial.html">Docker 入门 - 阮一峰</a></li>
+</ol>
+
+    
+    <script type="text/javascript" src="/js/sheet.min.js"></script>
+
+    
+    <div id="remark-wrap">
+    <h2>备注 <span id="remark-out">Out</span></h2>
+    <div id="remark-content">
+
+    </div>
+</div>
+</div>
+</div>
+
+    </main>
+
+    <footer>
+        
+        
+        
+    </footer>
+
+</body>
+
+</html>

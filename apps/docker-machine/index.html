@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+<meta content='width=device-width, initial-scale=1.0' name='viewport'>
+<link href='/favicon.png' rel='shortcut icon'>
+<meta content='' name='app:pageurl'>
+
+
+
+
+
+
+
+<link rel="canonical" href="">
+<meta name="og:url" content="">
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <title>EsilyZhang 的备忘单</title>
+    
+    <link rel="stylesheet" href="/sass/home.min.de7c29548feadde2ec038bd703cb5297c0c0d6ae56e095e1f9e1d89f08855611.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+
+<link rel="stylesheet" href="/sass/cheatsheet.min.1cce9f1e81b5dae0de70667bf5dc73882e37a9ff2246da3fb053fd3257108832.css">
+
+</head>
+
+<body>
+    <header role="heading">
+        <nav class='top-nav' data-js-no-preview role='navigation'>
+    <div class='container'>
+        
+        <div class='left'>
+            <a class='back-button icons' href='/'>keyboard_backspace</a>
+        </div>
+        
+
+        <a class='brand' href='/'>
+            EsilyZhang 的备忘单
+        </a>
+    </div>
+</nav>
+    </header>
+    <main role="main">
+        
+<div class='site-header' role='banner'>
+    <h1>
+        Docker Machine - 备忘录
+    </h1>
+</div>
+<div class="md_content">
+    <div id="sheet_box">
+    <div id="sheet_column" hidden>2</div>
+    
+
+<h2 id="命令行使用方法">命令行使用方法</h2>
+
+<h3 id="新建虚拟机">新建虚拟机</h3>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">docker-machine create --engine-registry-mirror<span style="color:#333">=</span><span style="color:#963">$mirrorurl</span> -d <span style="color:#963">$provider</span> <span style="color:#963">$vmname</span></code></pre></div>
+<h3 id="删除虚拟机">删除虚拟机</h3>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">docker-machine rm <span style="color:#963">$vmname</span></code></pre></div>
+<h3 id="从虚拟机挂载目录到主机">从虚拟机挂载目录到主机</h3>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#888"># 主机新建共享目录</span>
+mkdir <span style="color:#963">$localpath</span>
+
+<span style="color:#888"># 虚拟机新建目录</span>
+docker-machine ssh <span style="color:#963">$vmname</span> mkdir <span style="color:#963">$vmpath</span>
+
+<span style="color:#888"># 挂载目录</span>
+docker-machine mount <span style="color:#963">$vmname</span>:<span style="color:#963">$vmpath</span> <span style="color:#963">$localpath</span></code></pre></div>
+<h3 id="ssh-连接虚拟机">ssh 连接虚拟机</h3>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">dokcer-machine --native-ssh ssh <span style="color:#963">$vmname</span> <span style="color:#963">$command</span></code></pre></div>
+<h2 id="使用例子">使用例子</h2>
+
+<h3 id="新建配置阿里云镜像地址的-docker-虚拟机">新建配置阿里云镜像地址的 Docker 虚拟机</h3>
+
+<blockquote>
+<p><a href="https://cr.console.aliyun.com/cn-beijing/instances/mirrors">官网地址</a></p>
+</blockquote>
+
+<p>先按照官网进行注册。</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#888"># 创建指定 docker 镜像的虚拟机 default</span>
+docker-machine create --engine-registry-mirror<span style="color:#333">=</span><span style="color:#963">$alimirrorurl</span> -d <span style="color:#963">$provider</span> default
+
+<span style="color:#888"># 关闭虚拟机，新增固定共享目录</span>
+vboxmanage controlvm default savestate
+vboxmanage controlvm default poweroff
+vboxmanage sharedfolder add default --name <span style="color:#963">$sharename</span> --hostpath <span style="color:#963">$hostpath</span>
+vboxmanage startvm default --type headless
+
+<span style="color:#888"># 新建共享目录</span>
+docker-machine ssh default sudo mkdir <span style="color:#963">$vmpath</span>
+
+<span style="color:#888"># 修改目录权限</span>
+docker-machine ssh default sudo chmod <span style="color:#60e;font-weight:bold">777</span> <span style="color:#963">$vmpath</span>
+
+<span style="color:#888"># 挂载共享目录</span>
+docker-machine ssh default sudo mount -t vboxsf -o <span style="color:#963">uid</span><span style="color:#333">=</span><span style="color:#60e;font-weight:bold">1000</span>,gid<span style="color:#333">=</span><span style="color:#60e;font-weight:bold">1000</span> <span style="color:#963">$sharename</span> <span style="color:#963">$vmpath</span></code></pre></div>
+<h2 id="参考链接">参考链接</h2>
+
+<ol>
+<li><a href="https://docs.docker.com/machine/overview/">docker-machine 官网</a></li>
+</ol>
+
+    
+    <script type="text/javascript" src="/js/sheet.min.js"></script>
+
+    
+    <div id="remark-wrap">
+    <h2>备注 <span id="remark-out">Out</span></h2>
+    <div id="remark-content">
+
+    </div>
+</div>
+</div>
+</div>
+
+    </main>
+
+    <footer>
+        
+        
+        
+    </footer>
+
+</body>
+
+</html>

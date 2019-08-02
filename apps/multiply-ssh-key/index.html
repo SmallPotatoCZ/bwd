@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+<meta content='width=device-width, initial-scale=1.0' name='viewport'>
+<link href='/favicon.png' rel='shortcut icon'>
+<meta content='' name='app:pageurl'>
+
+
+
+
+
+
+
+<link rel="canonical" href="">
+<meta name="og:url" content="">
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <title>EsilyZhang 的备忘单</title>
+    
+    <link rel="stylesheet" href="/sass/home.min.de7c29548feadde2ec038bd703cb5297c0c0d6ae56e095e1f9e1d89f08855611.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+
+<link rel="stylesheet" href="/sass/post.min.173bcf01da6fdd8138f38a5006b6cfc500f643ca05c09fd7be51a1f29bafa152.css">
+
+</head>
+
+<body>
+    <header role="heading">
+        <nav class='top-nav' data-js-no-preview role='navigation'>
+    <div class='container'>
+        
+        <div class='left'>
+            <a class='back-button icons' href='/'>keyboard_backspace</a>
+        </div>
+        
+
+        <a class='brand' href='/'>
+            EsilyZhang 的备忘单
+        </a>
+    </div>
+</nav>
+    </header>
+    <main role="main">
+        
+<div class='site-header' role='banner'>
+    <h1>
+        配置多个 ssh 账号 - 笔记
+    </h1>
+</div>
+<div>
+    
+
+<h2 id="创建不同的公钥">创建不同的公钥</h2>
+
+<p>创建不同的 ssh key</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">ssh-keygen -t rsa -C <span style="background-color:#fff0f0">&#34;your_email@youremail.com&#34;</span></code></pre></div>
+<p>下面是创建的两个 key</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">~/.ssh/id_rsa_num01
+~/.ssh/id_rsa_num02</code></pre></div>
+<p>下一步像下面一样，增加这两个 key</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">ssh-add ~/.ssh/id_rsa_num01
+ssh-add ~/.ssh/id_rsa_num02</code></pre></div>
+<p>在 windows 环境下，如果出现 <code>Could not open a connection to your authentication agent.
+</code></p>
+
+<p>需要先执行如下命令
+<strong>windows 需要在 git bash 中执行</strong></p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#007020">eval</span> <span style="background-color:#fff0f0">`</span>ssh-agent -s<span style="background-color:#fff0f0">`</span>
+ssh-add ~/.ssh/id_rsa_num01
+ssh-add ~/.ssh/id_rsa_num02</code></pre></div>
+<p>可以删除之前缓存的 key</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">ssh-add -D</code></pre></div>
+<p>最后可以查看已保存的 key</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">ssh-add -l</code></pre></div>
+<h2 id="修改你的-ssh-配置文件">修改你的 ssh 配置文件</h2>
+
+<p>config 字段的解释</p>
+
+<pre><code>Host vps(这里是自定义的host简称,以后连接远程服务器就可以用命令ssh vps) 
+User 这里填用户名(如:root) 
+HostName 这里填服务器地址也可以是域名(如:server.xxoo.com) 
+Port 这里填服务器 open-ssh 端口(默认:22) 
+IdentityFile 这里是刚刚生成的私钥文件地址(如 ~/.ssh/id_rsa) 
+</code></pre>
+
+<p>config 示例</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#007020">cd</span> ~/.ssh
+touch config
+<span style="color:#888"># 也可以通过其他方式进行修改</span>
+subl -a config
+
+<span style="color:#888"># 增加的内容，&#39;PreferredAuthentications publickey&#39; 可忽略</span>
+<span style="color:#888"># num01 - github 的用户名称</span>
+Host num01.github.com
+HostName github.com
+User git
+PreferredAuthentications publickey
+IdentityFile ~/.ssh/id_rsa_num01
+
+<span style="color:#888"># num02 - github 的用户名称</span>
+Host num02.github.com
+HostName github.com
+User git
+PreferredAuthentications publickey
+IdentityFile ~/.ssh/id_rsa_num02</code></pre></div>
+<h2 id="验证能否连接">验证能否连接</h2>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">ssh -T git@num01.github.com
+ssh -T git@num02.github.com</code></pre></div>
+<h2 id="对项目目录修改使用的-ssh-账号">对项目目录修改使用的 ssh 账号</h2>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">git config user.name <span style="background-color:#fff0f0">&#34;num01&#34;</span>
+git config user.email <span style="background-color:#fff0f0">&#34;num01@gmail.com&#34;</span> 
+
+<span style="color:#888"># git 的正常管理</span></code></pre></div>
+<h2 id="参考链接">参考链接</h2>
+
+<ol>
+<li><a href="https://gist.github.com/jexchan/2351996">github 某一个 gist</a></li>
+<li><a href="https://medium.com/@trionkidnapper/ssh-keys-with-multiple-github-accounts-c67db56f191e">medium 文章</a></li>
+</ol>
+
+</div>
+
+    </main>
+
+    <footer>
+        
+        
+        
+    </footer>
+
+</body>
+
+</html>
