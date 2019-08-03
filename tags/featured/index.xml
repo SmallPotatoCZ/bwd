@@ -50,6 +50,15 @@
     </item>
     
     <item>
+      <title>Web Performer</title>
+      <link>https://www.zhangchao.online/web/web-performer/</link>
+      <pubDate>Thu, 01 Aug 2019 20:31:15 +0800</pubDate>
+      
+      <guid>https://www.zhangchao.online/web/web-performer/</guid>
+      <description>Web 性能 graph LR perf[Web 性能] -- load[加载快] perf -- work[运行快] click work callNotes &#34;work&#34; load -- response[服务器的返回快] load -- self[web 自身加载快和渲染快] self -- js[JavaScript] js -- jsminify[压缩 minify] jsminify -- webpackmode[webpack mode:production] jsminify -- babeljs[babel babel-preset-minify] jsminify -- gulpjs[gulp gulp-uglify] js -- asyncdefer[Async &amp;&amp; Defer] click asyncdefer callNotes &#34;asyncdefer&#34; js -- codecomplit[代码分割] click codecomplit callNotes &#34;codecomplit&#34; js -- dependences[优化代码依赖] click dependences callNotes &#34;dependences&#34; self -- css[CSS] css -- cssminify[压缩 minify] cssminify -- webpackcss[webpack postcss-loader] click webpackcss callNotes &#34;</description>
+    </item>
+    
+    <item>
       <title>Bash 命令行</title>
       <link>https://www.zhangchao.online/cli/bash/</link>
       <pubDate>Sun, 21 Jul 2019 00:00:00 +0000</pubDate>

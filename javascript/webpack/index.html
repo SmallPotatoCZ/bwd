@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+<meta content='width=device-width, initial-scale=1.0' name='viewport'>
+<link href='/favicon.png' rel='shortcut icon'>
+<meta content='' name='app:pageurl'>
+
+
+
+
+
+
+
+<link rel="canonical" href="">
+<meta name="og:url" content="">
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <title>EsilyZhang 的备忘单</title>
+    
+    <link rel="stylesheet" href="/sass/home.min.de7c29548feadde2ec038bd703cb5297c0c0d6ae56e095e1f9e1d89f08855611.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+
+<link rel="stylesheet" href="/sass/cheatsheet.min.0e04c6f8cfec1cd19366f7dab350a5a4b7f4c3c90b074e116ddc5c221b46b80b.css">
+
+</head>
+
+<body>
+    <header role="heading">
+        <nav class='top-nav' data-js-no-preview role='navigation'>
+    <div class='container'>
+        
+        <div class='left'>
+            <a class='back-button icons' href='/'>keyboard_backspace</a>
+        </div>
+        
+
+        <a class='brand' href='/'>
+            EsilyZhang 的备忘单
+        </a>
+    </div>
+</nav>
+    </header>
+    <main role="main">
+        
+<div class='site-header' role='banner'>
+    <h1>
+        Webpack - 备忘录
+    </h1>
+</div>
+<div class="md_content">
+    <div id="sheet_box">
+    <div id="sheet_column" hidden>2</div>
+    
+
+<h2 id="webpack-构建">Webpack 构建</h2>
+
+<div class="mermaid-wrap">
+    <div class="mermaid">
+        
+graph LR
+    webpack[Webpack] --> entry[入口]
+    click entry callNotes "entry"
+    webpack[Webpack] --> output[输出]
+    click output callNotes "output"
+
+    </div>
+    <div class="masker">
+    </div>
+    <img src="/loader.svg" />
+</div>
+
+<div id="remark-entry" hidden>
+    <p>应该使用的模块，作为构建内部依赖图的开始。默认 <code>./src/index.js</code>。</p>
+
+<p>一个或多个入口：</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">{
+    <span style="color:#888">/*...*/</span>
+    entry<span style="color:#333">:</span>{
+        entry1<span style="color:#333">:</span> <span style="background-color:#fff0f0">&#39;file1.js&#39;</span>,
+        entry2<span style="color:#333">:</span> <span style="background-color:#fff0f0">&#39;file2.js&#39;</span>
+    },
+    <span style="color:#888">/*...*/</span>
+}
+</code></pre></div>
+</div>
+
+<div id="remark-output" hidden>
+    <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">{
+    <span style="color:#888">/*...*/</span>
+    output<span style="color:#333">:</span>{
+        filename<span style="color:#333">:</span> [name].bundle.js, <span style="color:#888">// [name] 入口起点名字
+</span><span style="color:#888"></span>        path<span style="color:#333">:</span> path.resolve(__dirname) <span style="color:#888">// 输出路径
+</span><span style="color:#888"></span>    }
+}
+</code></pre></div>
+</div>
+
+<h2 id="资源管理-loader">资源管理 - loader</h2>
+
+<h3 id="css">CSS</h3>
+
+<ol>
+<li><a href="https://webpack.docschina.org/loaders/style-loader">style-css</a></li>
+
+<li><p><a href="https://webpack.docschina.org/loaders/css-loader">css-loader</a></p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">{
+<span style="color:#888">/*...*/</span> 
+module<span style="color:#333">:</span>{
+   rules<span style="color:#333">:</span>[
+       {
+           test<span style="color:#333">:</span> <span style="color:#000;background-color:#fff0ff">/\.css$/</span>,
+           use<span style="color:#333">:</span> [<span style="background-color:#fff0f0">&#39;style-loader&#39;</span>, <span style="background-color:#fff0f0">&#39;css-loader&#39;</span>]
+       }
+   ]
+}
+<span style="color:#888">/*...*/</span>
+}
+</code></pre></div></li>
+</ol>
+
+<h3 id="图片">图片</h3>
+
+<p><a href="https://webpack.docschina.org/loaders/file-loader">file-loader</a></p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">{
+   <span style="color:#888">/*...*/</span> 
+   module<span style="color:#333">:</span>{
+       rules<span style="color:#333">:</span>[
+           {
+               test<span style="color:#333">:</span> <span style="color:#000;background-color:#fff0ff">/\.(png|svg|jpg|gif)$/</span>,
+               use<span style="color:#333">:</span> [<span style="background-color:#fff0f0">&#39;file-loader&#39;</span>]
+           }
+       ]
+   }
+   <span style="color:#888">/*...*/</span>
+}
+</code></pre></div>
+<h3 id="字体">字体</h3>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">{
+   <span style="color:#888">/*...*/</span> 
+   module<span style="color:#333">:</span>{
+       rules<span style="color:#333">:</span>[
+           {
+               test<span style="color:#333">:</span> <span style="color:#000;background-color:#fff0ff">/\.(woff|woff2|eot|ttf|otf)$/</span>,
+               use<span style="color:#333">:</span> [<span style="background-color:#fff0f0">&#39;file-loader&#39;</span>]
+           }
+       ]
+   }
+   <span style="color:#888">/*...*/</span>
+}
+</code></pre></div>
+<h3 id="数据">数据</h3>
+
+<ol>
+<li><a href="https://github.com/theplatapi/csv-loader">csv-loader</a> - TSV 和 CSV 文件</li>
+<li><a href="https://github.com/gisikw/xml-loader">xml-loader</a> - XML 文件</li>
+</ol>
+
+<p>导入的这些文件可以转换为 JSON 格式的数据。</p>
+
+<h2 id="常用插件">常用插件</h2>
+
+<ol>
+<li><a href="https://github.com/jaketrent/html-webpack-template">webpack-html-plugin</a> - 解决<code>index.html</code>文件中引用 bundle 的问题</li>
+<li><a href="https://www.npmjs.com/package/clean-webpack-plugin">clean-webpack-plugin</a> - 清空 dist 目录中文件</li>
+<li><a href="https://github.com/webpack-contrib/babel-minify-webpack-plugin">BabelMinifyWebpackPlugin</a> - 压缩 JavaScript</li>
+<li><a href="https://github.com/roman01la/webpack-closure-compiler">ClosureCompilerPlugin</a> - 压缩 JavaScript</li>
+<li><a href="https://webpack.docschina.org/plugins/split-chunks-plugin/">SplitChunksPlugin</a> -  消除模块之间的重复引用</li>
+</ol>
+
+    
+    <script type="text/javascript" src="/js/sheet.min.js"></script>
+
+    
+    
+    
+    <script type="text/javascript" src="/js/mermaid.min.js"> </script>
+    <script type="text/javascript" src="/js/mermaid.instance.min.js" defer></script>
+    
+    <div id="remark-wrap">
+    <h2>备注 <span id="remark-out">Out</span></h2>
+    <div id="remark-content">
+
+    </div>
+</div>
+</div>
+</div>
+
+    </main>
+
+    <footer>
+        
+        
+        
+    </footer>
+
+</body>
+
+</html>
