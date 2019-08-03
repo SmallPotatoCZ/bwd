@@ -5,10 +5,19 @@
     <link>https://www.zhangchao.online/tags/featured/</link>
     <description>Recent content in featured on EsilyZhang 的备忘单</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Fri, 02 Aug 2019 23:02:24 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 03 Aug 2019 10:50:53 +0800</lastBuildDate>
     
 	<atom:link href="https://www.zhangchao.online/tags/featured/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Mvvm</title>
+      <link>https://www.zhangchao.online/vue/mvvm/</link>
+      <pubDate>Sat, 03 Aug 2019 10:50:53 +0800</pubDate>
+      
+      <guid>https://www.zhangchao.online/vue/mvvm/</guid>
+      <description>MVVM 响应式数据 class Vue { constructor(options) { this.options = options; this.$data = options.data; this.$el = document.querySelector(options.el); this._directive = {}; this.Observer(this.$data); this.Compile(this.$el); } Observer(data) { for (let key in data) { this._directive[key] = []; let Val = data[key]; let Watcher = this._directive[key]; // this.$data 对象里面的每一个属性发生变化 更新视图  Object.defineProperty(this.$data, key, { get: function () { return Val; }, set: function (newVal) { if (newVal !== Val) { Val = newVal; Watcher.forEach(element =&amp;gt; { element.</description>
+    </item>
     
     <item>
       <title>Symbol</title>
@@ -38,25 +47,6 @@
       <description> 命令行使用方法 新建虚拟机 docker-machine create --engine-registry-mirror=$mirrorurl -d $provider $vmname 删除虚拟机 docker-machine rm $vmname 从虚拟机挂载目录到主机 # 主机新建共享目录 mkdir $localpath # 虚拟机新建目录 docker-machine ssh $vmname mkdir $vmpath # 挂载目录 docker-machine mount $vmname:$vmpath $localpath ssh 连接虚拟机 dokcer-machine --native-ssh ssh $vmname $command 使用例子 新建配置阿里云镜像地址的 Docker 虚拟机  官网地址
  先按照官网进行注册。
 # 创建指定 docker 镜像的虚拟机 default docker-machine create --engine-registry-mirror=$alimirrorurl -d $provider default # 关闭虚拟机，新增固定共享目录 vboxmanage controlvm default savestate vboxmanage controlvm default poweroff vboxmanage sharedfolder add default --name $sharename --hostpath $hostpath vboxmanage startvm default --type headless # 新建共享目录 docker-machine ssh default sudo mkdir $vmpath # 修改目录权限 docker-machine ssh default sudo chmod 777 $vmpath # 挂载共享目录 docker-machine ssh default sudo mount -t vboxsf -o uid=1000,gid=1000 $sharename $vmpath 参考链接  docker-machine 官网  </description>
-    </item>
-    
-    <item>
-      <title>Web Performer</title>
-      <link>https://www.zhangchao.online/web/web-performer/</link>
-      <pubDate>Thu, 01 Aug 2019 20:31:15 +0800</pubDate>
-      
-      <guid>https://www.zhangchao.online/web/web-performer/</guid>
-      <description>Web 性能 graph LR perf[Web 性能] -- load[加载快] perf -- work[运行快] click work callNotes &#34;work&#34; perf -- response[服务器的返回快] perf -- self[web 自身加载快和渲染快] self -- js[JavaScript] js -- jsminify[压缩 minify] jsminify -- webpackmode[webpack mode:production] jsminify -- babeljs[babel babel-preset-minify] jsminify -- gulpjs[gulp gulp-uglify] js -- asyncdefer[Async &amp;&amp; Defer] click asyncdefer callNotes &#34;asyncdefer&#34; js -- codecomplit[代码分割] click codecomplit callNotes &#34;codecomplit&#34; js -- dependences[优化代码依赖] click dependences callNotes &#34;dependences&#34; self -- css[CSS] css -- cssminify[压缩 minify] cssminify -- webpackcss[webpack postcss-loader] click webpackcss callNotes &#34;</description>
-    </item>
-    
-    <item>
-      <title>Vue</title>
-      <link>https://www.zhangchao.online/vue/vue/</link>
-      <pubDate>Mon, 22 Jul 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.zhangchao.online/vue/vue/</guid>
-      <description>Vue 实例 语法 var vm = new VUe({ // 选项 });  数据和方法 var data = {a: 1}; var vm = new Vue({ data: data }); // 获取这个实例上的属性  vm.a == data.a; // true;  // 设置属性会影响原始的数据 vm.a = 2; data.a = 2; // 反之也是 data.a = 3; vm.a = 3;   只有在实例创建时data中存在的属性才是响应的。 Vue 实例中暴露的属性和方都会携带$前缀
- 生命钩子 模板语法 插值 文本 &amp;lt;span&amp;gt;Message: {{msg}}&amp;lt;span&amp;gt; // v-noce 执行一次性的插值，当数据改变时，插值处的值并不会改变 原始 html {{}} 会将数据解释为普通文本，为了输出 HTML，使用v-html。</description>
     </item>
     
     <item>

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>首页 on EsilyZhang 的备忘单</title>
+    <title>EsilyZhang 的备忘单</title>
     <link>https://www.zhangchao.online/</link>
-    <description>Recent content in 首页 on EsilyZhang 的备忘单</description>
+    <description>Recent content on EsilyZhang 的备忘单</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 01 Jul 2019 17:26:23 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 03 Aug 2019 10:50:53 +0800</lastBuildDate>
     
 	<atom:link href="https://www.zhangchao.online/index.xml" rel="self" type="application/rss+xml" />
     
@@ -17,6 +17,15 @@
       
       <guid>https://www.zhangchao.online/cli/adb/</guid>
       <description>Device Basics    Command Description     adb devices Lists connected devices   adb devices -l Lists connected devices and kind   &amp;mdash; &amp;mdash;   adb root Restarts adbd with root permissions   adb start-server Starts the adb server   adb kill-server Kills the adb server   adb remount Remounts file system with read/write access   adb reboot Reboots the device   adb reboot bootloader Reboots the device into fastboot   adb disable-verity Reboots the device into fastboot    wait-for-device can be specified after adb to ensure that the command will run once the device is connected.</description>
+    </item>
+    
+    <item>
+      <title>Mvvm</title>
+      <link>https://www.zhangchao.online/vue/mvvm/</link>
+      <pubDate>Sat, 03 Aug 2019 10:50:53 +0800</pubDate>
+      
+      <guid>https://www.zhangchao.online/vue/mvvm/</guid>
+      <description>MVVM 响应式数据 class Vue { constructor(options) { this.options = options; this.$data = options.data; this.$el = document.querySelector(options.el); this._directive = {}; this.Observer(this.$data); this.Compile(this.$el); } Observer(data) { for (let key in data) { this._directive[key] = []; let Val = data[key]; let Watcher = this._directive[key]; // this.$data 对象里面的每一个属性发生变化 更新视图  Object.defineProperty(this.$data, key, { get: function () { return Val; }, set: function (newVal) { if (newVal !== Val) { Val = newVal; Watcher.forEach(element =&amp;gt; { element.</description>
     </item>
     
     <item>
@@ -76,46 +85,6 @@ eval `ssh-agent -s` ssh-add ~/.ssh/id_rsa_num01 ssh-add ~/.ssh/id_rsa_num02 可�
 ssh-add -D 最后可以查看已保存的 key
 ssh-add -l 修改你的 ssh 配置文件 config 字段的解释
 Host vps(这里是自定义的host简称,以后连接远程服务器就可以用命令ssh vps) User 这里填用户名(如:root) HostName 这里填服务器地址也可以是域名(如:server.xxoo.com) Port 这里填服务器 open-ssh 端口(默认:22) IdentityFile 这里是刚刚生成的私钥文件地址(如 ~/.</description>
-    </item>
-    
-    <item>
-      <title>Web Performer</title>
-      <link>https://www.zhangchao.online/web/web-performer/</link>
-      <pubDate>Thu, 01 Aug 2019 20:31:15 +0800</pubDate>
-      
-      <guid>https://www.zhangchao.online/web/web-performer/</guid>
-      <description>Web 性能 graph LR perf[Web 性能] -- load[加载快] perf -- work[运行快] click work callNotes &#34;work&#34; perf -- response[服务器的返回快] perf -- self[web 自身加载快和渲染快] self -- js[JavaScript] js -- jsminify[压缩 minify] jsminify -- webpackmode[webpack mode:production] jsminify -- babeljs[babel babel-preset-minify] jsminify -- gulpjs[gulp gulp-uglify] js -- asyncdefer[Async &amp;&amp; Defer] click asyncdefer callNotes &#34;asyncdefer&#34; js -- codecomplit[代码分割] click codecomplit callNotes &#34;codecomplit&#34; js -- dependences[优化代码依赖] click dependences callNotes &#34;dependences&#34; self -- css[CSS] css -- cssminify[压缩 minify] cssminify -- webpackcss[webpack postcss-loader] click webpackcss callNotes &#34;</description>
-    </item>
-    
-    <item>
-      <title>Layout</title>
-      <link>https://www.zhangchao.online/css/layout/</link>
-      <pubDate>Wed, 31 Jul 2019 23:26:07 +0800</pubDate>
-      
-      <guid>https://www.zhangchao.online/css/layout/</guid>
-      <description> 非替换元素的绝对位置 </description>
-    </item>
-    
-    <item>
-      <title>Fluid Width Equal Height Columns</title>
-      <link>https://www.zhangchao.online/css/fluid-width-equal-height-columns/</link>
-      <pubDate>Wed, 31 Jul 2019 22:18:43 +0800</pubDate>
-      
-      <guid>https://www.zhangchao.online/css/fluid-width-equal-height-columns/</guid>
-      <description> 等高列的流式宽度分布 所有的列分享父级的设置的相同的背景。
-HTML 代码：
-&amp;lt;div id=&amp;#34;page-wrap&amp;#34;&amp;gt; &amp;lt;div class=&amp;#34;five-columns group&amp;#34;&amp;gt; &amp;lt;div class=&amp;#34;col&amp;#34;&amp;gt;content-1&amp;lt;/div&amp;gt; &amp;lt;div class=&amp;#34;col&amp;#34;&amp;gt;content-2&amp;lt;/div&amp;gt; &amp;lt;div class=&amp;#34;col&amp;#34;&amp;gt;content-3&amp;lt;/div&amp;gt; &amp;lt;div class=&amp;#34;col&amp;#34;&amp;gt;content-4&amp;lt;/div&amp;gt; &amp;lt;div class=&amp;#34;col&amp;#34;&amp;gt;content-5&amp;lt;/div&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;/div&amp;gt; float </description>
-    </item>
-    
-    <item>
-      <title>Vue 组件</title>
-      <link>https://www.zhangchao.online/vue/component/</link>
-      <pubDate>Sat, 27 Jul 2019 00:05:00 +0800</pubDate>
-      
-      <guid>https://www.zhangchao.online/vue/component/</guid>
-      <description>组件注册 组件名 两种方式：
- kebab-case - &amp;lt;kebab-case&amp;gt; PascalCase - &amp;lt;PascalCase&amp;gt; 或者 &amp;lt;pascal-case&amp;gt;，直接在 DOM 中只有 kebab-case。  全局注册 子组件直接可以互相使用。
-Vue.component(&amp;#34;cmpt-name&amp;#34;, {/*...*/});  局部注册 // 在其子组件中不可用。 var ComponentA = {/*...*/}; var ComponentB = {/*...*/}; new Vue({ el:&amp;#34;#app&amp;#34;, components:{ &amp;#34;cmpt-a&amp;#34;: ComponentA, &amp;#34;cmpt-b&amp;#34;: ComponentB } }) // 如果要互相使用 var ComponentA = {/*...*/}; var ComponentB = { components: { &amp;#39;component-a&amp;#39;: ComponentA } };  模块系统 模块系统中局部注册 import ComponentA form &amp;#39;./ComponentA&amp;#39; export default { components: { ComponentA } }  基础组件的自动化全局注册 const requireComponent = require.</description>
     </item>
     
     <item>

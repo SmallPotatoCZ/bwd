@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+<meta content='width=device-width, initial-scale=1.0' name='viewport'>
+<link href='/favicon.png' rel='shortcut icon'>
+<meta content='' name='app:pageurl'>
+
+
+
+
+
+
+
+<link rel="canonical" href="">
+<meta name="og:url" content="">
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <title>EsilyZhang 的备忘单</title>
+    
+    <link rel="stylesheet" href="/sass/home.min.de7c29548feadde2ec038bd703cb5297c0c0d6ae56e095e1f9e1d89f08855611.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+
+<link rel="stylesheet" href="/sass/cheatsheet.min.0e04c6f8cfec1cd19366f7dab350a5a4b7f4c3c90b074e116ddc5c221b46b80b.css">
+
+</head>
+
+<body>
+    <header role="heading">
+        <nav class='top-nav' data-js-no-preview role='navigation'>
+    <div class='container'>
+        
+        <div class='left'>
+            <a class='back-button icons' href='/'>keyboard_backspace</a>
+        </div>
+        
+
+        <a class='brand' href='/'>
+            EsilyZhang 的备忘单
+        </a>
+    </div>
+</nav>
+    </header>
+    <main role="main">
+        
+<div class='site-header' role='banner'>
+    <h1>
+        Mvvm - 备忘录
+    </h1>
+</div>
+<div class="md_content">
+    <div id="sheet_box">
+    <div id="sheet_column" hidden>2</div>
+    
+
+<h2 id="mvvm-响应式数据">MVVM 响应式数据</h2>
+
+<p><img src="../mvvm.png" alt="MVVM" /></p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#080;font-weight:bold">class</span> Vue {
+    constructor(options) {
+        <span style="color:#080;font-weight:bold">this</span>.options <span style="color:#333">=</span> options;
+        <span style="color:#080;font-weight:bold">this</span>.$data <span style="color:#333">=</span> options.data;
+        <span style="color:#080;font-weight:bold">this</span>.$el <span style="color:#333">=</span> <span style="color:#007020">document</span>.querySelector(options.el);
+        <span style="color:#080;font-weight:bold">this</span>._directive <span style="color:#333">=</span> {};
+        <span style="color:#080;font-weight:bold">this</span>.Observer(<span style="color:#080;font-weight:bold">this</span>.$data);
+        <span style="color:#080;font-weight:bold">this</span>.Compile(<span style="color:#080;font-weight:bold">this</span>.$el);
+    }
+
+    Observer(data) {
+        <span style="color:#080;font-weight:bold">for</span> (<span style="color:#080;font-weight:bold">let</span> key <span style="color:#080;font-weight:bold">in</span> data) {
+            <span style="color:#080;font-weight:bold">this</span>._directive[key] <span style="color:#333">=</span> [];
+            <span style="color:#080;font-weight:bold">let</span> Val <span style="color:#333">=</span> data[key];
+            <span style="color:#080;font-weight:bold">let</span> Watcher <span style="color:#333">=</span> <span style="color:#080;font-weight:bold">this</span>._directive[key];
+            <span style="color:#888">// this.$data 对象里面的每一个属性发生变化 更新视图
+</span><span style="color:#888"></span>            <span style="color:#007020">Object</span>.defineProperty(<span style="color:#080;font-weight:bold">this</span>.$data, key, {
+                get<span style="color:#333">:</span> <span style="color:#080;font-weight:bold">function</span> () {
+                    <span style="color:#080;font-weight:bold">return</span> Val;
+                },
+                set<span style="color:#333">:</span> <span style="color:#080;font-weight:bold">function</span> (newVal) {
+                    <span style="color:#080;font-weight:bold">if</span> (newVal <span style="color:#333">!==</span> Val) {
+                        Val <span style="color:#333">=</span> newVal;
+                        Watcher.forEach(element =&gt; {
+                            element.update();
+                        });
+                    }
+                }
+            })
+        }
+    }
+
+    Compile(el) {
+        <span style="color:#080;font-weight:bold">let</span> nodes <span style="color:#333">=</span> el.children;
+        <span style="color:#080;font-weight:bold">for</span> (<span style="color:#080;font-weight:bold">let</span> i <span style="color:#333">=</span> <span style="color:#00d;font-weight:bold">0</span>; i <span style="color:#333">&lt;</span> nodes.length; i<span style="color:#333">++</span>) {
+            <span style="color:#080;font-weight:bold">let</span> node <span style="color:#333">=</span> nodes[i];
+
+            <span style="color:#080;font-weight:bold">if</span> (node.children.length) {
+                <span style="color:#080;font-weight:bold">this</span>.Compile(node);
+            }
+
+            <span style="color:#080;font-weight:bold">if</span> (node.hasAttribute(<span style="background-color:#fff0f0">&#34;v-text&#34;</span>)) {
+                <span style="color:#080;font-weight:bold">let</span> attVal <span style="color:#333">=</span> node.getAttribute(<span style="background-color:#fff0f0">&#34;v-text&#34;</span>);
+
+                <span style="color:#080;font-weight:bold">this</span>._directive[attVal].push(<span style="color:#080;font-weight:bold">new</span> Watcher(node, <span style="color:#080;font-weight:bold">this</span>, attVal, <span style="background-color:#fff0f0">&#39;innerHTML&#39;</span>));
+            }
+            <span style="color:#080;font-weight:bold">if</span> (node.hasAttribute(<span style="background-color:#fff0f0">&#34;v-model&#34;</span>)) {
+                <span style="color:#080;font-weight:bold">let</span> attVal <span style="color:#333">=</span> node.getAttribute(<span style="background-color:#fff0f0">&#34;v-model&#34;</span>);
+
+                <span style="color:#080;font-weight:bold">this</span>._directive[attVal].push(<span style="color:#080;font-weight:bold">new</span> Watcher(node, <span style="color:#080;font-weight:bold">this</span>, attVal, <span style="background-color:#fff0f0">&#39;value&#39;</span>));
+
+                node.addEventListener(<span style="background-color:#fff0f0">&#34;input&#34;</span>, (<span style="color:#080;font-weight:bold">function</span> () {
+                    <span style="color:#080;font-weight:bold">this</span>.$data[attVal] <span style="color:#333">=</span> node.value;
+                }).bind(<span style="color:#080;font-weight:bold">this</span>))
+            }
+        }
+
+    }
+}
+
+<span style="color:#080;font-weight:bold">class</span> Watcher {
+    <span style="color:#888">// 更新视图
+</span><span style="color:#888"></span>    constructor(el, vm, exp, attr) {
+        <span style="color:#080;font-weight:bold">this</span>.el <span style="color:#333">=</span> el;
+        <span style="color:#080;font-weight:bold">this</span>.vm <span style="color:#333">=</span> vm;
+        <span style="color:#080;font-weight:bold">this</span>.exp <span style="color:#333">=</span> exp;
+        <span style="color:#080;font-weight:bold">this</span>.attr <span style="color:#333">=</span> attr;
+        <span style="color:#080;font-weight:bold">this</span>.update();
+    }
+    update() {
+        <span style="color:#080;font-weight:bold">this</span>.el[<span style="color:#080;font-weight:bold">this</span>.attr] <span style="color:#333">=</span> <span style="color:#080;font-weight:bold">this</span>.vm.$data[<span style="color:#080;font-weight:bold">this</span>.exp];
+    }
+}
+<span style="color:#888">// 实例化
+</span><span style="color:#888"></span><span style="color:#080;font-weight:bold">let</span> obj <span style="color:#333">=</span> <span style="color:#080;font-weight:bold">new</span> Vue({
+    el<span style="color:#333">:</span> <span style="background-color:#fff0f0">&#34;#app&#34;</span>,
+    data<span style="color:#333">:</span> {
+        a<span style="color:#333">:</span> <span style="background-color:#fff0f0">&#34;a&#34;</span>,
+        b<span style="color:#333">:</span> <span style="background-color:#fff0f0">&#34;b&#34;</span>,
+        c<span style="color:#333">:</span> <span style="background-color:#fff0f0">&#34;c&#34;</span>
+    }
+});
+</code></pre></div>
+    
+    <script type="text/javascript" src="/js/sheet.min.js"></script>
+
+    
+    <div id="remark-wrap">
+    <h2>备注 <span id="remark-out">Out</span></h2>
+    <div id="remark-content">
+
+    </div>
+</div>
+</div>
+</div>
+
+    </main>
+
+    <footer>
+        
+        
+        
+    </footer>
+
+</body>
+
+</html>

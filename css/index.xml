@@ -5,30 +5,9 @@
     <link>https://www.zhangchao.online/css/</link>
     <description>Recent content in Csses on EsilyZhang 的备忘单</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Wed, 31 Jul 2019 23:26:07 +0800</lastBuildDate>
     
 	<atom:link href="https://www.zhangchao.online/css/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>Layout</title>
-      <link>https://www.zhangchao.online/css/layout/</link>
-      <pubDate>Wed, 31 Jul 2019 23:26:07 +0800</pubDate>
-      
-      <guid>https://www.zhangchao.online/css/layout/</guid>
-      <description> 非替换元素的绝对位置 </description>
-    </item>
-    
-    <item>
-      <title>Fluid Width Equal Height Columns</title>
-      <link>https://www.zhangchao.online/css/fluid-width-equal-height-columns/</link>
-      <pubDate>Wed, 31 Jul 2019 22:18:43 +0800</pubDate>
-      
-      <guid>https://www.zhangchao.online/css/fluid-width-equal-height-columns/</guid>
-      <description> 等高列的流式宽度分布 所有的列分享父级的设置的相同的背景。
-HTML 代码：
-&amp;lt;div id=&amp;#34;page-wrap&amp;#34;&amp;gt; &amp;lt;div class=&amp;#34;five-columns group&amp;#34;&amp;gt; &amp;lt;div class=&amp;#34;col&amp;#34;&amp;gt;content-1&amp;lt;/div&amp;gt; &amp;lt;div class=&amp;#34;col&amp;#34;&amp;gt;content-2&amp;lt;/div&amp;gt; &amp;lt;div class=&amp;#34;col&amp;#34;&amp;gt;content-3&amp;lt;/div&amp;gt; &amp;lt;div class=&amp;#34;col&amp;#34;&amp;gt;content-4&amp;lt;/div&amp;gt; &amp;lt;div class=&amp;#34;col&amp;#34;&amp;gt;content-5&amp;lt;/div&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;/div&amp;gt; float </description>
-    </item>
     
     <item>
       <title>Sass</title>

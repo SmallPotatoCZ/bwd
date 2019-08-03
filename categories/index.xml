@@ -5,10 +5,19 @@
     <link>https://www.zhangchao.online/categories/</link>
     <description>Recent content in Categories on EsilyZhang 的备忘单</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Fri, 02 Aug 2019 23:02:24 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 03 Aug 2019 10:50:53 +0800</lastBuildDate>
     
 	<atom:link href="https://www.zhangchao.online/categories/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>vue</title>
+      <link>https://www.zhangchao.online/categories/vue/</link>
+      <pubDate>Sat, 03 Aug 2019 10:50:53 +0800</pubDate>
+      
+      <guid>https://www.zhangchao.online/categories/vue/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>javascript</title>
@@ -29,33 +38,6 @@
     </item>
     
     <item>
-      <title>web</title>
-      <link>https://www.zhangchao.online/categories/web/</link>
-      <pubDate>Thu, 01 Aug 2019 20:31:15 +0800</pubDate>
-      
-      <guid>https://www.zhangchao.online/categories/web/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>css</title>
-      <link>https://www.zhangchao.online/categories/css/</link>
-      <pubDate>Wed, 31 Jul 2019 23:26:07 +0800</pubDate>
-      
-      <guid>https://www.zhangchao.online/categories/css/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>vue</title>
-      <link>https://www.zhangchao.online/categories/vue/</link>
-      <pubDate>Mon, 22 Jul 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.zhangchao.online/categories/vue/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>cli</title>
       <link>https://www.zhangchao.online/categories/cli/</link>
       <pubDate>Sun, 21 Jul 2019 00:00:00 +0000</pubDate>
@@ -70,6 +52,15 @@
       <pubDate>Thu, 18 Jul 2019 00:00:00 +0000</pubDate>
       
       <guid>https://www.zhangchao.online/categories/react/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>CSS</title>
+      <link>https://www.zhangchao.online/categories/css/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.zhangchao.online/categories/css/</guid>
       <description></description>
     </item>
     

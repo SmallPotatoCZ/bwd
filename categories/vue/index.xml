@@ -5,10 +5,19 @@
     <link>https://www.zhangchao.online/categories/vue/</link>
     <description>Recent content in vue on EsilyZhang 的备忘单</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 22 Jul 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 03 Aug 2019 10:50:53 +0800</lastBuildDate>
     
 	<atom:link href="https://www.zhangchao.online/categories/vue/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Mvvm</title>
+      <link>https://www.zhangchao.online/vue/mvvm/</link>
+      <pubDate>Sat, 03 Aug 2019 10:50:53 +0800</pubDate>
+      
+      <guid>https://www.zhangchao.online/vue/mvvm/</guid>
+      <description>MVVM 响应式数据 class Vue { constructor(options) { this.options = options; this.$data = options.data; this.$el = document.querySelector(options.el); this._directive = {}; this.Observer(this.$data); this.Compile(this.$el); } Observer(data) { for (let key in data) { this._directive[key] = []; let Val = data[key]; let Watcher = this._directive[key]; // this.$data 对象里面的每一个属性发生变化 更新视图  Object.defineProperty(this.$data, key, { get: function () { return Val; }, set: function (newVal) { if (newVal !== Val) { Val = newVal; Watcher.forEach(element =&amp;gt; { element.</description>
+    </item>
     
     <item>
       <title>Vue</title>
