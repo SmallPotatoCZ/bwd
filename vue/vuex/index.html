@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+<meta content='width=device-width, initial-scale=1.0' name='viewport'>
+<link href='/favicon.png' rel='shortcut icon'>
+<meta content='' name='app:pageurl'>
+
+
+
+
+
+
+
+<link rel="canonical" href="">
+<meta name="og:url" content="">
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <title>EsilyZhang 的备忘单</title>
+    
+    <link rel="stylesheet" href="/sass/home.min.de7c29548feadde2ec038bd703cb5297c0c0d6ae56e095e1f9e1d89f08855611.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+
+<link rel="stylesheet" href="/sass/cheatsheet.min.0e04c6f8cfec1cd19366f7dab350a5a4b7f4c3c90b074e116ddc5c221b46b80b.css">
+
+</head>
+
+<body>
+    <header role="heading">
+        <nav class='top-nav' data-js-no-preview role='navigation'>
+    <div class='container'>
+        
+        <div class='left'>
+            <a class='back-button icons' href='/'>keyboard_backspace</a>
+        </div>
+        
+
+        <a class='brand' href='/'>
+            EsilyZhang 的备忘单
+        </a>
+    </div>
+</nav>
+    </header>
+    <main role="main">
+        
+<div class='site-header' role='banner'>
+    <h1>
+        Vuex - 备忘录
+    </h1>
+</div>
+<div class="md_content">
+    <div id="sheet_box">
+    <div id="sheet_column" hidden>2</div>
+    
+
+<h2 id="vuex">Vuex</h2>
+
+<div class="mermaid-wrap">
+    <div class="mermaid">
+        
+graph LR
+    mutation == 修改 ==> state
+    action[Action] -- 修改 --> mutation[Mutation]
+    state  -.->  getter[Getter]
+    getter  -.-> view[View]
+    state  -.-> view[视图]
+    module[模块]  --> state
+    state  -.-> module
+    click getter callNotes "getter"
+    click state callNotes "state"
+    click mutation callNotes "mutation"
+    click action callNotes "action"
+
+    </div>
+    <div class="masker">
+    </div>
+    <img src="/loader.svg" />
+</div>
+
+<div id="remark-state" hidden>
+    <h2 id="使用全局-state">使用全局 state</h2>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">{
+    computed<span style="color:#333">:</span>{
+        count() {<span style="color:#080;font-weight:bold">return</span> store.state.count;}
+    }
+}
+</code></pre></div>
+<h2 id="注入根组件">注入根组件</h2>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#080;font-weight:bold">new</span> Vue({
+    store<span style="color:#333">:</span> store
+})
+
+<span style="color:#888">// 使用
+</span><span style="color:#888"></span>{
+    computed<span style="color:#333">:</span> {
+        count(){
+            returen <span style="color:#080;font-weight:bold">this</span>.$store.state.count
+        }
+    }
+}
+</code></pre></div>
+<h2 id="mapstate-辅助函数">mapState 辅助函数</h2>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">{
+    computed<span style="color:#333">:</span>mapState({
+        count<span style="color:#333">:</span> state =&gt; state.count
+    })
+}
+<span style="color:#888">// 计算属性名和 state 子节点名称相同
+</span><span style="color:#888"></span>{
+    computed<span style="color:#333">:</span>mapState([<span style="background-color:#fff0f0">&#34;count&#34;</span>])
+}
+</code></pre></div>
+<h3 id="合并">合并</h3>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">computed<span style="color:#333">:</span> {
+    <span style="color:#888">/*...*/</span>
+    ...mapState({
+        <span style="color:#888">//..
+</span><span style="color:#888"></span>    })
+}
+</code></pre></div>
+</div>
+
+<div id="remark-getter" hidden>
+    <h2 id="定义">定义</h2>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">{
+    getters<span style="color:#333">:</span> {
+        <span style="color:#080;font-weight:bold">do</span><span style="color:#333">:</span> state =&gt; {
+            <span style="color:#080;font-weight:bold">return</span> <span style="color:#888">//...
+</span><span style="color:#888"></span>        }
+    }
+}
+</code></pre></div>
+<h2 id="通过属性访问">通过属性访问</h2>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">stote.getters.<span style="color:#080;font-weight:bold">do</span>
+</code></pre></div>
+<h2 id="通过方法访问">通过方法访问</h2>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">store.getters.<span style="color:#080;font-weight:bold">do</span>(para);
+</code></pre></div>
+<h2 id="mapgetters-辅助函数">mapGetters 辅助函数</h2>
+
+<p>将 Geeter 映射到局部计算变量中</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">{
+    computed<span style="color:#333">:</span> mapGetters([<span style="background-color:#fff0f0">&#34;do&#34;</span>])
+}
+<span style="color:#888">// 对象
+</span><span style="color:#888"></span>{
+    computed<span style="color:#333">:</span> mapGetters({
+        <span style="color:#080;font-weight:bold">do</span><span style="color:#333">:</span> <span style="background-color:#fff0f0">&#39;do&#39;</span>
+    })
+}
+</code></pre></div>
+</div>
+
+<div id="remark-mutation" hidden>
+    <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#888">// store
+</span><span style="color:#888"></span>{
+    mutations<span style="color:#333">:</span> {
+        increment(state, para){
+            state.count <span style="color:#333">++</span>;
+        }
+    }
+}
+<span style="color:#888">// 提交
+</span><span style="color:#888"></span>store.commit(<span style="background-color:#fff0f0">&#34;increment&#34;</span>);
+<span style="color:#888">// 携带参数提交
+</span><span style="color:#888"></span>store.commit(<span style="background-color:#fff0f0">&#39;increment&#39;</span>, para);
+<span style="color:#888">// 对象方式的提交
+</span><span style="color:#888"></span>store.commit({
+    type<span style="color:#333">:</span> <span style="background-color:#fff0f0">&#39;increment&#39;</span>,
+    amount<span style="color:#333">:</span> <span style="color:#00d;font-weight:bold">1</span>
+})
+</code></pre></div>
+<h2 id="组件中提交-mutation">组件中提交 Mutation</h2>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#888">// component
+</span><span style="color:#888"></span>{
+    methods<span style="color:#333">:</span> {
+        ...mapMutations([<span style="background-color:#fff0f0">&#34;increment&#34;</span>])
+    }
+}
+</code></pre></div>
+</div>
+
+<div id="remark-action" hidden>
+    <p>不同与 Mutation :</p>
+
+<ul>
+<li>提交的是 mutation</li>
+<li>可以包含任何异步方法</li>
+</ul>
+
+<h2 id="使用">使用</h2>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#888">// store
+</span><span style="color:#888"></span>{
+    actions<span style="color:#333">:</span> {
+        increment(context){
+            context.commit(<span style="background-color:#fff0f0">&#39;increment&#39;</span>)
+        }
+    }
+}
+</code></pre></div>
+<h2 id="分发">分发</h2>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">store.dispatch(<span style="background-color:#fff0f0">&#39;increment&#39;</span>);
+<span style="color:#888">// 对象形式分发
+</span><span style="color:#888"></span>store.dispatch({
+    type<span style="color:#333">:</span><span style="background-color:#fff0f0">&#34;increment&#34;</span>,
+    mount<span style="color:#333">:</span> <span style="color:#00d;font-weight:bold">10</span>
+})
+</code></pre></div>
+<h2 id="执行异步操作">执行异步操作</h2>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">{
+    actions<span style="color:#333">:</span> {
+        incrementAsync({commit}){
+            setTimeout(() =&gt; {
+                commit(<span style="background-color:#fff0f0">&#39;increment&#39;</span>)
+            }, <span style="color:#00d;font-weight:bold">1000</span>);
+        }
+    }
+}
+</code></pre></div>
+<h2 id="组件中分发-action">组件中分发 Action</h2>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">{
+    methods<span style="color:#333">:</span> ...mapActions([<span style="background-color:#fff0f0">&#34;increment&#34;</span>, <span style="background-color:#fff0f0">&#34;incrementAsync&#34;</span>])
+}
+</code></pre></div>
+<h2 id="组合">组合</h2>
+
+<p>接受 Action 的结束行为</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#888">// store
+</span><span style="color:#888"></span>{
+    actions<span style="color:#333">:</span> {
+        actionA<span style="color:#333">:</span> ({commit}){
+            <span style="color:#080;font-weight:bold">return</span> <span style="color:#080;font-weight:bold">new</span> <span style="color:#007020">Promise</span>((resolve,rejext)=&gt;{
+                setTimeout(() =&gt; {
+                    commit(<span style="background-color:#fff0f0">&#34;someMutation);
+</span><span style="background-color:#fff0f0">                    resolve();
+</span><span style="background-color:#fff0f0">                }, 1000);
+</span><span style="background-color:#fff0f0">            })
+</span><span style="background-color:#fff0f0">        }
+</span><span style="background-color:#fff0f0">    }
+</span><span style="background-color:#fff0f0">}
+</span><span style="background-color:#fff0f0">// 使用
+</span><span style="background-color:#fff0f0">store.dispatch(&#34;</span>actionA<span style="color:#f00;background-color:#faa">&#34;</span>).then();
+</code></pre></div>
+</div>
+
+<div id="remark-module" hidden>
+    <p>将 state 分割几个模块或部分</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#080;font-weight:bold">const</span> moduleA <span style="color:#333">=</span> {
+    state<span style="color:#333">:</span> {},
+    mutations<span style="color:#333">:</span> {},
+    actions<span style="color:#333">:</span> {},
+    getters<span style="color:#333">:</span> {}
+}
+</code></pre></div>
+<p><strong>module 具有自己的局部状态(state)</strong></p>
+
+<p>通过<code>namespaced: true</code>，使模块内部的 <code>action</code>、<code>mutation</code>和<code>getter</code>封装，使用路径会自动调整。</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#888">// store
+</span><span style="color:#888"></span>{
+    modules<span style="color:#333">:</span> {
+        account<span style="color:#333">:</span> {
+            namespaced<span style="color:#333">:</span> <span style="color:#080;font-weight:bold">true</span>,
+            getters<span style="color:#333">:</span> {
+                <span style="color:#080;font-weight:bold">do</span>(){} <span style="color:#888">// getters[account/do]
+</span><span style="color:#888"></span>            }
+        }
+    }
+}
+</code></pre></div>
+<h2 id="模块内部访问全局作用域">模块内部访问全局作用域</h2>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">getters<span style="color:#333">:</span> {
+      someGetter (state, getters, rootState, rootGetters) {
+        getters.someOtherGetter <span style="color:#888">// -&gt; &#39;foo/someOtherGetter&#39;
+</span><span style="color:#888"></span>        rootGetters.someOtherGetter <span style="color:#888">// -&gt; &#39;someOtherGetter&#39;
+</span><span style="color:#888"></span>      }
+    }
+
+<span style="color:#888">// 
+</span></code></pre></div>
+</div>
+
+    
+    <script type="text/javascript" src="/js/sheet.min.js"></script>
+
+    
+    
+    
+    <script type="text/javascript" src="/js/mermaid.min.js"> </script>
+    <script type="text/javascript" src="/js/mermaid.instance.min.js" defer></script>
+    
+    <div id="remark-wrap">
+    <h2>备注 <span id="remark-out">Out</span></h2>
+    <div id="remark-content">
+
+    </div>
+</div>
+</div>
+</div>
+
+    </main>
+
+    <footer>
+        
+        
+        
+    </footer>
+
+</body>
+
+</html>

@@ -5,10 +5,19 @@
     <link>https://www.zhangchao.online/vue/</link>
     <description>Recent content in Vues on EsilyZhang 的备忘单</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sat, 03 Aug 2019 10:50:53 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 04 Aug 2019 12:45:26 +0800</lastBuildDate>
     
 	<atom:link href="https://www.zhangchao.online/vue/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Vuex</title>
+      <link>https://www.zhangchao.online/vue/vuex/</link>
+      <pubDate>Sun, 04 Aug 2019 12:45:26 +0800</pubDate>
+      
+      <guid>https://www.zhangchao.online/vue/vuex/</guid>
+      <description>Vuex graph LR mutation == 修改 == state action[Action] -- 修改 -- mutation[Mutation] state -.- getter[Getter] getter -.- view[View] state -.- view[视图] module[模块] -- state state -.- module click getter callNotes &#34;getter&#34; click state callNotes &#34;state&#34; click mutation callNotes &#34;mutation&#34; click action callNotes &#34;action&#34;    使用全局 state { computed:{ count() {return store.state.count;} } }  注入根组件 new Vue({ store: store }) // 使用 { computed: { count(){ returen this.</description>
+    </item>
     
     <item>
       <title>Mvvm</title>
@@ -17,17 +26,6 @@
       
       <guid>https://www.zhangchao.online/vue/mvvm/</guid>
       <description>MVVM 响应式数据 class Vue { constructor(options) { this.options = options; this.$data = options.data; this.$el = document.querySelector(options.el); this._directive = {}; this.Observer(this.$data); this.Compile(this.$el); } Observer(data) { for (let key in data) { this._directive[key] = []; let Val = data[key]; let Watcher = this._directive[key]; // this.$data 对象里面的每一个属性发生变化 更新视图  Object.defineProperty(this.$data, key, { get: function () { return Val; }, set: function (newVal) { if (newVal !== Val) { Val = newVal; Watcher.forEach(element =&amp;gt; { element.</description>
-    </item>
-    
-    <item>
-      <title>Vue 组件</title>
-      <link>https://www.zhangchao.online/vue/component/</link>
-      <pubDate>Sat, 27 Jul 2019 00:05:00 +0800</pubDate>
-      
-      <guid>https://www.zhangchao.online/vue/component/</guid>
-      <description>组件注册 组件名 两种方式：
- kebab-case - &amp;lt;kebab-case&amp;gt; PascalCase - &amp;lt;PascalCase&amp;gt; 或者 &amp;lt;pascal-case&amp;gt;，直接在 DOM 中只有 kebab-case。  全局注册 子组件直接可以互相使用。
-Vue.component(&amp;#34;cmpt-name&amp;#34;, {/*...*/});  局部注册 // 在其子组件中不可用。 var ComponentA = {/*...*/}; var ComponentB = {/*...*/}; new Vue({ el:&amp;#34;#app&amp;#34;, components:{ &amp;#34;cmpt-a&amp;#34;: ComponentA, &amp;#34;cmpt-b&amp;#34;: ComponentB } }) // 如果要互相使用 var ComponentA = {/*...*/}; var ComponentB = { components: { &amp;#39;component-a&amp;#39;: ComponentA } };  模块系统 模块系统中局部注册 import ComponentA form &amp;#39;./ComponentA&amp;#39; export default { components: { ComponentA } }  基础组件的自动化全局注册 const requireComponent = require.</description>
     </item>
     
     <item>

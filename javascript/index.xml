@@ -5,22 +5,10 @@
     <link>https://www.zhangchao.online/javascript/</link>
     <description>Recent content in Javascripts on EsilyZhang 的备忘单</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sat, 03 Aug 2019 18:49:22 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 02 Aug 2019 23:02:24 +0800</lastBuildDate>
     
 	<atom:link href="https://www.zhangchao.online/javascript/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>Webpack</title>
-      <link>https://www.zhangchao.online/javascript/webpack/</link>
-      <pubDate>Sat, 03 Aug 2019 18:49:22 +0800</pubDate>
-      
-      <guid>https://www.zhangchao.online/javascript/webpack/</guid>
-      <description>Webpack 构建 graph LR webpack[Webpack] -- entry[入口] click entry callNotes &#34;entry&#34; webpack[Webpack] -- output[输出] click output callNotes &#34;output&#34;    应该使用的模块，作为构建内部依赖图的开始。默认 ./src/index.js。
-一个或多个入口：
-{ /*...*/ entry:{ entry1: &amp;#39;file1.js&amp;#39;, entry2: &amp;#39;file2.js&amp;#39; }, /*...*/ }   { /*...*/ output:{ filename: [name].bundle.js, // [name] 入口起点名字  path: path.resolve(__dirname) // 输出路径  } }   资源管理 - loader CSS  style-css css-loader
-{ /*...*/ module:{ rules:[ { test: /\.css$/, use: [&amp;#39;style-loader&amp;#39;, &amp;#39;css-loader&amp;#39;] } ] } /*.</description>
-    </item>
     
     <item>
       <title>Symbol</title>
