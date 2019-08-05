@@ -5,10 +5,21 @@
     <link>https://www.zhangchao.online/tags/featured/</link>
     <description>Recent content in featured on EsilyZhang 的备忘单</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sat, 03 Aug 2019 10:50:53 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 05 Aug 2019 20:00:38 +0800</lastBuildDate>
     
 	<atom:link href="https://www.zhangchao.online/tags/featured/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>跨窗口通信</title>
+      <link>https://www.zhangchao.online/web/cross-window-communication/</link>
+      <pubDate>Mon, 05 Aug 2019 20:00:38 +0800</pubDate>
+      
+      <guid>https://www.zhangchao.online/web/cross-window-communication/</guid>
+      <description>实现方式 同源限制  Cookie Webstorage - localStorage BroadcastChannel window.open  不同源的窗口内通信 父窗口：
+&amp;lt;h1&amp;gt;发送端&amp;lt;/h1&amp;gt; &amp;lt;p&amp;gt;键入发送的消息：&amp;lt;/p&amp;gt; &amp;lt;form name=&amp;#34;sender&amp;#34; onsubmit=&amp;#34;return sendMessage();&amp;#34;&amp;gt; &amp;lt;input type=&amp;#34;text&amp;#34; name=&amp;#34;message&amp;#34; size=&amp;#34;30&amp;#34; value=&amp;#34;&amp;#34;&amp;gt; &amp;lt;input type=&amp;#34;submit&amp;#34; value=&amp;#34;发送&amp;#34;&amp;gt; &amp;lt;input type=&amp;#34;reset&amp;#34; value=&amp;#34;清空&amp;#34;&amp;gt; &amp;lt;/form&amp;gt; &amp;lt;iframe src=&amp;#34;http://192.168.5.125:9001/cross-window-connection/postMessage-receiver.html&amp;#34; name=&amp;#34;msg2&amp;#34;&amp;gt;&amp;lt;/iframe&amp;gt;let win = window.frames.msg2; function updateMessage() { return document.forms[&amp;#39;sender&amp;#39;].elements[&amp;#39;message&amp;#39;].value; } function sendMessage() { win.postMessage(updateMessage(), &amp;#34;*&amp;#34;); return false; }  iframe 中子窗口：
+&amp;lt;h1&amp;gt;接受端&amp;lt;/h1&amp;gt; &amp;lt;p&amp;gt;接收到的消息：&amp;lt;/p&amp;gt; &amp;lt;form name=&amp;#34;receiver&amp;#34;&amp;gt; &amp;lt;input type=&amp;#34;text&amp;#34; name=&amp;#34;message&amp;#34; size=&amp;#34;30&amp;#34; value=&amp;#34;&amp;#34; readonly disabled&amp;gt; &amp;lt;/form&amp;gt;window.addEventListener(&amp;#34;message&amp;#34;, function (event) { document.forms[&amp;#34;receiver&amp;#34;].elements[&amp;#39;message&amp;#39;].value = event.</description>
+    </item>
     
     <item>
       <title>Mvvm</title>

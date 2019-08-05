@@ -8,14 +8,43 @@
   
   <url>
     <loc>https://www.zhangchao.online/categories/</loc>
-    <lastmod>2019-08-04T12:45:26+08:00</lastmod>
+    <lastmod>2019-08-05T20:00:38+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://www.zhangchao.online/</loc>
-    <lastmod>2019-08-04T12:45:26+08:00</lastmod>
+    <lastmod>2019-08-05T20:00:38+08:00</lastmod>
     <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.zhangchao.online/tags/</loc>
+    <lastmod>2019-08-05T20:00:38+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.zhangchao.online/web/</loc>
+    <lastmod>2019-08-05T20:00:38+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.zhangchao.online/tags/featured/</loc>
+    <lastmod>2019-08-05T20:00:38+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.zhangchao.online/categories/web/</loc>
+    <lastmod>2019-08-05T20:00:38+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.zhangchao.online/web/cross-window-communication/</loc>
+    <lastmod>2019-08-05T20:00:38+08:00</lastmod>
   </url>
   
   <url>
@@ -38,18 +67,6 @@
   <url>
     <loc>https://www.zhangchao.online/vue/mvvm/</loc>
     <lastmod>2019-08-03T10:50:53+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://www.zhangchao.online/tags/</loc>
-    <lastmod>2019-08-03T10:50:53+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.zhangchao.online/tags/featured/</loc>
-    <lastmod>2019-08-03T10:50:53+08:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>

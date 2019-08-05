@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+<meta content='width=device-width, initial-scale=1.0' name='viewport'>
+<link href='/favicon.png' rel='shortcut icon'>
+<meta content='' name='app:pageurl'>
+
+
+
+
+
+
+
+<link rel="canonical" href="">
+<meta name="og:url" content="">
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <title>EsilyZhang 的备忘单</title>
+    
+    <link rel="stylesheet" href="/sass/home.min.de7c29548feadde2ec038bd703cb5297c0c0d6ae56e095e1f9e1d89f08855611.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+
+<link rel="stylesheet" href="/sass/cheatsheet.min.0e04c6f8cfec1cd19366f7dab350a5a4b7f4c3c90b074e116ddc5c221b46b80b.css">
+
+</head>
+
+<body>
+    <header role="heading">
+        <nav class='top-nav' data-js-no-preview role='navigation'>
+    <div class='container'>
+        
+        <div class='left'>
+            <a class='back-button icons' href='/'>keyboard_backspace</a>
+        </div>
+        
+
+        <a class='brand' href='/'>
+            EsilyZhang 的备忘单
+        </a>
+    </div>
+</nav>
+    </header>
+    <main role="main">
+        
+<div class='site-header' role='banner'>
+    <h1>
+        跨窗口通信 - 备忘录
+    </h1>
+</div>
+<div class="md_content">
+    <div id="sheet_box">
+    <div id="sheet_column" hidden>2</div>
+    
+
+<h2 id="实现方式">实现方式</h2>
+
+<h3 id="同源限制">同源限制</h3>
+
+<ol>
+<li>Cookie</li>
+<li>Webstorage - localStorage</li>
+<li>BroadcastChannel</li>
+<li>window.open</li>
+</ol>
+
+<h3 id="不同源的窗口内通信">不同源的窗口内通信</h3>
+
+<p>父窗口：</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#070">h1</span>&gt;发送端&lt;/<span style="color:#070">h1</span>&gt;
+&lt;<span style="color:#070">p</span>&gt;键入发送的消息：&lt;/<span style="color:#070">p</span>&gt;
+&lt;<span style="color:#070">form</span> <span style="color:#00c">name</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;sender&#34;</span> <span style="color:#00c">onsubmit</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;return sendMessage();&#34;</span>&gt;
+    &lt;<span style="color:#070">input</span> <span style="color:#00c">type</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;text&#34;</span> <span style="color:#00c">name</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;message&#34;</span> <span style="color:#00c">size</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;30&#34;</span> <span style="color:#00c">value</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;&#34;</span>&gt;
+    &lt;<span style="color:#070">input</span> <span style="color:#00c">type</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;submit&#34;</span> <span style="color:#00c">value</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;发送&#34;</span>&gt;
+    &lt;<span style="color:#070">input</span> <span style="color:#00c">type</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;reset&#34;</span> <span style="color:#00c">value</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;清空&#34;</span>&gt;
+&lt;/<span style="color:#070">form</span>&gt;
+&lt;<span style="color:#070">iframe</span> <span style="color:#00c">src</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;http://192.168.5.125:9001/cross-window-connection/postMessage-receiver.html&#34;</span> <span style="color:#00c">name</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;msg2&#34;</span>&gt;&lt;/<span style="color:#070">iframe</span>&gt;</code></pre></div><div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#080;font-weight:bold">let</span> win <span style="color:#333">=</span> <span style="color:#007020">window</span>.frames.msg2;
+
+<span style="color:#080;font-weight:bold">function</span> updateMessage() {
+    <span style="color:#080;font-weight:bold">return</span> <span style="color:#007020">document</span>.forms[<span style="background-color:#fff0f0">&#39;sender&#39;</span>].elements[<span style="background-color:#fff0f0">&#39;message&#39;</span>].value;
+}
+
+<span style="color:#080;font-weight:bold">function</span> sendMessage() {
+    win.postMessage(updateMessage(), <span style="background-color:#fff0f0">&#34;*&#34;</span>);
+    <span style="color:#080;font-weight:bold">return</span> <span style="color:#080;font-weight:bold">false</span>;
+}
+</code></pre></div>
+<p>iframe 中子窗口：</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#070">h1</span>&gt;接受端&lt;/<span style="color:#070">h1</span>&gt;
+&lt;<span style="color:#070">p</span>&gt;接收到的消息：&lt;/<span style="color:#070">p</span>&gt;
+&lt;<span style="color:#070">form</span> <span style="color:#00c">name</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;receiver&#34;</span>&gt;
+    &lt;<span style="color:#070">input</span> <span style="color:#00c">type</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;text&#34;</span> <span style="color:#00c">name</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;message&#34;</span> <span style="color:#00c">size</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;30&#34;</span> <span style="color:#00c">value</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;&#34;</span> <span style="color:#00c">readonly</span> <span style="color:#00c">disabled</span>&gt;
+&lt;/<span style="color:#070">form</span>&gt;</code></pre></div><div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#007020">window</span>.addEventListener(<span style="background-color:#fff0f0">&#34;message&#34;</span>, <span style="color:#080;font-weight:bold">function</span> (event) {
+    <span style="color:#007020">document</span>.forms[<span style="background-color:#fff0f0">&#34;receiver&#34;</span>].elements[<span style="background-color:#fff0f0">&#39;message&#39;</span>].value <span style="color:#333">=</span> event.data;
+});
+</code></pre></div>
+<h2 id="同源限制下通信的实现">同源限制下通信的实现</h2>
+
+<h3 id="cookie">Cookie</h3>
+
+<p>发送端实现：</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#070">h1</span>&gt;发送端&lt;/<span style="color:#070">h1</span>&gt;
+&lt;<span style="color:#070">p</span>&gt;键入发送的消息：&lt;/<span style="color:#070">p</span>&gt;
+&lt;<span style="color:#070">form</span> <span style="color:#00c">name</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;sender&#34;</span> <span style="color:#00c">onsubmit</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;return sendMessage();&#34;</span>&gt;
+    &lt;<span style="color:#070">input</span> <span style="color:#00c">type</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;text&#34;</span> <span style="color:#00c">name</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;message&#34;</span> <span style="color:#00c">size</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;30&#34;</span> <span style="color:#00c">value</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;&#34;</span>&gt;
+    &lt;<span style="color:#070">input</span> <span style="color:#00c">type</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;submit&#34;</span> <span style="color:#00c">value</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;发送&#34;</span>&gt;
+    &lt;<span style="color:#070">input</span> <span style="color:#00c">type</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;reset&#34;</span> <span style="color:#00c">value</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;清空&#34;</span>&gt;
+&lt;/<span style="color:#070">form</span>&gt;</code></pre></div><div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#080;font-weight:bold">function</span> setCookie(msg) {
+    <span style="color:#007020">document</span>.cookie <span style="color:#333">=</span> <span style="background-color:#fff0f0">&#34;cookie-msg-text=&#34;</span> <span style="color:#333">+</span> msg <span style="color:#333">+</span> <span style="background-color:#fff0f0">&#34;;path=/&#34;</span>;
+}
+
+<span style="color:#080;font-weight:bold">function</span> updateMessage() {
+    <span style="color:#080;font-weight:bold">var</span> cnt <span style="color:#333">=</span> <span style="color:#007020">document</span>.forms[<span style="background-color:#fff0f0">&#39;sender&#39;</span>].elements[<span style="background-color:#fff0f0">&#39;message&#39;</span>].value;
+    console.log(<span style="background-color:#fff0f0">&#39;sdfsd&#39;</span>, cnt);
+    setCookie(cnt);
+}
+
+<span style="color:#080;font-weight:bold">function</span> sendMessage() {
+    updateMessage();
+    <span style="color:#080;font-weight:bold">return</span> <span style="color:#080;font-weight:bold">false</span>;
+}
+</code></pre></div>
+<p>接收端实现：</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#070">h1</span>&gt;接受端&lt;/<span style="color:#070">h1</span>&gt;
+&lt;<span style="color:#070">p</span>&gt;接收到的消息：&lt;/<span style="color:#070">p</span>&gt;
+&lt;<span style="color:#070">form</span> <span style="color:#00c">name</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;receiver&#34;</span>&gt;
+    &lt;<span style="color:#070">input</span> <span style="color:#00c">type</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;text&#34;</span> <span style="color:#00c">name</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;message&#34;</span> <span style="color:#00c">size</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;30&#34;</span> <span style="color:#00c">value</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;&#34;</span> <span style="color:#00c">readonly</span> <span style="color:#00c">disabled</span>&gt;
+&lt;/<span style="color:#070">form</span>&gt;</code></pre></div><div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#080;font-weight:bold">function</span> getCookie() {
+    <span style="color:#080;font-weight:bold">var</span> startMsg <span style="color:#333">=</span> <span style="background-color:#fff0f0">&#34;cookie-msg-text=&#34;</span>;
+    <span style="color:#080;font-weight:bold">var</span> cookieCnt <span style="color:#333">=</span> <span style="color:#007020">document</span>.cookie.split(<span style="background-color:#fff0f0">&#34;;&#34;</span>);
+    <span style="color:#080;font-weight:bold">for</span> (<span style="color:#080;font-weight:bold">var</span> i <span style="color:#333">=</span> <span style="color:#00d;font-weight:bold">0</span>; i <span style="color:#333">&lt;</span> cookieCnt.length; i<span style="color:#333">++</span>) {
+        <span style="color:#080;font-weight:bold">var</span> c <span style="color:#333">=</span> cookieCnt[i];
+        <span style="color:#080;font-weight:bold">if</span> (c.indexOf(startMsg) <span style="color:#333">==</span> <span style="color:#00d;font-weight:bold">1</span>) {
+            <span style="color:#080;font-weight:bold">return</span> c.substring(startMsg.length <span style="color:#333">+</span> <span style="color:#00d;font-weight:bold">1</span>);
+        }
+    }
+}
+<span style="color:#888">// 获取 Cookie
+</span><span style="color:#888"></span><span style="color:#080;font-weight:bold">function</span> updateMessage() {
+    <span style="color:#080;font-weight:bold">var</span> text <span style="color:#333">=</span> getCookie();
+    <span style="color:#007020">document</span>.forms[<span style="background-color:#fff0f0">&#34;receiver&#34;</span>].elements[<span style="background-color:#fff0f0">&#39;message&#39;</span>].value <span style="color:#333">=</span> text;
+    setTimeout(updateMessage, <span style="color:#00d;font-weight:bold">100</span>);
+}
+
+updateMessage();
+</code></pre></div>
+<h3 id="localstorage">localStorage</h3>
+
+<p>发送端：</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#070">h1</span>&gt;发送端&lt;/<span style="color:#070">h1</span>&gt;
+&lt;<span style="color:#070">p</span>&gt;键入发送的消息：&lt;/<span style="color:#070">p</span>&gt;
+&lt;<span style="color:#070">form</span> <span style="color:#00c">name</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;sender&#34;</span> <span style="color:#00c">onsubmit</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;return sendMessage();&#34;</span>&gt;
+    &lt;<span style="color:#070">input</span> <span style="color:#00c">type</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;text&#34;</span> <span style="color:#00c">name</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;message&#34;</span> <span style="color:#00c">size</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;30&#34;</span> <span style="color:#00c">value</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;&#34;</span>&gt;
+    &lt;<span style="color:#070">input</span> <span style="color:#00c">type</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;submit&#34;</span> <span style="color:#00c">value</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;发送&#34;</span>&gt;
+    &lt;<span style="color:#070">input</span> <span style="color:#00c">type</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;reset&#34;</span> <span style="color:#00c">value</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;清空&#34;</span>&gt;
+&lt;/<span style="color:#070">form</span>&gt;</code></pre></div><div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#080;font-weight:bold">function</span> setLocalStorage(msg) {
+    <span style="color:#007020">window</span>.localStorage.setItem(<span style="background-color:#fff0f0">&#34;msg-cnt=&#34;</span>, msg);
+}
+
+<span style="color:#080;font-weight:bold">function</span> updateMessage() {
+    <span style="color:#080;font-weight:bold">var</span> cnt <span style="color:#333">=</span> <span style="color:#007020">document</span>.forms[<span style="background-color:#fff0f0">&#39;sender&#39;</span>].elements[<span style="background-color:#fff0f0">&#39;message&#39;</span>].value;
+    setLocalStorage(cnt);
+}
+
+<span style="color:#080;font-weight:bold">function</span> sendMessage() {
+    updateMessage();
+    <span style="color:#080;font-weight:bold">return</span> <span style="color:#080;font-weight:bold">false</span>;
+}
+</code></pre></div>
+<p>接受端：</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#070">h1</span>&gt;接受端&lt;/<span style="color:#070">h1</span>&gt;
+&lt;<span style="color:#070">p</span>&gt;接收到的消息：&lt;/<span style="color:#070">p</span>&gt;
+&lt;<span style="color:#070">form</span> <span style="color:#00c">name</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;receiver&#34;</span>&gt;
+    &lt;<span style="color:#070">input</span> <span style="color:#00c">type</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;text&#34;</span> <span style="color:#00c">name</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;message&#34;</span> <span style="color:#00c">size</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;30&#34;</span> <span style="color:#00c">value</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;&#34;</span> <span style="color:#00c">readonly</span> <span style="color:#00c">disabled</span>&gt;
+&lt;/<span style="color:#070">form</span>&gt;</code></pre></div><div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#080;font-weight:bold">function</span> getLocalStorage() {
+    <span style="color:#080;font-weight:bold">return</span> <span style="color:#007020">window</span>.localStorage.getItem(<span style="background-color:#fff0f0">&#34;msg-cnt=&#34;</span>);
+}
+
+<span style="color:#080;font-weight:bold">function</span> updateMessage() {
+    <span style="color:#080;font-weight:bold">var</span> text <span style="color:#333">=</span> getLocalStorage();
+    <span style="color:#007020">document</span>.forms[<span style="background-color:#fff0f0">&#34;receiver&#34;</span>].elements[<span style="background-color:#fff0f0">&#39;message&#39;</span>].value <span style="color:#333">=</span> text;
+    setTimeout(updateMessage, <span style="color:#00d;font-weight:bold">100</span>);
+}
+
+updateMessage();
+</code></pre></div>
+<h3 id="broadcastchannel">BroadcastChannel</h3>
+
+<p>发送端：</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#070">h1</span>&gt;发送端&lt;/<span style="color:#070">h1</span>&gt;
+&lt;<span style="color:#070">p</span>&gt;键入发送的消息：&lt;/<span style="color:#070">p</span>&gt;
+&lt;<span style="color:#070">form</span> <span style="color:#00c">name</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;sender&#34;</span> <span style="color:#00c">onsubmit</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;return sendMessage();&#34;</span>&gt;
+    &lt;<span style="color:#070">input</span> <span style="color:#00c">type</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;text&#34;</span> <span style="color:#00c">name</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;message&#34;</span> <span style="color:#00c">size</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;30&#34;</span> <span style="color:#00c">value</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;&#34;</span>&gt;
+    &lt;<span style="color:#070">input</span> <span style="color:#00c">type</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;submit&#34;</span> <span style="color:#00c">value</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;发送&#34;</span>&gt;
+    &lt;<span style="color:#070">input</span> <span style="color:#00c">type</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;reset&#34;</span> <span style="color:#00c">value</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;清空&#34;</span>&gt;
+&lt;/<span style="color:#070">form</span>&gt;</code></pre></div><div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#080;font-weight:bold">var</span> bc <span style="color:#333">=</span> <span style="color:#080;font-weight:bold">new</span> BroadcastChannel(<span style="background-color:#fff0f0">&#34;msg-channel&#34;</span>);
+
+<span style="color:#080;font-weight:bold">function</span> updateMessage() {
+    <span style="color:#080;font-weight:bold">return</span> <span style="color:#007020">document</span>.forms[<span style="background-color:#fff0f0">&#39;sender&#39;</span>].elements[<span style="background-color:#fff0f0">&#39;message&#39;</span>].value;
+}
+
+<span style="color:#080;font-weight:bold">function</span> sendMessage() {
+    bc.postMessage(updateMessage());
+    <span style="color:#080;font-weight:bold">return</span> <span style="color:#080;font-weight:bold">false</span>;
+}
+</code></pre></div>
+<p>接收端：</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#070">h1</span>&gt;接受端&lt;/<span style="color:#070">h1</span>&gt;
+&lt;<span style="color:#070">p</span>&gt;接收到的消息：&lt;/<span style="color:#070">p</span>&gt;
+&lt;<span style="color:#070">form</span> <span style="color:#00c">name</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;receiver&#34;</span>&gt;
+    &lt;<span style="color:#070">input</span> <span style="color:#00c">type</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;text&#34;</span> <span style="color:#00c">name</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;message&#34;</span> <span style="color:#00c">size</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;30&#34;</span> <span style="color:#00c">value</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;&#34;</span> <span style="color:#00c">readonly</span> <span style="color:#00c">disabled</span>&gt;
+&lt;/<span style="color:#070">form</span>&gt;</code></pre></div><div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#080;font-weight:bold">var</span> bc <span style="color:#333">=</span> <span style="color:#080;font-weight:bold">new</span> BroadcastChannel(<span style="background-color:#fff0f0">&#34;msg-channel&#34;</span>);
+bc.addEventListener(<span style="background-color:#fff0f0">&#34;message&#34;</span>, <span style="color:#080;font-weight:bold">function</span> (event) {
+    <span style="color:#007020">document</span>.forms[<span style="background-color:#fff0f0">&#34;receiver&#34;</span>].elements[<span style="background-color:#fff0f0">&#39;message&#39;</span>].value <span style="color:#333">=</span> event.data;
+});
+</code></pre></div>
+<h3 id="window-open">window.open</h3>
+
+<p>主窗口 - 发送端：</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#070">button</span> <span style="color:#00c">onclick</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;window.open(&#39;window-open-child.html&#39;)&#34;</span>&gt;打开第二窗口&lt;/<span style="color:#070">button</span>&gt;
+&lt;<span style="color:#070">br</span>&gt;
+&lt;<span style="color:#070">h1</span>&gt;发送端&lt;/<span style="color:#070">h1</span>&gt;
+&lt;<span style="color:#070">p</span>&gt;键入发送的消息：&lt;/<span style="color:#070">p</span>&gt;
+&lt;<span style="color:#070">form</span> <span style="color:#00c">name</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;sender&#34;</span> <span style="color:#00c">onsubmit</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;return sendMessage();&#34;</span>&gt;
+    &lt;<span style="color:#070">input</span> <span style="color:#00c">type</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;text&#34;</span> <span style="color:#00c">name</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;message&#34;</span> <span style="color:#00c">size</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;30&#34;</span> <span style="color:#00c">value</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;&#34;</span>&gt;
+    &lt;<span style="color:#070">input</span> <span style="color:#00c">type</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;submit&#34;</span> <span style="color:#00c">value</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;发送&#34;</span>&gt;
+    &lt;<span style="color:#070">input</span> <span style="color:#00c">type</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;reset&#34;</span> <span style="color:#00c">value</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;清空&#34;</span>&gt;
+&lt;/<span style="color:#070">form</span>&gt;</code></pre></div><div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#080;font-weight:bold">function</span> updateMessage(msg) {
+    <span style="color:#007020">window</span>[<span style="background-color:#fff0f0">&#34;msg-cnt=&#34;</span>] <span style="color:#333">=</span> <span style="color:#007020">document</span>.forms[<span style="background-color:#fff0f0">&#34;sender&#34;</span>].elements[<span style="background-color:#fff0f0">&#34;message&#34;</span>].value;
+}
+
+<span style="color:#080;font-weight:bold">function</span> sendMessage() {
+    updateMessage();
+    <span style="color:#080;font-weight:bold">return</span> <span style="color:#080;font-weight:bold">false</span>;
+}
+</code></pre></div>
+<p>子窗口 - 接收端</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#070">h2</span>&gt;接受到的消息：&lt;/<span style="color:#070">h2</span>&gt;
+&lt;<span style="color:#070">p</span> <span style="color:#00c">id</span><span style="color:#333">=</span><span style="background-color:#fff0f0">&#34;content&#34;</span>&gt;&lt;/<span style="color:#070">p</span>&gt;</code></pre></div><div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#080;font-weight:bold">var</span> cntEle <span style="color:#333">=</span> <span style="color:#007020">document</span>.querySelector(<span style="background-color:#fff0f0">&#34;#content&#34;</span>);
+setInterval(<span style="color:#080;font-weight:bold">function</span> () {
+    cntEle.innerText <span style="color:#333">=</span> <span style="color:#007020">window</span>.opener[<span style="background-color:#fff0f0">&#34;msg-cnt=&#34;</span>];
+}, <span style="color:#00d;font-weight:bold">100</span>)
+</code></pre></div>
+<h2 id="参考链接">参考链接</h2>
+
+<ol>
+<li><a href="https://zh.javascript.info/cross-window-communication">javascript.info - 跨窗口通信</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Broadcast_Channel_API">postMessage Api</a></li>
+<li><a href="https://stackoverflow.com/questions/4079280/javascript-communication-between-browser-tabs-windows">FAQ: 不同窗口通信 - stackoverflow</a></li>
+<li><a href="https://stackoverflow.com/questions/2236828/javascript-communication-between-tabs-windows-with-same-origin/12514384#12514384">FAQ： 同源策略下的不同窗口通信 - stackoverflow</a></li>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Window/opener">window.opener</a></li>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Window/localStorage">localStorage Api</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/BroadcastChannel">BroadcastChannel Api</a></li>
+</ol>
+
+    
+    <script type="text/javascript" src="/js/sheet.min.js"></script>
+
+    
+    <div id="remark-wrap">
+    <h2>备注 <span id="remark-out">Out</span></h2>
+    <div id="remark-content">
+
+    </div>
+</div>
+</div>
+</div>
+
+    </main>
+
+    <footer>
+        
+        
+        
+    </footer>
+
+</body>
+
+</html>

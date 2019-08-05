@@ -5,18 +5,20 @@
     <link>https://www.zhangchao.online/categories/web/</link>
     <description>Recent content in web on EsilyZhang 的备忘单</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 01 Aug 2019 20:31:15 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 05 Aug 2019 20:00:38 +0800</lastBuildDate>
     
 	<atom:link href="https://www.zhangchao.online/categories/web/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Web Performer</title>
-      <link>https://www.zhangchao.online/web/web-performer/</link>
-      <pubDate>Thu, 01 Aug 2019 20:31:15 +0800</pubDate>
+      <title>跨窗口通信</title>
+      <link>https://www.zhangchao.online/web/cross-window-communication/</link>
+      <pubDate>Mon, 05 Aug 2019 20:00:38 +0800</pubDate>
       
-      <guid>https://www.zhangchao.online/web/web-performer/</guid>
-      <description>Web 性能 graph LR perf[Web 性能] -- load[加载快] perf -- work[运行快] click work callNotes &#34;work&#34; load -- response[服务器的返回快] load -- self[web 自身加载快和渲染快] self -- js[JavaScript] js -- jsminify[压缩 minify] jsminify -- webpackmode[webpack mode:production] jsminify -- babeljs[babel babel-preset-minify] jsminify -- gulpjs[gulp gulp-uglify] js -- asyncdefer[Async &amp;&amp; Defer] click asyncdefer callNotes &#34;asyncdefer&#34; js -- codecomplit[代码分割] click codecomplit callNotes &#34;codecomplit&#34; js -- dependences[优化代码依赖] click dependences callNotes &#34;dependences&#34; self -- css[CSS] css -- cssminify[压缩 minify] cssminify -- webpackcss[webpack postcss-loader] click webpackcss callNotes &#34;</description>
+      <guid>https://www.zhangchao.online/web/cross-window-communication/</guid>
+      <description>实现方式 同源限制  Cookie Webstorage - localStorage BroadcastChannel window.open  不同源的窗口内通信 父窗口：
+&amp;lt;h1&amp;gt;发送端&amp;lt;/h1&amp;gt; &amp;lt;p&amp;gt;键入发送的消息：&amp;lt;/p&amp;gt; &amp;lt;form name=&amp;#34;sender&amp;#34; onsubmit=&amp;#34;return sendMessage();&amp;#34;&amp;gt; &amp;lt;input type=&amp;#34;text&amp;#34; name=&amp;#34;message&amp;#34; size=&amp;#34;30&amp;#34; value=&amp;#34;&amp;#34;&amp;gt; &amp;lt;input type=&amp;#34;submit&amp;#34; value=&amp;#34;发送&amp;#34;&amp;gt; &amp;lt;input type=&amp;#34;reset&amp;#34; value=&amp;#34;清空&amp;#34;&amp;gt; &amp;lt;/form&amp;gt; &amp;lt;iframe src=&amp;#34;http://192.168.5.125:9001/cross-window-connection/postMessage-receiver.html&amp;#34; name=&amp;#34;msg2&amp;#34;&amp;gt;&amp;lt;/iframe&amp;gt;let win = window.frames.msg2; function updateMessage() { return document.forms[&amp;#39;sender&amp;#39;].elements[&amp;#39;message&amp;#39;].value; } function sendMessage() { win.postMessage(updateMessage(), &amp;#34;*&amp;#34;); return false; }  iframe 中子窗口：
+&amp;lt;h1&amp;gt;接受端&amp;lt;/h1&amp;gt; &amp;lt;p&amp;gt;接收到的消息：&amp;lt;/p&amp;gt; &amp;lt;form name=&amp;#34;receiver&amp;#34;&amp;gt; &amp;lt;input type=&amp;#34;text&amp;#34; name=&amp;#34;message&amp;#34; size=&amp;#34;30&amp;#34; value=&amp;#34;&amp;#34; readonly disabled&amp;gt; &amp;lt;/form&amp;gt;window.addEventListener(&amp;#34;message&amp;#34;, function (event) { document.forms[&amp;#34;receiver&amp;#34;].elements[&amp;#39;message&amp;#39;].value = event.</description>
     </item>
     
   </channel>
