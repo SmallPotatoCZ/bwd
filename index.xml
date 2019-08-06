@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>EsilyZhang 的备忘单</title>
+    <title>首页 on EsilyZhang 的备忘单</title>
     <link>https://www.zhangchao.online/</link>
-    <description>Recent content on EsilyZhang 的备忘单</description>
+    <description>Recent content in 首页 on EsilyZhang 的备忘单</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 05 Aug 2019 20:00:38 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 01 Jul 2019 17:26:23 +0800</lastBuildDate>
     
 	<atom:link href="https://www.zhangchao.online/index.xml" rel="self" type="application/rss+xml" />
     
@@ -37,6 +37,18 @@
       
       <guid>https://www.zhangchao.online/vue/vuex/</guid>
       <description>Vuex graph LR mutation == 修改 == state action[Action] -- 修改 -- mutation[Mutation] state -.- getter[Getter] getter -.- view[View] state -.- view[视图] module[模块] -- state state -.- module click getter callNotes &#34;getter&#34; click state callNotes &#34;state&#34; click mutation callNotes &#34;mutation&#34; click action callNotes &#34;action&#34;    使用全局 state { computed:{ count() {return store.state.count;} } }  注入根组件 new Vue({ store: store }) // 使用 { computed: { count(){ returen this.</description>
+    </item>
+    
+    <item>
+      <title>Webpack</title>
+      <link>https://www.zhangchao.online/javascript/webpack/</link>
+      <pubDate>Sat, 03 Aug 2019 18:49:22 +0800</pubDate>
+      
+      <guid>https://www.zhangchao.online/javascript/webpack/</guid>
+      <description>Webpack 构建 graph LR webpack[Webpack] -- entry[入口] click entry callNotes &#34;entry&#34; webpack[Webpack] -- output[输出] click output callNotes &#34;output&#34;    应该使用的模块，作为构建内部依赖图的开始。默认 ./src/index.js。
+一个或多个入口：
+{ /*...*/ entry:{ entry1: &amp;#39;file1.js&amp;#39;, entry2: &amp;#39;file2.js&amp;#39; }, /*...*/ }   { /*...*/ output:{ filename: [name].bundle.js, // [name] 入口起点名字  path: path.resolve(__dirname) // 输出路径  } }   资源管理 - loader CSS  style-css css-loader
+{ /*...*/ module:{ rules:[ { test: /\.css$/, use: [&amp;#39;style-loader&amp;#39;, &amp;#39;css-loader&amp;#39;] } ] } /*.</description>
     </item>
     
     <item>
@@ -105,6 +117,46 @@ eval `ssh-agent -s` ssh-add ~/.ssh/id_rsa_num01 ssh-add ~/.ssh/id_rsa_num02 可�
 ssh-add -D 最后可以查看已保存的 key
 ssh-add -l 修改你的 ssh 配置文件 config 字段的解释
 Host vps(这里是自定义的host简称,以后连接远程服务器就可以用命令ssh vps) User 这里填用户名(如:root) HostName 这里填服务器地址也可以是域名(如:server.xxoo.com) Port 这里填服务器 open-ssh 端口(默认:22) IdentityFile 这里是刚刚生成的私钥文件地址(如 ~/.</description>
+    </item>
+    
+    <item>
+      <title>Web Performer</title>
+      <link>https://www.zhangchao.online/web/web-performer/</link>
+      <pubDate>Thu, 01 Aug 2019 20:31:15 +0800</pubDate>
+      
+      <guid>https://www.zhangchao.online/web/web-performer/</guid>
+      <description>Web 性能 graph LR perf[Web 性能] -- load[加载快] perf -- work[运行快] click work callNotes &#34;work&#34; load -- response[服务器的返回快] load -- self[web 自身加载快和渲染快] self -- js[JavaScript] js -- jsminify[压缩 minify] jsminify -- webpackmode[webpack mode:production] jsminify -- babeljs[babel babel-preset-minify] jsminify -- gulpjs[gulp gulp-uglify] js -- asyncdefer[Async &amp;&amp; Defer] click asyncdefer callNotes &#34;asyncdefer&#34; js -- codecomplit[代码分割] click codecomplit callNotes &#34;codecomplit&#34; js -- dependences[优化代码依赖] click dependences callNotes &#34;dependences&#34; self -- css[CSS] css -- cssminify[压缩 minify] cssminify -- webpackcss[webpack postcss-loader] click webpackcss callNotes &#34;</description>
+    </item>
+    
+    <item>
+      <title>Layout</title>
+      <link>https://www.zhangchao.online/css/layout/</link>
+      <pubDate>Wed, 31 Jul 2019 23:26:07 +0800</pubDate>
+      
+      <guid>https://www.zhangchao.online/css/layout/</guid>
+      <description> 非替换元素的绝对位置 </description>
+    </item>
+    
+    <item>
+      <title>Fluid Width Equal Height Columns</title>
+      <link>https://www.zhangchao.online/css/fluid-width-equal-height-columns/</link>
+      <pubDate>Wed, 31 Jul 2019 22:18:43 +0800</pubDate>
+      
+      <guid>https://www.zhangchao.online/css/fluid-width-equal-height-columns/</guid>
+      <description> 等高列的流式宽度分布 所有的列分享父级的设置的相同的背景。
+HTML 代码：
+&amp;lt;div id=&amp;#34;page-wrap&amp;#34;&amp;gt; &amp;lt;div class=&amp;#34;five-columns group&amp;#34;&amp;gt; &amp;lt;div class=&amp;#34;col&amp;#34;&amp;gt;content-1&amp;lt;/div&amp;gt; &amp;lt;div class=&amp;#34;col&amp;#34;&amp;gt;content-2&amp;lt;/div&amp;gt; &amp;lt;div class=&amp;#34;col&amp;#34;&amp;gt;content-3&amp;lt;/div&amp;gt; &amp;lt;div class=&amp;#34;col&amp;#34;&amp;gt;content-4&amp;lt;/div&amp;gt; &amp;lt;div class=&amp;#34;col&amp;#34;&amp;gt;content-5&amp;lt;/div&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;/div&amp;gt; float </description>
+    </item>
+    
+    <item>
+      <title>Vue 组件</title>
+      <link>https://www.zhangchao.online/vue/component/</link>
+      <pubDate>Sat, 27 Jul 2019 00:05:00 +0800</pubDate>
+      
+      <guid>https://www.zhangchao.online/vue/component/</guid>
+      <description>组件注册 组件名 两种方式：
+ kebab-case - &amp;lt;kebab-case&amp;gt; PascalCase - &amp;lt;PascalCase&amp;gt; 或者 &amp;lt;pascal-case&amp;gt;，直接在 DOM 中只有 kebab-case。  全局注册 子组件直接可以互相使用。
+Vue.component(&amp;#34;cmpt-name&amp;#34;, {/*...*/});  局部注册 // 在其子组件中不可用。 var ComponentA = {/*...*/}; var ComponentB = {/*...*/}; new Vue({ el:&amp;#34;#app&amp;#34;, components:{ &amp;#34;cmpt-a&amp;#34;: ComponentA, &amp;#34;cmpt-b&amp;#34;: ComponentB } }) // 如果要互相使用 var ComponentA = {/*...*/}; var ComponentB = { components: { &amp;#39;component-a&amp;#39;: ComponentA } };  模块系统 模块系统中局部注册 import ComponentA form &amp;#39;./ComponentA&amp;#39; export default { components: { ComponentA } }  基础组件的自动化全局注册 const requireComponent = require.</description>
     </item>
     
     <item>
